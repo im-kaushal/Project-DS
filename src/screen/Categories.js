@@ -2,9 +2,10 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Products from '../api/Products';
 import Product from './Product';
+import route from '@react-navigation/native';
 
 const Categories = ({navigation, route}) => {
-  const id = Products.Id;
+  const id = route.params.ProductId;
   console.log(id);
 
   const selectedProduct = Products.find(element => {

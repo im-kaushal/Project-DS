@@ -36,13 +36,13 @@ const About = () => {
       <View style={styles.menuContainer}>
         <TouchableOpacity
           style={styles.buttonStyle}
-          onPress={() => <FontAwesomeIcon name="home" size={30} color="#00141a" />
+          onPress={() =>
             Linking.openURL('https://www.instagram.com/ixkaushal/')
           }>
           <Image
             style={styles.iconStyle}
             source={{
-              uri: 'https://icons8.com/icon/84884/instagram',
+              uri: 'https://cdn-icons-png.flaticon.com/512/1384/1384015.png',
             }}
           />
         </TouchableOpacity>
@@ -55,7 +55,7 @@ const About = () => {
           <Image
             style={styles.iconStyle}
             source={{
-              uri: 'https://icons8.com/icon/qNUNvR9aEWql/linkedin-circled',
+              uri: 'https://cdn-icons-png.flaticon.com/512/3669/3669739.png',
             }}
           />
         </TouchableOpacity>
@@ -66,7 +66,7 @@ const About = () => {
           <Image
             style={styles.iconStyle}
             source={{
-              uri: 'https://icons8.com/icon/20675/github',
+              uri: 'https://cdn-icons-png.flaticon.com/128/2111/2111432.png',
             }}
           />
         </TouchableOpacity>
@@ -129,6 +129,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'WorkSans_400Regular',
     lineHeight: 26,
+    textAlign: 'justify',
   },
   menuContainer: {
     width: '100%',
