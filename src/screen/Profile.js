@@ -1,18 +1,27 @@
-import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+  Linking,
+} from 'react-native';
 import React from 'react';
-
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 const About = () => {
   return (
     <View style={styles.aboutContainer}>
-      <Text style={styles.mainHeader}>Kaushal Kr.</Text>
-      <Text style={styles.paraStyle}> SET @Damco Solutions 😀 </Text>
-
       <View>
         <Image
           style={styles.imgStyle}
-          source={require('../../assets/kidPng.png')}
+          source={{
+            uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          }}
         />
       </View>
+
+      <Text style={styles.mainHeader}>Kaushal Kr.</Text>
+      <Text style={styles.minparaStyle}> SET @Damco Solutions 😀 </Text>
 
       <View style={styles.aboutLayout}>
         <Text style={styles.aboutSubHeader}> About Me </Text>
@@ -27,13 +36,13 @@ const About = () => {
       <View style={styles.menuContainer}>
         <TouchableOpacity
           style={styles.buttonStyle}
-          onPress={() =>
+          onPress={() => <FontAwesomeIcon name="home" size={30} color="#00141a" />
             Linking.openURL('https://www.instagram.com/ixkaushal/')
           }>
           <Image
             style={styles.iconStyle}
             source={{
-              uri: 'https://cdn-icons-png.flaticon.com/512/2111/2111463.png',
+              uri: 'https://icons8.com/icon/84884/instagram',
             }}
           />
         </TouchableOpacity>
@@ -41,25 +50,23 @@ const About = () => {
         <TouchableOpacity
           style={styles.buttonStyle}
           onPress={() =>
-            Linking.openURL(
-              'https://www.youtube.com/channel/UCwfaAHy4zQUb2APNOGXUCCA',
-            )
+            Linking.openURL('https://www.linkedin.com/in/im-kaushal/')
           }>
           <Image
             style={styles.iconStyle}
             source={{
-              uri: 'https://cdn-icons-png.flaticon.com/512/187/187210.png',
+              uri: 'https://icons8.com/icon/qNUNvR9aEWql/linkedin-circled',
             }}
           />
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.buttonStyle}
-          onPress={() => Linking.openURL('https://discord.gg/AN8ThRBXtY')}>
+          onPress={() => Linking.openURL('https://github.com/im-kaushal')}>
           <Image
             style={styles.iconStyle}
             source={{
-              uri: 'https://cdn-icons-png.flaticon.com/512/906/906361.png',
+              uri: 'https://icons8.com/icon/20675/github',
             }}
           />
         </TouchableOpacity>
@@ -72,33 +79,41 @@ const styles = StyleSheet.create({
   aboutContainer: {
     display: 'flex',
     alignItems: 'center',
+    height: '100%',
+    justifyContent: 'space-between',
+    backgroundColor: '#f5f5f0',
   },
-
   imgStyle: {
-    width: 150,
-    height: 150,
-    borderRadius: 100,
+    width: 180,
+    height: 220,
+    borderRadius: 90,
+    marginTop: 20,
   },
   mainHeader: {
     fontSize: 18,
     color: '#344055',
     fontWeight: 'Bold',
     // marginTop: 50,
-    marginTop: 40,
-    marginBottom: 10,
+    // marginTop: 20,
+    // marginBottom: 10,
     fontFamily: 'Nunito_700Bold',
   },
   paraStyle: {
     fontSize: 18,
     color: '#7d7d7d',
-    paddingBottom: 30,
+    paddingBottom: 20,
     fontFamily: 'WorkSans_400Regular',
   },
+  minparaStyle: {
+    fontSize: 18,
+    color: '#7d7d7d',
+  },
+
   aboutLayout: {
-    backgroundColor: '#4c5dab',
+    backgroundColor: '#0d001a',
     paddingHorizontal: 30,
     // marginVertical: 30,
-    marginTop: 20,
+    //marginTop: 25,
   },
   aboutSubHeader: {
     fontSize: 18,
@@ -123,8 +138,9 @@ const styles = StyleSheet.create({
 
   iconStyle: {
     width: '100%',
-    height: 50,
+    height: 30,
     aspectRatio: 1,
+    marginBottom: 20,
   },
 });
 

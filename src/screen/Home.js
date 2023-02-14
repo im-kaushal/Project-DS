@@ -12,7 +12,7 @@ const Home = props => {
         <Image
           style={styles.headerImage}
           resizeMode="contain"
-          source={require('../../assets/cartoon.jpg')}
+          source={require('../../assets/cartoonPng.png')}
         />
 
         <Text style={styles.mainHeader}>Hey Buddy! Welcome✨</Text>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#f5f5f0',
     textAlign: 'center',
   },
 
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   headerImage: {
     height: undefined,
     width: '100%',
-    aspectRatio: 1,
+    aspectRatio: 1.5,
     display: 'flex',
     alignItems: 'stretch',
     marginTop: 50,
