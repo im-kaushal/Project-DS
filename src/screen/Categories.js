@@ -5,7 +5,7 @@ import Product from './Product';
 import route from '@react-navigation/native';
 
 const Categories = ({navigation, route}) => {
-  const id = route.params.ProductId;
+  const id = Products.id;
   console.log(id);
 
   const selectedProduct = Products.find(element => {

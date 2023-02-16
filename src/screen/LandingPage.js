@@ -1,7 +1,11 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import Home from './Home';
+import SignUpPage from './SignUpPage';
 
 const LandingPage = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -11,7 +15,11 @@ const LandingPage = () => {
           }}
           style={styles.logo}
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate(Home);
+          }}>
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
       </View>
@@ -25,8 +33,10 @@ const LandingPage = () => {
         />
         <Text style={styles.title}>Welcome to Our E-commerce Store</Text>
         <Text style={styles.subtitle}>Shop the latest products and deals</Text>
-        <TouchableOpacity style={styles.shopButton}>
-          <Text style={styles.shopButtonText}>Create An Account</Text>
+        <TouchableOpacity
+          style={styles.SignUpButton}
+          onPress={() => navigation.navigate(SignUpPage)}>
+          <Text style={styles.SignUpButtonText}>Create An Account</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -90,14 +100,14 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     color: '#888',
   },
-  shopButton: {
+  SignUpButton: {
     backgroundColor: '#e91e63',
     paddingVertical: 18,
     paddingHorizontal: 80,
     borderRadius: 50,
     marginTop: 30,
   },
-  shopButtonText: {
+  SignUpButtonText: {
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 18,
