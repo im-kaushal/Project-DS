@@ -1,5 +1,5 @@
 # Project-DS
-E-commerce Application
+E-commerce Application(Work done till Feb 16,2023).
 
 
 
