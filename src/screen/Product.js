@@ -30,16 +30,16 @@ const Product = () => {
           data={data}
           keyExtractor={({id}) => id.toString()}
           renderItem={({item}) => (
-            <View style={styles.itemContainer}>
+            <View style={styles.container}>
               <Image style={styles.image} source={{uri: item.image}} />
               <View style={styles.detailsContainer}>
                 <Text style={styles.title}>{item.title}</Text>
                 <View style={styles.rar}>
-                  <Text>Price: ${item.price.toFixed(2)}</Text>
-                  <View style={styles.rar}>
-                    <Text>Rating: {item.rating.rate} </Text>
-                    <Text>({item.rating.count} reviews)</Text>
-                  </View>
+                  <Text style={styles.par}>
+                    Price: ${item.price.toFixed(2)}
+                  </Text>
+                  <Text style={styles.par}> Rating: {item.rating.rate} </Text>
+                  <Text style={styles.par}>({item.rating.count} reviews)</Text>
                 </View>
                 {showDescription && (
                   <Text style={styles.description}>{item.description}</Text>
@@ -62,13 +62,13 @@ const Product = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
-    marginHorizontal: 10,
-    marginBottom: 20,
+    backgroundColor: '#000',
+    marginHorizontal: 2,
+    marginBottom: 15,
     borderRadius: 10,
-    shadowColor: '#000',
+    shadowColor: '#fff',
     shadowOffset: {
-      width: 0,
+      width: 2,
       height: 2,
     },
     shadowOpacity: 0.25,
@@ -106,9 +106,13 @@ const styles = StyleSheet.create({
   rar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    fontSize: 14,
-    fontWeight: 'bold',
-    marginBottom: 5,
+
+    par: {
+      color: '#000',
+      fontSize: 14,
+      fontWeight: 'bold',
+      marginBottom: 5,
+    },
   },
   description: {
     fontSize: 16,
