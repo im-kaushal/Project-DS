@@ -11,7 +11,7 @@ const Menu = () => {
         <FontAwesomeIcon name="home" size={30} color="#00141a" />
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Categories')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Product')}>
         <FontAwesomeIcon name="spinner" size={30} color="#00141a" />
       </TouchableOpacity>
 

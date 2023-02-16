@@ -1,127 +1,130 @@
+import React, {useState, useEffect} from 'react';
 import {
+  View,
+  Text,
   FlatList,
   StyleSheet,
-  Text,
-  View,
   Image,
-  Touchable,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
-import Products from '../api/Products';
 
-// import {useFonts, WorkSans_400Regular} from '@expo-google-fonts/work-sans';
-// import {Nunito_700Bold} from '@expo-google-fonts/nunito';
-// import AppLoading from 'expo-app-loading';
+const Product = () => {
+  const [data, setData] = useState([]);
+  const [showDescription, setShowDescription] = useState(false);
+  const [loading, setLoading] = useState(true); // added `loading` state
 
-const Product = ({navigation}) => {
-  //   let [fontsLoaded] = useFonts({
-  //     WorkSans_400Regular,
-  //     Nunito_700Bold,
-  //   });
-
-  //   if (!fontsLoaded) {
-  //     <AppLoading />;
-  //   }
-
-  const ProductCard = ({item}) => {
-    return (
-      <View style={styles.mainContainer}>
-        <View style={styles.ProductContainer}>
-          <View>
-            <Image
-              style={styles.cardImage}
-              source={item.image}
-              resizeMode="contain"
-            />
-          </View>
-
-          <Text style={styles.mainHeader}>{item.title}</Text>
-
-          <Text style={styles.description}>{item.description}</Text>
-
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              style={styles.buttonStyle}
-              onPress={() =>
-                navigation.navigate('ProductDetails', {
-                  ProductId: item.id,
-                })
-              }>
-              <Text style={styles.buttonText}> Product Details </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-    );
-  };
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then(response => response.json())
+      .then(json => setData(json))
+      .catch(error => console.error(error))
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
-    <FlatList
-      keyExtractor={item => item.id}
-      data={Products}
-      renderItem={ProductCard}
-    />
+    <View style={styles.container}>
+      {loading ? (
+        <Text>Loading...</Text>
+      ) : (
+        <FlatList
+          data={data}
+          keyExtractor={({id}) => id.toString()}
+          renderItem={({item}) => (
+            <View style={styles.itemContainer}>
+              <Image style={styles.image} source={{uri: item.image}} />
+              <View style={styles.detailsContainer}>
+                <Text style={styles.title}>{item.title}</Text>
+                <View style={styles.rar}>
+                  <Text>Price: ${item.price.toFixed(2)}</Text>
+                  <View style={styles.rar}>
+                    <Text>Rating: {item.rating.rate} </Text>
+                    <Text>({item.rating.count} reviews)</Text>
+                  </View>
+                </View>
+                {showDescription && (
+                  <Text style={styles.description}>{item.description}</Text>
+                )}
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => setShowDescription(!showDescription)}>
+                  <Text style={styles.buttonText}>
+                    {showDescription ? 'Hide' : 'Show'} Description
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          )}
+        />
+      )}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  cardImage: {
+  container: {
+    backgroundColor: '#fff',
+    marginHorizontal: 10,
+    marginBottom: 20,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  image: {
     width: '100%',
-    height: undefined,
-    aspectRatio: 1,
+    height: 250,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
-  mainContainer: {
-    paddingHorizontal: 20,
+  detailsContainer: {
+    padding: 10,
   },
-  ProductContainer: {
-    padding: 30,
-    backgroundColor: 'rgba(255, 255, 255, 0.90)',
-    textAlign: 'center',
-    borderRadius: 5,
-    shadowColor: 'grey',
-    shadowOffset: {width: 0, height: 0},
-    shadowOpacity: 0.5,
-    shadowRadius: 8,
-    elevation: 8,
-    marginVertical: 30,
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
-  mainHeader: {
-    fontSize: 22,
-    color: '#344055',
-    textTransform: 'uppercase',
-    // fontWeight: 500,
-    paddingBottom: 15,
-    textAlign: 'center',
-    fontFamily: 'Nunito_700Bold',
+
+  rating: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+  ratingIcon: {
+    width: 20,
+    height: 20,
+  },
+  ratingText: {
+    marginLeft: 5,
+    color: '#888',
+  },
+  rar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginBottom: 5,
   },
   description: {
-    textAlign: 'left',
-    fontFamily: 'WorkSans_400Regular',
-    paddingBottom: 15,
-    lineHeight: 20,
     fontSize: 16,
-    color: '#7d7d7d',
+    color: '#888',
+    marginBottom: 10,
   },
-  buttonContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  buttonStyle: {
-    backgroundColor: '#809fff',
+  button: {
+    backgroundColor: '#2196F3',
+    padding: 10,
     borderRadius: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 10,
   },
   buttonText: {
-    fontSize: 20,
-    color: '#eee',
-    fontFamily: 'WorkSans_400Regular',
-    textTransform: 'capitalize',
+    color: '#fff',
+    fontSize: 16,
   },
 });
 
