@@ -7,7 +7,7 @@ import {
   Linking,
 } from 'react-native';
 import React from 'react';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+
 const About = () => {
   return (
     <View style={styles.aboutContainer}>
@@ -24,14 +24,14 @@ const About = () => {
       <Text style={styles.minparaStyle}> SET @Damco Solutions 😀 </Text>
 
       <View style={styles.aboutLayout}>
-        <Text style={styles.aboutSubHeader}> About Me </Text>
+        <Text style={styles.subHeader}> About Me </Text>
         <Text style={[styles.paraStyle, styles.aboutPara]}>
           A self-driven, hardworking, and astute learner having team
           collaboration, marketing, management, and leadership qualities.
         </Text>
       </View>
 
-      <Text style={styles.mainHeader}>Connect Me Through:</Text>
+      <Text style={styles.subHeader}>Connect Me Through:</Text>
 
       <View style={styles.menuContainer}>
         <TouchableOpacity
@@ -90,19 +90,17 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   mainHeader: {
-    fontSize: 18,
+    fontSize: 35,
     color: '#344055',
-    fontWeight: 'Bold',
+    fontWeight: 'bold',
     // marginTop: 50,
     // marginTop: 20,
     // marginBottom: 10,
-    fontFamily: 'Nunito_700Bold',
   },
   paraStyle: {
     fontSize: 18,
     color: '#7d7d7d',
     paddingBottom: 20,
-    fontFamily: 'WorkSans_400Regular',
   },
   minparaStyle: {
     fontSize: 18,
@@ -115,19 +113,19 @@ const styles = StyleSheet.create({
     // marginVertical: 30,
     //marginTop: 25,
   },
-  aboutSubHeader: {
+  subHeader: {
     fontSize: 18,
-    color: '#fff',
+    color: '#7d7d7d',
     textTransform: 'uppercase',
-    fontWeight: '500',
+    fontWeight: 'bold',
     marginVertical: 15,
-    fontFamily: 'Nunito_700Bold',
+
     alignSelf: 'center',
   },
   aboutPara: {
     color: '#fff',
     fontSize: 18,
-    fontFamily: 'WorkSans_400Regular',
+
     lineHeight: 26,
     textAlign: 'justify',
   },
