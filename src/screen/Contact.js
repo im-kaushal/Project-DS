@@ -25,7 +25,7 @@ const ContactUs = () => {
   return (
     <ImageBackground
       source={{
-        uri: 'https://cdn.pixabay.com/photo/2022/01/09/07/32/presentation-6925464_1280.png',
+        uri: 'https://images.pexels.com/photos/2425232/pexels-photo-2425232.jpeg?auto=compress&cs=tinysrgb&w=600',
       }}
       style={styles.container}>
       <View style={styles.header}>

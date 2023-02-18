@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import axios from 'axios';
 
 const Product = () => {
   const [data, setData] = useState([]);
@@ -14,9 +15,9 @@ const Product = () => {
   const [loading, setLoading] = useState(true); // added `loading` state
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then(response => response.json())
-      .then(json => setData(json))
+    axios
+      .get('https://fakestoreapi.com/products')
+      .then(response => setData(response.data))
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
   }, []);
@@ -38,7 +39,7 @@ const Product = () => {
                   <Text style={styles.par}>
                     Price: ${item.price.toFixed(2)}
                   </Text>
-                  <Text style={styles.par}> Rating: {item.rating.rate} </Text>
+                  <Text> Rating: {item.rating.rate} </Text>
                   <Text style={styles.par}>({item.rating.count} reviews)</Text>
                 </View>
                 {showDescription && (
@@ -62,7 +63,7 @@ const Product = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#000',
+    backgroundColor: '#c4aead',
     marginHorizontal: 2,
     marginBottom: 15,
     borderRadius: 10,
@@ -95,14 +96,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 5,
   },
-  ratingIcon: {
-    width: 20,
-    height: 20,
-  },
-  ratingText: {
-    marginLeft: 5,
-    color: '#888',
-  },
+
   rar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -118,6 +112,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#888',
     marginBottom: 10,
+    textAlign: 'justify',
   },
   button: {
     backgroundColor: '#2196F3',

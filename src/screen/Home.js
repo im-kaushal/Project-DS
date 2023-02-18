@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, ImageBackground} from 'react-native';
 import React from 'react';
 import Menu from '../components/Menu';
 
@@ -7,7 +7,12 @@ const Home = props => {
     'Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. ';
 
   return (
-    <View style={styles.Container}>
+    <ImageBackground
+      source={{
+        uri: 'https://images.pexels.com/photos/7078033/pexels-photo-7078033.jpeg?auto=compress&cs=tinysrgb&w=2400',
+      }}
+      style={styles.Container}
+      resizeMode="cover">
       <View style={styles.homeTop}>
         <Image
           style={styles.headerImage}
@@ -23,34 +28,26 @@ const Home = props => {
       <View style={styles.menuStyle}>
         <View style={styles.lineStyle}></View>
         <Menu />
-        {/* <View
-          style={[
-            styles.lineStyle,
-            {
-              marginVertical: 5,
-            },
-          ]}></View> */}
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   Container: {
-    height: '100%',
+    direction: 'flex',
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  menuStyle: {
+    justifyContent: 'space-between',
+  },
+  homeTop: {
     display: 'flex',
     justifyContent: 'space-between',
-    paddingHorizontal: 20,
-    backgroundColor: '#f5f5f0',
-    textAlign: 'center',
-  },
-
-  homeTop: {
-    // height: "100%",
-    display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 10,
+    textAlign: 'justify',
+    paddingHorizontal: 30,
   },
 
   headerImage: {
@@ -66,21 +63,18 @@ const styles = StyleSheet.create({
   mainHeader: {
     fontSize: 30,
     color: '#344055',
-    textTransform: 'none',
-    fontFamily: 'Nunito_600SemiBold',
   },
 
   paraStyle: {
     fontSize: 15,
-    color: '#7d7d7d',
+    color: '#344055',
     marginTop: 30,
-    alignItems: 'stretch',
-    // paddingBottom: 40,
+    textAlign: 'justify',
     lineHeight: 25,
-    fontFamily: 'Nunito',
   },
 
   lineStyle: {
+    alignItems: 'baseline',
     marginBottom: 3,
     borderWidth: 0.5,
     borderColor: 'grey',

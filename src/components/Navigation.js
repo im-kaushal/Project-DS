@@ -9,13 +9,15 @@ import ContactUs from '../screen/Contact';
 import Home from '../screen/Home';
 import SignUpPage from '../screen/SignUpPage';
 import Product from '../screen/Product';
+import Splash from '../screen/SplashScreen';
 //import {enableScreens} from 'react-native-screens';
 
 const Navigation = () => {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LandingPage">
+      <Stack.Navigator initialRouteName="Splash" headerMode="none">
+        <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="SignUpPage" component={SignUpPage} />
 
