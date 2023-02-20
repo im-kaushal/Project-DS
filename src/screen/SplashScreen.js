@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {View, Image, StyleSheet} from 'react-native';
 
 const splashImage =
-  'https://cdn.pixabay.com/photo/2014/04/03/10/00/shopping-cart-309592_1280.png';
+  'https://github.com/im-kaushal/Media/blob/main/ecom.png?raw=true';
 
 const Splash = ({navigation}) => {
   useEffect(() => {
@@ -23,11 +23,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#E3DFFD',
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 200,
   },
 });
 
