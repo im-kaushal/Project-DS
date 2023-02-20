@@ -24,9 +24,11 @@ const LandingPage = () => {
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
       </View>
+      <View style={styles.image}>
+        <SvgComponent />
+      </View>
 
       <View style={styles.content}>
-        <SvgComponent />
         <Text style={styles.title}>Welcome to Our E-commerce Store</Text>
         <Text style={styles.subtitle}>Shop the latest products and deals</Text>
         <TouchableOpacity
@@ -43,6 +45,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f2f2f2',
+  },
+  image: {
+    alignContent: 'center',
+    justifyContent: 'center',
+    height: '50%',
+    width: '100%',
   },
   header: {
     flexDirection: 'row',
