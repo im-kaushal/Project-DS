@@ -19,11 +19,11 @@ const Menu = () => {
         <FontAwesomeIcon name="shopping-cart" size={30} color="#00141a" />
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+      {/* <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
         <FontAwesomeIcon name="user" size={30} color="#00141a" />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
-      <TouchableOpacity onPress={() => navigation.navigate('Contact')}>
+      <TouchableOpacity onPress={() => navigation.navigate('DrawerNavogator')}>
         <FontAwesomeIcon name="bars" size={30} color="#00141a" />
       </TouchableOpacity>
     </View>

@@ -4,8 +4,7 @@ import Menu from '../components/Menu';
 
 const Home = props => {
   const description =
-    'Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. ';
-
+    'Say goodbye to long lines and crowded stores with our e-commerce app. Shop anytime, anywhere, and get your purchases delivered straight to your doorstep. Get the ultimate shopping experience with our e-commerce app. With personalized recommendations, fast and secure checkout, and 24/7 customer support, we make shopping online easy and enjoyable.';
   return (
     <ImageBackground
       source={{
@@ -20,7 +19,7 @@ const Home = props => {
           source={require('../../assets/cartoonPng.png')}
         />
 
-        <Text style={styles.mainHeader}>Hey Buddy! Welcome✨</Text>
+        <Text style={styles.mainHeader}>EcomExpress✨</Text>
 
         <Text style={styles.paraStyle}>{description} </Text>
       </View>
@@ -45,8 +44,8 @@ const styles = StyleSheet.create({
   homeTop: {
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center',
     textAlign: 'justify',
+    alignItems: 'center',
     paddingHorizontal: 30,
   },
 
@@ -66,10 +65,11 @@ const styles = StyleSheet.create({
   },
 
   paraStyle: {
+    paddingHorizontal: 10,
+    textAlign: 'justify',
     fontSize: 15,
     color: '#344055',
     marginTop: 30,
-    textAlign: 'justify',
     lineHeight: 25,
   },
 
