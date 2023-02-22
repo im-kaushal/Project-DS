@@ -6,13 +6,23 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  Button,
 } from 'react-native';
+const dispatch = useDispatch();
+
+import {useDispatch} from 'react-redux';
+
 import axios from 'axios';
 
 const Product = () => {
   const [data, setData] = useState([]);
   const [showDescription, setShowDescription] = useState(false);
   const [loading, setLoading] = useState(true); // added `loading` state
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch({type: 'ADD_ITEM', payload: item});
+  };
 
   useEffect(() => {
     axios
@@ -35,6 +45,7 @@ const Product = () => {
               <Image style={styles.image} source={{uri: item.image}} />
               <View style={styles.detailsContainer}>
                 <Text style={styles.title}>{item.title}</Text>
+
                 <View style={styles.rar}>
                   <Text style={styles.par}>
                     Price: ${item.price.toFixed(2)}
@@ -42,6 +53,7 @@ const Product = () => {
                   <Text> Rating: {item.rating.rate} </Text>
                   <Text style={styles.par}>({item.rating.count} reviews)</Text>
                 </View>
+                <Button title="Add to Cart" onPress={handleAddToCart} />
                 {showDescription && (
                   <Text style={styles.description}>{item.description}</Text>
                 )}
