@@ -16,7 +16,7 @@ const Home = props => {
         <Image
           style={styles.headerImage}
           resizeMode="contain"
-          source={require('../../assets/cartoonPng.png')}
+          source={require('../assets/images/cartoon.png')}
         />
 
         <Text style={styles.mainHeader}>EcomExpress✨</Text>

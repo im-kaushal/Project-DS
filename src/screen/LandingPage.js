@@ -5,8 +5,7 @@ import SignUpPage from './SignUpPage';
 import SvgComponent from '../components/Svg';
 import Home from './Home';
 
-const LandingPage = () => {
-  const navigation = useNavigation();
+const LandingPage = props => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>

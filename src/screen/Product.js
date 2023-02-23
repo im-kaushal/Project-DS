@@ -8,11 +8,10 @@ import {
   TouchableOpacity,
   Button,
 } from 'react-native';
-const dispatch = useDispatch();
 
 import {useDispatch} from 'react-redux';
 
-import axios from 'axios';
+import {Axios} from 'axios';
 
 const Product = () => {
   const [data, setData] = useState([]);
@@ -24,12 +23,19 @@ const Product = () => {
     dispatch({type: 'ADD_ITEM', payload: item});
   };
 
+  const getAPIdata = async () => {
+    try {
+      const res = await Axios.get('/products');
+      setData(res.data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    axios
-      .get('https://fakestoreapi.com/products')
-      .then(response => setData(response.data))
-      .catch(error => console.error(error))
-      .finally(() => setLoading(false));
+    getAPIdata();
   }, []);
 
   return (
@@ -75,7 +81,7 @@ const Product = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#c4aead',
+    backgroundColor: '#d3e5e9',
     marginHorizontal: 2,
     marginBottom: 15,
     borderRadius: 10,
