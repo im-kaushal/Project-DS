@@ -1,0 +1,46 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@8.19.3
+2 info using node@v18.13.0
+3 timing npm:load:whichnode Completed in 1ms
+4 timing config:load:defaults Completed in 2ms
+5 timing config:load:file:C:\Program Files\nodejs\node_modules\npm\npmrc Completed in 5ms
+6 timing config:load:builtin Completed in 5ms
+7 timing config:load:cli Completed in 3ms
+8 timing config:load:env Completed in 1ms
+9 timing config:load:file:C:\Users\User\Documents\ecom\.npmrc Completed in 2ms
+10 timing config:load:project Completed in 11ms
+11 timing config:load:file:C:\Users\User\.npmrc Completed in 2ms
+12 timing config:load:user Completed in 2ms
+13 timing config:load:file:C:\Users\User\AppData\Roaming\npm\etc\npmrc Completed in 1ms
+14 timing config:load:global Completed in 1ms
+15 timing config:load:validate Completed in 0ms
+16 timing config:load:credentials Completed in 1ms
+17 timing config:load:setEnvs Completed in 1ms
+18 timing config:load Completed in 28ms
+19 timing npm:load:configload Completed in 28ms
+20 timing npm:load:mkdirpcache Completed in 2ms
+21 timing npm:load:mkdirplogs Completed in 2ms
+22 verbose title npm start
+23 verbose argv "start" "--cache" "clear"
+24 timing npm:load:setTitle Completed in 2ms
+25 timing config:load:flatten Completed in 3ms
+26 timing npm:load:display Completed in 6ms
+27 verbose logfile logs-max:10 dir:C:\Users\User\Documents\ecom\clear\_logs
+28 verbose logfile C:\Users\User\Documents\ecom\clear\_logs\2023-02-24T06_03_56_147Z-debug-0.log
+29 timing npm:load:logFile Completed in 24ms
+30 timing npm:load:timers Completed in 0ms
+31 timing npm:load:configScope Completed in 0ms
+32 timing npm:load Completed in 66ms
+33 silly logfile done cleaning log files
+34 http fetch GET 200 https://registry.npmjs.org/npm 16979ms (cache miss)
+35 http fetch GET 200 https://registry.npmjs.org/npm 18317ms (cache miss)
+36 timing command:run-script Completed in 35922ms
+37 timing command:start Completed in 35951ms
+38 notice
+38 notice New [31mmajor[39m version of npm available! [31m8.19.3[39m -> [32m9.5.1[39m
+38 notice Changelog: [36mhttps://github.com/npm/cli/releases/tag/v9.5.1[39m
+38 notice Run [32mnpm install -g npm@9.5.1[39m to update!
+38 notice
+39 verbose exit 0
+40 timing npm Completed in 36047ms
+41 info ok
