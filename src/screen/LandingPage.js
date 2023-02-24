@@ -4,6 +4,7 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import SignUpPage from './SignUpPage';
 import SvgComponent from '../components/Svg';
 import Home from './Home';
+import TabNavigator from '../navigation/BottomTab';
 
 const LandingPage = () => {
   const Navigation = useNavigation();
@@ -19,7 +20,7 @@ const LandingPage = () => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            Navigation.navigate('Home');
+            Navigation.navigate('TabNavigator');
           }}>
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>

@@ -34,7 +34,11 @@ const TabNavigator = () => {
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Product" component={Product} />
       <Tab.Screen name="Cart" component={Cart} />
-      <Tab.Screen name="DrawerNavigator" component={DrawerNavigator} />
+      <Tab.Screen
+        name="DrawerNavigator"
+        component={DrawerNavigator}
+        options={{headerShown: false}}
+      />
     </Tab.Navigator>
   );
 };

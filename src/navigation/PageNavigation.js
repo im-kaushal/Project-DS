@@ -20,11 +20,11 @@ const Navigation = () => {
         <Stack.Navigator
           initialRouteName="Splash"
           screenOptions={{headerShown: false}}>
-          <Stack.Screen name="SignUp" component={SignUpPage} />
+          <Stack.Screen name="SignUpPage" component={SignUpPage} />
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Splash" component={Splash} />
           <Stack.Screen name="LandingPage" component={LandingPage} />
-          <Stack.Screen name="TabNavigator" component={TabNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
