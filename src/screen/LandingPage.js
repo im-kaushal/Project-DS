@@ -5,7 +5,8 @@ import SignUpPage from './SignUpPage';
 import SvgComponent from '../components/Svg';
 import Home from './Home';
 
-const LandingPage = props => {
+const LandingPage = () => {
+  const Navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -18,7 +19,7 @@ const LandingPage = props => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            navigation.navigate(Home);
+            Navigation.navigate('Home');
           }}>
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
@@ -32,7 +33,7 @@ const LandingPage = props => {
         <Text style={styles.subtitle}>Shop the latest products and deals</Text>
         <TouchableOpacity
           style={styles.SignUpButton}
-          onPress={() => navigation.navigate(SignUpPage)}>
+          onPress={() => Navigation.navigate(SignUpPage)}>
           <Text style={styles.SignUpButtonText}>Create Account</Text>
         </TouchableOpacity>
       </View>

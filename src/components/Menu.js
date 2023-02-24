@@ -23,7 +23,7 @@ const Menu = () => {
         <FontAwesomeIcon name="user" size={30} color="#00141a" />
       </TouchableOpacity> */}
 
-      <TouchableOpacity onPress={() => navigation.navigate('DrawerNavogator')}>
+      <TouchableOpacity onPress={() => navigation.navigate('DrawerNavigator')}>
         <FontAwesomeIcon name="bars" size={30} color="#00141a" />
       </TouchableOpacity>
     </View>

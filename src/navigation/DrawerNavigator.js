@@ -1,13 +1,11 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-
 import ContactUs from '../screen/Contact';
 import Profile from '../screen/Profile';
-import ChatScreen from './Chat';
+import ChatScreen from '../components/Chat';
 
-const Drawer = createDrawerNavigator();
-
-function DrawerNavigator() {
+const DrawerNavigator = () => {
+  const Drawer = createDrawerNavigator();
   return (
     <Drawer.Navigator>
       <Drawer.Screen name="Contact" component={ContactUs} />
@@ -15,6 +13,6 @@ function DrawerNavigator() {
       <Drawer.Screen name="Profile" component={Profile} />
     </Drawer.Navigator>
   );
-}
+};
 
 export default DrawerNavigator;
