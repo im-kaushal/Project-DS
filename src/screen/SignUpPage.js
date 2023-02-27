@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-export default function SignUpPage() {
+const SignUpPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -98,7 +98,7 @@ export default function SignUpPage() {
       </TouchableOpacity>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -147,3 +147,4 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
+export default SignUpPage;

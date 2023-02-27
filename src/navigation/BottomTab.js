@@ -12,6 +12,9 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
+        labelStyle: {
+          display: 'none', // hide the label
+        },
         tabBarIcon: ({}) => {
           let iconName;
 
@@ -21,21 +24,20 @@ const TabNavigator = () => {
             iconName = 'spinner';
           } else if (route.name === 'Cart') {
             iconName = 'shopping-cart';
-          } else if (route.name === 'DrawerNavigator') {
-            iconName = 'bars';
+          } else if (route.name === 'More') {
+            iconName = 'ellipsis-h';
           }
 
           return <FontAwesome name={iconName} size={30} color="#00141a" />;
         },
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
-        tabBarOptions: {showLabel: false},
       })}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Product" component={Product} />
       <Tab.Screen name="Cart" component={Cart} />
       <Tab.Screen
-        name="DrawerNavigator"
+        name="More"
         component={DrawerNavigator}
         options={{headerShown: false}}
       />

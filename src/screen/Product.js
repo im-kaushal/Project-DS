@@ -11,12 +11,13 @@ import {
 
 import {useDispatch} from 'react-redux';
 
-import {Axios} from 'axios';
+import API from '../assets/Axios';
 
 const Product = () => {
   const [data, setData] = useState([]);
   const [showDescription, setShowDescription] = useState(false);
   const [loading, setLoading] = useState(true); // added `loading` state
+  const [error, setError] = useState(true);
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
@@ -25,7 +26,7 @@ const Product = () => {
 
   const getAPIdata = async () => {
     try {
-      const res = await Axios.get('/products');
+      const res = await API.get('/products');
       setData(res.data);
     } catch (error) {
       setError(error.message);
