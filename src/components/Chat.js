@@ -30,12 +30,12 @@ const ChatScreen = () => {
   return (
     <View>
       <SafeAreaView>
-        <GiftedChat
+        <GiftedChat>
           showUserAvatar={true}
           messages={messages}
           onSend={newMessages => onSend(newMessages)}
           user={{_id: 1}} // Replace with the user's ID
-        />
+        </GiftedChat>
       </SafeAreaView>
     </View>
   );

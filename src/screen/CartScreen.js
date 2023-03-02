@@ -1,74 +1,31 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
-import {useSelector, useDispatch} from 'react-redux';
+import {View, Text, StyleSheet, Button} from 'react-native';
+import {connect} from 'react-redux';
+import {removeFromCart} from '../store/actions/CartAction';
 
-const CART_ITEMS = [
-  {
-    id: '1',
-    name: 'Product 1',
-    price: 19.99,
-    quantity: 2,
-  },
-  {
-    id: '2',
-    name: 'Product 2',
-    price: 29.99,
-    quantity: 1,
-  },
-];
-
-const CartScreen = () => {
-  const dispatch = useDispatch();
-  const items = useSelector(state => state.cart.items);
-
-  const handleRemoveItem = item => {
-    dispatch({type: 'REMOVE_ITEM', payload: item});
-  };
-  const renderCartItem = ({item}) => (
-    <View style={styles.cartItemContainer}>
-      <Text style={styles.cartItemName}>{item.name}</Text>
-      <Text style={styles.cartItemPrice}>${item.price.toFixed(2)}</Text>
-      <Text style={styles.cartItemQuantity}>Qty: {item.quantity}</Text>
-    </View>
-  );
-
-  const renderTotal = () => {
-    const total = CART_ITEMS.reduce(
-      (acc, item) => acc + item.price * item.quantity,
-      0,
-    );
-    return (
-      <View style={styles.totalContainer}>
-        <Text>Cart</Text>
-        {items.map(item => (
-          <View key={item.id}>
-            <Text>{item.name}</Text>
-            <Text>{item.price}</Text>
-            <Button title="Remove" onPress={() => handleRemoveItem(item)} />
-          </View>
-        ))}
-        <Button
-          title="Clear Cart"
-          onPress={() => dispatch({type: 'CLEAR_CART'})}
-        />
-
-        <Text style={styles.totalLabel}>Total:</Text>
-        <Text style={styles.totalAmount}>${total.toFixed(2)}</Text>
-      </View>
-    );
-  };
-
+const CartScreen = ({cartItems, removeFromCart}) => {
   return (
     <View style={styles.container}>
-      <FlatList
-        data={CART_ITEMS}
-        renderItem={renderCartItem}
-        keyExtractor={item => item.id}
-        ListFooterComponent={renderTotal}
-      />
-      <TouchableOpacity style={styles.checkoutButton}>
-        <Text style={styles.checkoutButtonText}>Checkout</Text>
-      </TouchableOpacity>
+      <Text style={styles.title}>Your Cart:</Text>
+      {cartItems.length === 0 ? (
+        <Text style={styles.emptyCart}>Your cart is empty.</Text>
+      ) : (
+        <>
+          {cartItems.map(item => (
+            <View key={item.id} style={styles.cartItem}>
+              <Text style={styles.itemName}>{item.name}</Text>
+              <Text style={styles.itemPrice}>{item.price}</Text>
+              <Button title="Remove" onPress={() => removeFromCart(item.id)} />
+            </View>
+          ))}
+          <View style={styles.totalContainer}>
+            <Text style={styles.totalText}>Total:</Text>
+            <Text style={styles.totalPrice}>
+              ${cartItems.reduce((total, item) => total + item.price, 0)}
+            </Text>
+          </View>
+        </>
+      )}
     </View>
   );
 };
@@ -76,53 +33,53 @@ const CartScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: 20,
   },
-  cartItemContainer: {
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  emptyCart: {
+    fontSize: 18,
+    fontStyle: 'italic',
+    textAlign: 'center',
+  },
+  cartItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    marginBottom: 10,
   },
-  cartItemName: {
-    fontSize: 16,
+  itemName: {
+    fontSize: 18,
     fontWeight: 'bold',
   },
-  cartItemPrice: {
-    fontSize: 16,
-  },
-  cartItemQuantity: {
-    fontSize: 16,
+  itemPrice: {
+    fontSize: 18,
   },
   totalContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 8,
-    marginTop: 16,
+    marginTop: 20,
   },
-  totalLabel: {
+  totalText: {
     fontSize: 20,
     fontWeight: 'bold',
   },
-  totalAmount: {
+  totalPrice: {
     fontSize: 20,
-    fontWeight: 'bold',
-  },
-  checkoutButton: {
-    backgroundColor: '#3498db',
-    borderRadius: 8,
-    paddingVertical: 16,
-    alignItems: 'center',
-    marginTop: 16,
-  },
-  checkoutButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
   },
 });
 
-export default CartScreen;
+const mapStateToProps = state => {
+  return {
+    cartItems: state.cartItems,
+  };
+};
+
+const mapDispatchToProps = {
+  removeFromCart,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartScreen);

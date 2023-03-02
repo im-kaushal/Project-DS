@@ -9,20 +9,27 @@ import {
   Button,
 } from 'react-native';
 
+import {connect} from 'react-redux';
+import {addToCart} from '../store/actions/CartAction';
+
 import {useDispatch} from 'react-redux';
 
 import API from '../assets/Axios';
 
-const Product = () => {
+const mapDispatchToProps = {
+  addToCart,
+};
+
+const Product = props => {
   const [data, setData] = useState([]);
   const [showDescription, setShowDescription] = useState(false);
   const [loading, setLoading] = useState(true); // added `loading` state
-  const [error, setError] = useState(true);
+
   const dispatch = useDispatch();
 
-  const handleAddToCart = () => {
-    dispatch({type: 'ADD_ITEM', payload: item});
-  };
+  // const handleAddToCart = () => {
+  //   dispatch({type: 'ADD_TO_CART', payload: item});
+  // };
 
   const getAPIdata = async () => {
     try {
@@ -47,22 +54,26 @@ const Product = () => {
         <FlatList
           data={data}
           keyExtractor={({id}) => id.toString()}
-          renderItem={({item}) => (
+          renderItem={({items}) => (
             <View style={styles.container}>
-              <Image style={styles.image} source={{uri: item.image}} />
+              <Image style={styles.image} source={{uri: items.image}} />
               <View style={styles.detailsContainer}>
-                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.title}>{items.title}</Text>
 
                 <View style={styles.rar}>
                   <Text style={styles.par}>
-                    Price: ${item.price.toFixed(2)}
+                    Price: ${items.price.toFixed(2)}
                   </Text>
-                  <Text> Rating: {item.rating.rate} </Text>
-                  <Text style={styles.par}>({item.rating.count} reviews)</Text>
+                  <Text> Rating: {items.rating.rate} </Text>
+                  <Text style={styles.par}>({items.rating.count} reviews)</Text>
                 </View>
-                <Button title="Add to Cart" onPress={handleAddToCart} />
+
+                <Button
+                  title="Add to Cart"
+                  onPress={() => dispatch(addToCart(items))}
+                />
                 {showDescription && (
-                  <Text style={styles.description}>{item.description}</Text>
+                  <Text style={styles.description}>{items.description}</Text>
                 )}
                 <TouchableOpacity
                   style={styles.button}
@@ -146,4 +157,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Product;
+//export default Product;
+export default connect(null, mapDispatchToProps)(Product);
