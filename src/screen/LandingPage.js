@@ -3,8 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import SignUpPage from './SignUpPage';
 import SvgComponent from '../components/Svg';
-import Home from './Home';
-import TabNavigator from '../navigation/BottomTab';
+import {colors} from '../assets/Colors';
 
 const LandingPage = () => {
   const Navigation = useNavigation();
@@ -45,7 +44,7 @@ const LandingPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: colors.bg_light,
   },
   image: {
     alignContent: 'center',
@@ -59,7 +58,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 10,
-    backgroundColor: '#fff',
+    backgroundColor: colors.bg,
     elevation: 3,
   },
   logo: {
@@ -77,13 +76,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   button: {
-    backgroundColor: '#f7931e',
+    backgroundColor: colors.btn,
     paddingVertical: 8,
     paddingHorizontal: 12,
     borderRadius: 20,
   },
   buttonText: {
-    color: '#fff',
+    color: colors.text,
     fontWeight: 'bold',
     fontSize: 14,
   },
@@ -97,23 +96,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 20,
-    color: '#e91e63',
+    color: colors.text,
   },
   subtitle: {
     fontSize: 18,
     textAlign: 'center',
     marginBottom: 40,
-    color: '#888',
+    color: colors.sub_text,
   },
   SignUpButton: {
-    backgroundColor: '#e91e63',
+    backgroundColor: colors.btn,
     paddingVertical: 18,
     paddingHorizontal: 80,
     borderRadius: 50,
     marginTop: 30,
   },
   SignUpButtonText: {
-    color: '#fff',
+    color: colors.text,
     fontWeight: 'bold',
     fontSize: 18,
     textAlign: 'center',

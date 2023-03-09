@@ -1,9 +1,7 @@
-export default colors = {
-  buttonColor: '#E6896b',
-  backgroundColor: '#E3DFFD',
-  white: '#FFFFFF',
-  black: '#000000',
-  green: '#00A300',
-  toggle: '#767577',
-  toggleThumb: '#f4f3f4',
+export const colors = {
+  bg_light: '#F7CAC9',
+  bg: '#F7AF9D',
+  btn: '#F7786B',
+  sub_text: '#DB6400',
+  text: '#704214',
 };

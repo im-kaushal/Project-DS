@@ -15,6 +15,7 @@ import {addToCart} from '../store/actions/CartAction';
 import {useDispatch} from 'react-redux';
 
 import API from '../assets/Axios';
+import {colors} from '../assets/Colors';
 
 const mapDispatchToProps = {
   addToCart,
@@ -54,26 +55,26 @@ const Product = props => {
         <FlatList
           data={data}
           keyExtractor={({id}) => id.toString()}
-          renderItem={({items}) => (
+          renderItem={({item}) => (
             <View style={styles.container}>
-              <Image style={styles.image} source={{uri: items.image}} />
+              <Image style={styles.image} source={{uri: item.image}} />
               <View style={styles.detailsContainer}>
-                <Text style={styles.title}>{items.title}</Text>
+                <Text style={styles.title}>{item.title}</Text>
 
                 <View style={styles.rar}>
                   <Text style={styles.par}>
-                    Price: ${items.price.toFixed(2)}
+                    Price: ${item.price.toFixed(2)}
                   </Text>
-                  <Text> Rating: {items.rating.rate} </Text>
-                  <Text style={styles.par}>({items.rating.count} reviews)</Text>
+                  <Text> Rating: {item.rating.rate} </Text>
+                  <Text style={styles.par}>({item.rating.count} reviews)</Text>
                 </View>
 
                 <Button
                   title="Add to Cart"
-                  onPress={() => dispatch(addToCart(items))}
+                  onPress={() => dispatch(addToCart(item))}
                 />
                 {showDescription && (
-                  <Text style={styles.description}>{items.description}</Text>
+                  <Text style={styles.description}>{item.description}</Text>
                 )}
                 <TouchableOpacity
                   style={styles.button}
@@ -93,11 +94,11 @@ const Product = props => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#d3e5e9',
+    backgroundColor: colors.bg_light,
     marginHorizontal: 2,
     marginBottom: 15,
     borderRadius: 10,
-    shadowColor: '#fff',
+    shadowColor: colors.bg_light,
     shadowOffset: {
       width: 2,
       height: 2,
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
 
     par: {
-      color: '#000',
+      color: colors.text,
       fontSize: 14,
       fontWeight: 'bold',
       marginBottom: 5,
@@ -140,19 +141,19 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 16,
-    color: '#888',
+    color: colors.text,
     marginBottom: 10,
     textAlign: 'justify',
   },
   button: {
-    backgroundColor: '#2196F3',
+    backgroundColor: colors.btn,
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
     marginTop: 10,
   },
   buttonText: {
-    color: '#fff',
+    color: colors.text,
     fontSize: 16,
   },
 });

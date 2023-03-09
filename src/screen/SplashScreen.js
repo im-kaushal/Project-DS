@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {View, Image, StyleSheet} from 'react-native';
+import {colors} from '../assets/Colors';
 
 const splashImage =
   'https://github.com/im-kaushal/Media/blob/main/ecom.png?raw=true';
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#E3DFFD',
+    backgroundColor: colors.bg_light,
   },
   image: {
     width: 200,

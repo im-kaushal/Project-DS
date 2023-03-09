@@ -7,6 +7,7 @@ import {
   Linking,
 } from 'react-native';
 import React from 'react';
+import {colors} from '../assets/Colors';
 
 const About = () => {
   return (
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: '100%',
     justifyContent: 'space-between',
-    backgroundColor: '#f5f5f0',
+    backgroundColor: colors.bg_light,
   },
   imgStyle: {
     width: 180,
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
   },
   mainHeader: {
     fontSize: 35,
-    color: '#344055',
+    color: colors.sub_text,
     fontWeight: 'bold',
     // marginTop: 50,
     // marginTop: 20,
@@ -99,31 +100,29 @@ const styles = StyleSheet.create({
   },
   paraStyle: {
     fontSize: 18,
-    color: '#7d7d7d',
+    color: colors.text,
     paddingBottom: 20,
   },
   minparaStyle: {
     fontSize: 18,
-    color: '#7d7d7d',
+    color: colors.text,
   },
 
   aboutLayout: {
-    backgroundColor: '#0d001a',
+    backgroundColor: colors.bg,
     paddingHorizontal: 30,
-    // marginVertical: 30,
-    //marginTop: 25,
   },
   subHeader: {
     fontSize: 18,
-    color: '#7d7d7d',
-    textTransform: 'uppercase',
+    color: colors.sub_text,
+    //textTransform: 'uppercase',
     fontWeight: 'bold',
     marginVertical: 15,
 
     alignSelf: 'center',
   },
   aboutPara: {
-    color: '#fff',
+    color: colors.text,
     fontSize: 18,
 
     lineHeight: 26,
