@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import {colors} from '../assets/Colors';
 
 const SignUpPage = () => {
   const [name, setName] = useState('');
@@ -104,41 +105,44 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.bg_light,
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
+    color: colors.text,
     fontSize: 24,
+    fontWeight: 'bold',
     marginBottom: 20,
   },
   input: {
+    color: colors.text,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: colors.bg,
     padding: 8,
     margin: 10,
     width: '80%',
     borderRadius: 5,
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: colors.btn,
     padding: 10,
     borderRadius: 5,
     marginTop: 20,
   },
   buttonText: {
-    color: '#fff',
+    color: colors.text,
     fontSize: 18,
     textAlign: 'center',
   },
   saveButton: {
-    backgroundColor: '#4CD964',
+    backgroundColor: colors.bg,
     padding: 10,
     borderRadius: 5,
     marginTop: 20,
   },
   saveButtonText: {
-    color: '#fff',
+    color: colors.text,
     fontSize: 18,
     textAlign: 'center',
   },

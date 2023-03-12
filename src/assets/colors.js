@@ -1,7 +1,7 @@
 export const colors = {
-  bg_light: '#F7CAC9',
-  bg: '#F7AF9D',
-  btn: '#F7786B',
-  sub_text: '#DB6400',
-  text: '#704214',
+  bg_light: '#fff3b0',
+  bg: '#e09f3e',
+  btn: '#335c67',
+  text: '#540b0e',
+  sub_text: '#540b0e',
 };
