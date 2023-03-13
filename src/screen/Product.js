@@ -15,7 +15,7 @@ import {addToCart} from '../store/actions/CartAction';
 import {useDispatch} from 'react-redux';
 
 import API from '../assets/Axios';
-import {colors} from '../assets/Colors';
+import {Colors} from '../assets/Colors';
 
 const mapDispatchToProps = {
   addToCart,
@@ -94,11 +94,11 @@ const Product = props => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.bg_light,
+    backgroundColor: Colors.bg_light,
     marginHorizontal: 2,
     marginBottom: 15,
     borderRadius: 10,
-    shadowColor: colors.bg_light,
+    shadowColor: Colors.bg_light,
     shadowOffset: {
       width: 2,
       height: 2,
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
 
     par: {
-      color: colors.text,
+      color: Colors.text,
       fontSize: 14,
       fontWeight: 'bold',
       marginBottom: 5,
@@ -141,19 +141,19 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 16,
-    color: colors.text,
+    color: Colors.text,
     marginBottom: 10,
     textAlign: 'justify',
   },
   button: {
-    backgroundColor: colors.btn,
+    backgroundColor: Colors.btn,
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
     marginTop: 10,
   },
   buttonText: {
-    color: colors.text,
+    color: Colors.text,
     fontSize: 16,
   },
 });

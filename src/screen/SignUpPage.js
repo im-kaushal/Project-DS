@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Colors} from '../assets/Colors';
 import {
   StyleSheet,
   Text,
@@ -6,7 +7,6 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {colors} from '../assets/Colors';
 
 const SignUpPage = () => {
   const [name, setName] = useState('');
@@ -105,44 +105,44 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     flex: 1,
-    backgroundColor: colors.bg_light,
+    backgroundColor: Colors.bg_light,
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
-    color: colors.text,
+    color: Colors.text,
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
   },
   input: {
-    color: colors.text,
+    color: Colors.text,
     borderWidth: 1,
-    borderColor: colors.bg,
+    borderColor: Colors.bg,
     padding: 8,
     margin: 10,
     width: '80%',
     borderRadius: 5,
   },
   button: {
-    backgroundColor: colors.btn,
+    backgroundColor: Colors.btn,
     padding: 10,
     borderRadius: 5,
     marginTop: 20,
   },
   buttonText: {
-    color: colors.text,
+    color: Colors.text,
     fontSize: 18,
     textAlign: 'center',
   },
   saveButton: {
-    backgroundColor: colors.bg,
+    backgroundColor: Colors.bg,
     padding: 10,
     borderRadius: 5,
     marginTop: 20,
   },
   saveButtonText: {
-    color: colors.text,
+    color: Colors.text,
     fontSize: 18,
     textAlign: 'center',
   },

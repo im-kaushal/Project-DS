@@ -3,7 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import SignUpPage from './SignUpPage';
 import SvgComponent from '../components/Svg';
-import {colors} from '../assets/Colors';
+import {Colors} from '../assets/Colors';
 
 const LandingPage = () => {
   const Navigation = useNavigation();
@@ -44,7 +44,7 @@ const LandingPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.bg_light,
+    backgroundColor: Colors.bg_light,
   },
   image: {
     alignContent: 'center',
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 10,
-    backgroundColor: colors.bg,
+    backgroundColor: Colors.bg,
     elevation: 3,
   },
   logo: {
@@ -76,13 +76,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   button: {
-    backgroundColor: colors.btn,
+    backgroundColor: Colors.btn,
     paddingVertical: 8,
     paddingHorizontal: 12,
     borderRadius: 20,
   },
   buttonText: {
-    color: colors.text,
+    color: Colors.text,
     fontWeight: 'bold',
     fontSize: 14,
   },
@@ -96,23 +96,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 20,
-    color: colors.text,
+    color: Colors.text,
   },
   subtitle: {
     fontSize: 18,
     textAlign: 'center',
     marginBottom: 40,
-    color: colors.sub_text,
+    color: Colors.sub_text,
   },
   SignUpButton: {
-    backgroundColor: colors.btn,
+    backgroundColor: Colors.btn,
     paddingVertical: 18,
     paddingHorizontal: 80,
     borderRadius: 50,
     marginTop: 30,
   },
   SignUpButtonText: {
-    color: colors.text,
+    color: Colors.text,
     fontWeight: 'bold',
     fontSize: 18,
     textAlign: 'center',

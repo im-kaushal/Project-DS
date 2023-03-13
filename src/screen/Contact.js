@@ -8,7 +8,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import {color} from 'react-native-reanimated';
-import {colors} from '../assets/Colors';
+import {Colors} from '../assets/Colors';
 
 const ContactUs = () => {
   const [name, setName] = React.useState('');
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    backgroundColor: colors.bg,
+    backgroundColor: Colors.bg,
     paddingHorizontal: 30,
     paddingVertical: 15,
     borderRadius: 10,
@@ -78,11 +78,11 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: colors.text,
+    color: Colors.text,
   },
   form: {
     width: '80%',
-    backgroundColor: colors.bg,
+    backgroundColor: Colors.bg,
     padding: 20,
     borderRadius: 10,
     alignItems: 'center',
