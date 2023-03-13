@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {Provider} from 'react-redux';
-import store from '../store/Store';
+import store from '../redux/Store';
 
 import LandingPage from '../screen/LandingPage';
 import SignUpPage from '../screen/SignUpPage';

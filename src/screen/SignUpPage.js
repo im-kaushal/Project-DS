@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {Colors} from '../assets/Colors';
 import {
   StyleSheet,
   Text,
@@ -7,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import {Storage} from '../components/Storage';
 
 const SignUpPage = () => {
   const [name, setName] = useState('');
@@ -44,105 +44,111 @@ const SignUpPage = () => {
 
     // If  no errors, store the user data
     if (!emailError && !passwordError && !confirmPasswordError) {
-      const userData = {
-        name,
-        email,
-        password,
+      const userData = async () => {
+        try {
+          await Storage.storeData('user', {name, email, password});
+          alert('Sign up successful!');
+        } catch (error) {
+          console.log(error);
+        }
+
+        // Save userData to database or API
       };
       console.log(userData);
-      // Save userData to database or API
     }
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Sign Up</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Name"
+          value={name}
+          onChangeText={setName}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Gmail Address"
+          keyboardType="email-address"
+          value={email}
+          onChangeText={setEmail}
+        />
+
+        {emailError ? <Text style={styles.error}>{emailError}</Text> : null}
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry={true}
+          value={password}
+          onChangeText={setPassword}
+        />
+        {passwordError ? (
+          <Text style={styles.error}>{passwordError}</Text>
+        ) : null}
+        <TextInput
+          style={styles.input}
+          placeholder="Confirm Password"
+          secureTextEntry={true}
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+        />
+        {confirmPasswordError ? (
+          <Text style={styles.error}>{confirmPasswordError}</Text>
+        ) : null}
+
+        <TouchableOpacity style={styles.saveButton} onPress={handleSignUp}>
+          <Text style={styles.saveButtonText}>Sign Up</Text>
+        </TouchableOpacity>
+        {/* <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+          <Text style={styles.buttonText}>Sign Up with Gmail</Text>
+        </TouchableOpacity> */}
+      </View>
+    );
   };
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Sign Up</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Name"
-        value={name}
-        onChangeText={setName}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Gmail Address"
-        keyboardType="email-address"
-        value={email}
-        onChangeText={setEmail}
-      />
-
-      {emailError ? <Text style={styles.error}>{emailError}</Text> : null}
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry={true}
-        value={password}
-        onChangeText={setPassword}
-      />
-      {passwordError ? <Text style={styles.error}>{passwordError}</Text> : null}
-      <TextInput
-        style={styles.input}
-        placeholder="Confirm Password"
-        secureTextEntry={true}
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-      />
-      {confirmPasswordError ? (
-        <Text style={styles.error}>{confirmPasswordError}</Text>
-      ) : null}
-
-      <TouchableOpacity style={styles.saveButton} onPress={handleSignUp}>
-        <Text style={styles.saveButtonText}>Sign Up</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-        <Text style={styles.buttonText}>Sign Up with Gmail</Text>
-      </TouchableOpacity>
-    </View>
-  );
 };
 
 const styles = StyleSheet.create({
   container: {
     padding: 20,
     flex: 1,
-    backgroundColor: Colors.bg_light,
+    backgroundColor: '#fff3b0',
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
-    color: Colors.text,
+    color: '#e09f3e',
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
   },
   input: {
-    color: Colors.text,
+    color: '#540b0e',
     borderWidth: 1,
-    borderColor: Colors.bg,
+    borderColor: '#ffffff',
     padding: 8,
     margin: 10,
     width: '80%',
     borderRadius: 5,
   },
   button: {
-    backgroundColor: Colors.btn,
+    backgroundColor: '#335c67',
     padding: 10,
     borderRadius: 5,
     marginTop: 20,
   },
   buttonText: {
-    color: Colors.text,
+    color: '#540b0e',
     fontSize: 18,
     textAlign: 'center',
   },
   saveButton: {
-    backgroundColor: Colors.bg,
+    backgroundColor: '#335c67',
     padding: 10,
     borderRadius: 5,
     marginTop: 20,
   },
   saveButtonText: {
-    color: Colors.text,
+    color: '#ffffff',
     fontSize: 18,
     textAlign: 'center',
   },

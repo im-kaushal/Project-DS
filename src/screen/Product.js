@@ -9,87 +9,88 @@ import {
   Button,
 } from 'react-native';
 
-import {connect} from 'react-redux';
-import {addToCart} from '../store/actions/CartAction';
+import {addItem} from '../redux/CartSlice';
 
 import {useDispatch} from 'react-redux';
 
 import API from '../assets/Axios';
+
 import {Colors} from '../assets/Colors';
 
-const mapDispatchToProps = {
-  addToCart,
-};
-
-const Product = props => {
+const Product = () => {
   const [data, setData] = useState([]);
+  //const [quantity, setQuantity] = useState(1);
   const [showDescription, setShowDescription] = useState(false);
   const [loading, setLoading] = useState(true); // added `loading` state
 
   const dispatch = useDispatch();
 
-  // const handleAddToCart = () => {
-  //   dispatch({type: 'ADD_TO_CART', payload: item});
-  // };
+  const handleAddToCart = () => {
+    dispatch(addItem({id, name, price}));
+    console.log('🚀 ~ file: Product.js:30 ~ handleAddToCart ~ addItem:');
 
-  const getAPIdata = async () => {
-    try {
-      const res = await API.get('/products');
-      setData(res.data);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+    const getAPIdata = async data => {
+      try {
+        const res = await API.get('/products');
+        setData(res.data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  useEffect(() => {
-    getAPIdata();
-  }, []);
+    useEffect(() => {
+      getAPIdata();
+      console.log('abc', getAPIdata());
+    }, []);
 
-  return (
-    <View style={styles.container}>
-      {loading ? (
-        <Text>Loading...</Text>
-      ) : (
-        <FlatList
-          data={data}
-          keyExtractor={({id}) => id.toString()}
-          renderItem={({item}) => (
-            <View style={styles.container}>
-              <Image style={styles.image} source={{uri: item.image}} />
-              <View style={styles.detailsContainer}>
-                <Text style={styles.title}>{item.title}</Text>
+    return (
+      <View style={styles.container}>
+        {loading ? (
+          <Text>Loading...</Text>
+        ) : (
+          <FlatList
+            data={data}
+            keyExtractor={({id}) => id.toString()}
+            renderItem={({item}) => (
+              <View style={styles.container}>
+                <Image style={styles.image} source={{uri: item.image}} />
+                <View style={styles.detailsContainer}>
+                  <Text style={styles.title}>{item.title}</Text>
 
-                <View style={styles.rar}>
-                  <Text style={styles.par}>
-                    Price: ${item.price.toFixed(2)}
-                  </Text>
-                  <Text> Rating: {item.rating.rate} </Text>
-                  <Text style={styles.par}>({item.rating.count} reviews)</Text>
+                  <View style={styles.rar}>
+                    <Text style={styles.par}>
+                      Price: ${item.price.toFixed(2)}
+                    </Text>
+                    <Text> Rating: {item.rating.rate} </Text>
+                    <Text style={styles.par}>
+                      ({item.rating.count} reviews)
+                    </Text>
+                  </View>
+
+                  <Button
+                    title="Add to Cart"
+                    onPress={() => handleAddToCart()}
+                  />
+                  {showDescription && (
+                    <Text style={styles.description}>{item.description}</Text>
+                  )}
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => setShowDescription(!showDescription)}>
+                    <Text style={styles.buttonText}>
+                      {showDescription ? 'Hide' : 'Show'} Description
+                    </Text>
+                  </TouchableOpacity>
                 </View>
-
-                <Button
-                  title="Add to Cart"
-                  onPress={() => dispatch(addToCart(item))}
-                />
-                {showDescription && (
-                  <Text style={styles.description}>{item.description}</Text>
-                )}
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => setShowDescription(!showDescription)}>
-                  <Text style={styles.buttonText}>
-                    {showDescription ? 'Hide' : 'Show'} Description
-                  </Text>
-                </TouchableOpacity>
               </View>
-            </View>
-          )}
-        />
-      )}
-    </View>
-  );
+            )}
+          />
+        )}
+      </View>
+    );
+  };
 };
 
 const styles = StyleSheet.create({
@@ -158,5 +159,4 @@ const styles = StyleSheet.create({
   },
 });
 
-//export default Product;
-export default connect(null, mapDispatchToProps)(Product);
+export default Product;

@@ -4,7 +4,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Home from '../screen/Home';
 import Product from '../screen/Product';
 import DrawerNavigator from './DrawerNavigator';
-import CartContainer from '../store/container/CartContainer';
+import CartScreen from '../screen/CartScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -35,7 +35,7 @@ const TabNavigator = () => {
       })}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Product" component={Product} />
-      <Tab.Screen name="Cart" component={CartContainer} />
+      <Tab.Screen name="Cart" component={CartScreen} />
       <Tab.Screen
         name="More"
         component={DrawerNavigator}
