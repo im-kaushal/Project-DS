@@ -14,83 +14,75 @@ import {addItem} from '../redux/CartSlice';
 import {useDispatch} from 'react-redux';
 
 import API from '../assets/Axios';
-
 import {Colors} from '../assets/Colors';
 
-const Product = () => {
+const Product = ({id, name, price}) => {
   const [data, setData] = useState([]);
-  //const [quantity, setQuantity] = useState(1);
   const [showDescription, setShowDescription] = useState(false);
   const [loading, setLoading] = useState(true); // added `loading` state
+
+  const getAPIdata = async () => {
+    try {
+      const res = await API.get('/products');
+      setData(res.data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getAPIdata();
+  }, []);
 
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    dispatch(addItem({id, name, price}));
-    console.log('🚀 ~ file: Product.js:30 ~ handleAddToCart ~ addItem:');
-
-    const getAPIdata = async data => {
-      try {
-        const res = await API.get('/products');
-        setData(res.data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    useEffect(() => {
-      getAPIdata();
-      console.log('abc', getAPIdata());
-    }, []);
-
-    return (
-      <View style={styles.container}>
-        {loading ? (
-          <Text>Loading...</Text>
-        ) : (
-          <FlatList
-            data={data}
-            keyExtractor={({id}) => id.toString()}
-            renderItem={({item}) => (
-              <View style={styles.container}>
-                <Image style={styles.image} source={{uri: item.image}} />
-                <View style={styles.detailsContainer}>
-                  <Text style={styles.title}>{item.title}</Text>
-
-                  <View style={styles.rar}>
-                    <Text style={styles.par}>
-                      Price: ${item.price.toFixed(2)}
-                    </Text>
-                    <Text> Rating: {item.rating.rate} </Text>
-                    <Text style={styles.par}>
-                      ({item.rating.count} reviews)
-                    </Text>
-                  </View>
-
-                  <Button
-                    title="Add to Cart"
-                    onPress={() => handleAddToCart()}
-                  />
-                  {showDescription && (
-                    <Text style={styles.description}>{item.description}</Text>
-                  )}
-                  <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => setShowDescription(!showDescription)}>
-                    <Text style={styles.buttonText}>
-                      {showDescription ? 'Hide' : 'Show'} Description
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            )}
-          />
-        )}
-      </View>
-    );
+    dispatch(addItem);
+    console.log('🚀 ~ file: Product.js:42 ~ handleAddToCart ~ addItem:', id);
   };
+
+  return (
+    <View style={styles.container}>
+      {loading ? (
+        <Text>Loading...</Text>
+      ) : (
+        <FlatList
+          data={data}
+          keyExtractor={({id}) => id.toString()}
+          renderItem={({item}) => (
+            <View style={styles.container}>
+              <Image style={styles.image} source={{uri: item.image}} />
+              <View style={styles.detailsContainer}>
+                <Text style={styles.title}>{item.title}</Text>
+
+                <View style={styles.rar}>
+                  <Text style={styles.par}>
+                    Price: ${item.price.toFixed(2)}
+                  </Text>
+                  <Text> Rating: {item.rating.rate} </Text>
+                  <Text style={styles.par}>({item.rating.count} reviews)</Text>
+                </View>
+
+                <Button title="Add to Cart" onPress={() => handleAddToCart()} />
+                {showDescription && (
+                  <Text style={styles.description}>{item.description}</Text>
+                )}
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => setShowDescription(!showDescription)}>
+                  <Text style={styles.buttonText}>
+                    {showDescription ? 'Hide' : 'Show'} Description
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          )}
+        />
+      )}
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
