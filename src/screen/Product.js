@@ -7,19 +7,21 @@ import {
   Image,
   TouchableOpacity,
   Button,
+  SafeAreaView,
 } from 'react-native';
 
-import {addItem} from '../redux/CartSlice';
-
-import {useDispatch} from 'react-redux';
+import {addProductToMyCart} from '../redux/CartSlice';
+import {useDispatch, useSelector} from 'react-redux';
 
 import API from '../assets/Axios';
 import {Colors} from '../assets/Colors';
 
-const Product = ({id, name, price}) => {
+const Product = () => {
   const [data, setData] = useState([]);
   const [showDescription, setShowDescription] = useState(false);
   const [loading, setLoading] = useState(true); // added `loading` state
+
+  //data from API -> Axios
 
   const getAPIdata = async () => {
     try {
@@ -37,51 +39,56 @@ const Product = ({id, name, price}) => {
   }, []);
 
   const dispatch = useDispatch();
-
-  const handleAddToCart = () => {
-    dispatch(addItem);
-    console.log('🚀 ~ file: Product.js:42 ~ handleAddToCart ~ addItem:', id);
-  };
+  const result = useSelector(state => state.counter);
+  const myCartItems = useSelector(state => state.cart);
 
   return (
-    <View style={styles.container}>
-      {loading ? (
-        <Text>Loading...</Text>
-      ) : (
-        <FlatList
-          data={data}
-          keyExtractor={({id}) => id.toString()}
-          renderItem={({item}) => (
-            <View style={styles.container}>
-              <Image style={styles.image} source={{uri: item.image}} />
-              <View style={styles.detailsContainer}>
-                <Text style={styles.title}>{item.title}</Text>
+    <SafeAreaView>
+      <View style={styles.container}>
+        {loading ? (
+          <Text>Loading...</Text>
+        ) : (
+          <FlatList
+            data={data}
+            keyExtractor={({id}) => id.toString()}
+            renderItem={({item}) => (
+              <View style={styles.container}>
+                <Image style={styles.image} source={{uri: item.image}} />
+                <View style={styles.detailsContainer}>
+                  <Text style={styles.title}>{item.title}</Text>
 
-                <View style={styles.rar}>
-                  <Text style={styles.par}>
-                    Price: ${item.price.toFixed(2)}
-                  </Text>
-                  <Text> Rating: {item.rating.rate} </Text>
-                  <Text style={styles.par}>({item.rating.count} reviews)</Text>
+                  <View style={styles.rar}>
+                    <Text style={styles.par}>
+                      Price: ${item.price.toFixed(2)}
+                    </Text>
+                    <Text> Rating: {item.rating.rate} </Text>
+                    <Text style={styles.par}>
+                      ({item.rating.count} reviews)
+                    </Text>
+                  </View>
+
+                  <Button
+                    title="Add to Cart"
+                    onPress={() => dispatch(addProductToMyCart(item))}
+                  />
+
+                  {showDescription && (
+                    <Text style={styles.description}>{item.description}</Text>
+                  )}
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => setShowDescription(!showDescription)}>
+                    <Text style={styles.buttonText}>
+                      {showDescription ? 'Hide' : 'Show'} Description
+                    </Text>
+                  </TouchableOpacity>
                 </View>
-
-                <Button title="Add to Cart" onPress={() => handleAddToCart()} />
-                {showDescription && (
-                  <Text style={styles.description}>{item.description}</Text>
-                )}
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => setShowDescription(!showDescription)}>
-                  <Text style={styles.buttonText}>
-                    {showDescription ? 'Hide' : 'Show'} Description
-                  </Text>
-                </TouchableOpacity>
               </View>
-            </View>
-          )}
-        />
-      )}
-    </View>
+            )}
+          />
+        )}
+      </View>
+    </SafeAreaView>
   );
 };
 

@@ -1,51 +1,50 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const cartSlice = createSlice({
+const MyCartSlice = createSlice({
   name: 'cart',
   initialState: [],
   reducers: {
-    addItem: (state, action) => {
-      const {id, name, price} = action.payload;
-      const itemExists = state.find(item => item.id === id);
-
-      if (itemExists) {
-        itemExists.quantity++;
-      } else {
-        state.push({id, name, price, quantity: 1});
-      }
-    },
-    removeItem: (state, action) => {
-      const index = state.findIndex(item => item.id === action.payload.id);
-
-      if (index !== -1) {
-        state.splice(index, 1);
-      }
-    },
-    increaseQuantity: (state, action) => {
-      const {id} = action.payload;
-      const itemExists = state.find(item => item.id === id);
-
-      if (itemExists) {
-        itemExists.quantity++;
-      }
-    },
-    decreaseQuantity: (state, action) => {
-      const {id} = action.payload;
-      const itemExists = state.find(item => item.id === id);
-
-      if (itemExists) {
-        if (itemExists.quantity === 1) {
-          const index = state.findIndex(item => item.id === id);
-          state.splice(index, 1);
-        } else {
-          itemExists.quantity--;
+    addProductToMyCart: (state, action) => {
+      let myIndex = -1;
+      state.map((item, index) => {
+        if (item.id == action.payload.id) {
+          myIndex = index;
         }
+      });
+      if (myIndex == -1) {
+        state.push({
+          id: action.payload.id,
+          price: action.payload.price,
+
+          title: action.payload.title,
+        });
+      } else {
+        state[myIndex].qty = state[myIndex].qty + 1;
       }
+    },
+
+    removeMyCartItem: (state, action) => {
+      let myIndex = -1;
+      state.map((item, index) => {
+        if (item.id == action.payload.id) {
+          myIndex = index;
+        }
+      });
+      if (myIndex == -1) {
+      } else {
+        state[myIndex].qty = state[myIndex].qty - 1;
+      }
+    },
+
+    deleteMyCartItem: (state, action) => {
+      return (state = state.filter(item => {
+        item.id != action.payload;
+      }));
     },
   },
 });
 
-export const {addItem, removeItem, increaseQuantity, decreaseQuantity} =
-  cartSlice.actions;
+export const {addProductToMyCart, removeMyCartItem, deleteMyCartItem} =
+  MyCartSlice.actions;
 
-export default cartSlice.reducer;
+export default MyCartSlice.reducer;
