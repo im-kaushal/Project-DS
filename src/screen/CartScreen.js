@@ -10,24 +10,11 @@ import {
   SafeAreaView,
 } from 'react-native';
 
+import FontAwesome from 'react-native-vector-icons';
+
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  increment,
-  decrement,
-  clear,
-  removeItem,
-} from '../redux/features/cart/cartSlice';
-import {cartTotalPriceSelector} from '../redux/selectors';
-import {useNavigation, NavigationContainer} from '@react-navigation/native';
-
-//import Header from component folder- this takes props
-import Header from '../components/Header';
-import Data from '../../assets/cartItems';
-import {Ionicons} from '@expo/vector-icons';
-
-const amount = 0;
-
-// import CartContainer from "../components/CartContainer";
+import {increment, decrement, clear, removeItem} from '../redux/CartSlice';
+import {cartTotalPriceSelector} from '../redux/Selector';
 
 const CartContainer = () => {
   const dispatch = useDispatch();
@@ -74,14 +61,14 @@ const CartContainer = () => {
                     dispatch(decrement(item.id));
                   }
                 }}>
-                <Ionicons name="md-remove" size={24} color="black" />
+                <Text>-</Text>
               </TouchableOpacity>
               <Text style={styles.cartItemAmountText}>{item.quantity}</Text>
               <TouchableOpacity
                 onPress={() => {
                   dispatch(increment(item.id));
                 }}>
-                <Ionicons name="md-add" size={24} color="black" />
+                <Text>+</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.cartItemRemove}>
@@ -90,7 +77,6 @@ const CartContainer = () => {
                   dispatch(removeItem(item.id));
                 }}
                 style={styles.cartItemRemoveButton}>
-                <Ionicons name="md-trash" size={15} color="black" />
                 <Text>Remove</Text>
               </TouchableOpacity>
             </View>
@@ -154,10 +140,9 @@ const CartContainer = () => {
   );
 };
 
-const CartScreen = ({navigation: {goBack}}) => {
+const CartScreen = () => {
   return (
     <SafeAreaView>
-      <Header headerIcon="ios-chevron-back" onPressMenu={() => goBack()} />
       <CartContainer />
     </SafeAreaView>
   );

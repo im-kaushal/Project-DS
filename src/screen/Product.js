@@ -10,7 +10,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-import {addProductToMyCart} from '../redux/CartSlice';
+import {addToCart} from '../redux/CartSlice';
 import {useDispatch, useSelector} from 'react-redux';
 
 import API from '../assets/Axios';
@@ -18,6 +18,7 @@ import {Colors} from '../assets/Colors';
 
 const Product = () => {
   const [data, setData] = useState([]);
+
   const [showDescription, setShowDescription] = useState(false);
   const [loading, setLoading] = useState(true); // added `loading` state
 
@@ -39,12 +40,12 @@ const Product = () => {
   }, []);
 
   const dispatch = useDispatch();
-  const result = useSelector(state => state.counter);
-  const myCartItems = useSelector(state => state.cart);
 
   return (
     <SafeAreaView>
       <View style={styles.container}>
+        {/* Condiotional Rendering */}
+
         {loading ? (
           <Text>Loading...</Text>
         ) : (
@@ -67,14 +68,16 @@ const Product = () => {
                     </Text>
                   </View>
 
+                  {/* Dispatching Action  */}
                   <Button
                     title="Add to Cart"
-                    onPress={() => dispatch(addProductToMyCart(item))}
+                    onPress={() => dispatch(addToCart(item))}
                   />
 
                   {showDescription && (
                     <Text style={styles.description}>{item.description}</Text>
                   )}
+                  {/* Toggle - LifeCycle Method */}
                   <TouchableOpacity
                     style={styles.button}
                     onPress={() => setShowDescription(!showDescription)}>
