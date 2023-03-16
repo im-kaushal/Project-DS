@@ -3,7 +3,6 @@ import {StyleSheet, View, Text} from 'react-native';
 import {Input, Button} from 'react-native-elements';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
-import LoginScreen from './Login';
 const SignUpScreen = () => {
   const Navigation = useNavigation();
 
@@ -37,7 +36,7 @@ const SignUpScreen = () => {
       try {
         const user = {name, email, mobileNumber, password};
         await AsyncStorage.setItem('user', JSON.stringify(user));
-        Navigation.navigate(LoginScreen);
+        Navigation.navigate(Login);
       } catch (e) {
         setError('An error occurred');
       }

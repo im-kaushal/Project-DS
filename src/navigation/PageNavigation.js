@@ -6,11 +6,12 @@ import {Provider} from 'react-redux';
 import store from '../redux/Store';
 
 import LandingPage from '../screen/LandingPage';
-import SignUpPage from '../screen/SignUpPage';
+
 import Splash from '../screen/SplashScreen';
 import Home from '../screen/Home';
 import TabNavigator from './BottomTab';
-
+import LoginScreen from '../screen/Login';
+import SignUpScreen from '../screen/SignUpPage';
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -20,7 +21,8 @@ const Navigation = () => {
         <Stack.Navigator
           initialRouteName="Splash"
           screenOptions={{headerShown: false}}>
-          <Stack.Screen name="SignUpPage" component={SignUpPage} />
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Splash" component={Splash} />

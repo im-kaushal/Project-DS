@@ -9,11 +9,12 @@ import {
   Button,
   SafeAreaView,
 } from 'react-native';
-
+import Icon from 'react-native-vector-icons/Ionicons';
 import {addToCart} from '../redux/CartSlice';
 import {useDispatch, useSelector} from 'react-redux';
 
 import API from '../assets/Axios';
+import Header from '../components/Header';
 import {Colors} from '../assets/Colors';
 
 const Product = () => {
@@ -43,6 +44,7 @@ const Product = () => {
 
   return (
     <SafeAreaView>
+      <Header />
       <View style={styles.container}>
         {/* Condiotional Rendering */}
 
@@ -56,8 +58,9 @@ const Product = () => {
               <View style={styles.container}>
                 <Image style={styles.image} source={{uri: item.image}} />
                 <View style={styles.detailsContainer}>
-                  <Text style={styles.title}>{item.title}</Text>
-
+                  <View style={styles.tw}>
+                    <Text style={styles.title}>{item.title}</Text>
+                  </View>
                   <View style={styles.rar}>
                     <Text style={styles.par}>
                       Price: ${item.price.toFixed(2)}
@@ -66,6 +69,9 @@ const Product = () => {
                     <Text style={styles.par}>
                       ({item.rating.count} reviews)
                     </Text>
+                    <TouchableOpacity>
+                      <Icon name="heart-outline" size={18} color="#000" />
+                    </TouchableOpacity>
                   </View>
 
                   {/* Dispatching Action  */}
@@ -160,6 +166,10 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: Colors.text,
     fontSize: 16,
+  },
+  tw: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
 
