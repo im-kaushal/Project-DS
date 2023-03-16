@@ -70,6 +70,7 @@ const Product = () => {
 
                   {/* Dispatching Action  */}
                   <Button
+                    style={styles.buttonText}
                     title="Add to Cart"
                     onPress={() => dispatch(addToCart(item))}
                   />
@@ -156,6 +157,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonText: {
+    textTransform: 'uppercase',
     color: Colors.text,
     fontSize: 16,
   },

@@ -9,14 +9,18 @@ import {
   Alert,
   SafeAreaView,
 } from 'react-native';
-
-import FontAwesome from 'react-native-vector-icons';
+import {useNavigation} from '@react-navigation/native';
+import EmptyCart from '../assets/images/emptyCart';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 import {useDispatch, useSelector} from 'react-redux';
+
 import {increment, decrement, clear, removeItem} from '../redux/CartSlice';
 import {cartTotalPriceSelector} from '../redux/Selector';
+import Product from './Product';
 
 const CartContainer = () => {
+  const Navigation = useNavigation();
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
   const totalPrice = useSelector(cartTotalPriceSelector);
@@ -46,7 +50,7 @@ const CartContainer = () => {
         <View style={styles.storeItemInfo}>
           <Text style={styles.storeItemTitle}>{item.title}</Text>
           <Text style={styles.storeItemPrice}>
-            R{item.quantity * item.price}
+            ${item.quantity * item.price}
           </Text>
           <View style={styles.addToCart}>
             <View style={styles.cartItemAmount}>
@@ -96,42 +100,43 @@ const CartContainer = () => {
           <View
             style={{
               flexDirection: 'row',
-              justifyContent: 'space-between',
-              paddingHorizontal: 10,
+              paddingRight: '3%',
+              justifyContent: 'flex-end',
+              backgroundColor: '#e09f3e',
             }}>
-            <Text style={styles.storeItemTitle}>My Cart</Text>
             <TouchableOpacity onPress={AlertItem}>
-              <Text style={styles.storeItemPrice}>Clear cart</Text>
+              <FontAwesomeIcon name="trash" size={30} color="#00141a" />
             </TouchableOpacity>
           </View>
         )}
         ListFooterComponent={() => {
           return (
-            <View style={styles.cartFooter}>
-              <View style={styles.checkout}>
+            <View>
+              <View>
                 {cart.length === 0 ? (
-                  <Text style={styles.checkoutText}>Your cart is empty</Text>
+                  <EmptyCart
+                    style={{height: 600, backgroundColor: '#fff3b0'}}
+                  />
                 ) : (
                   <View style={styles.checkoutFull}>
                     <Text style={styles.checkoutText}>
-                      Total: R{totalPrice}
+                      Total: ${totalPrice}
                     </Text>
 
                     <Button
                       title="Checkout"
                       color="#ff5a5f"
                       onPress={() => {
-                        // dispatch(checkout());
+                        dispatch(checkout());
                       }}
                     />
                     <Button
-                      onPress={() => goBack()}
+                      onPress={() => Navigation.navigate(Product)}
                       title="Continue Shopping"
                     />
                   </View>
                 )}
               </View>
-              <View style={{height: 200}} />
             </View>
           );
         }}
