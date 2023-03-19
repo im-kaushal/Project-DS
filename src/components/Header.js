@@ -3,6 +3,7 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DrawerNavigator from '../navigation/DrawerNavigator';
+import WishlistScreen from '../screen/Wishlist';
 
 const Header = () => {
   const Navigation = useNavigation();

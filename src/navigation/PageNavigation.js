@@ -12,6 +12,8 @@ import Home from '../screen/Home';
 import TabNavigator from './BottomTab';
 import LoginScreen from '../screen/Login';
 import SignUpScreen from '../screen/SignUpPage';
+
+import WishlistScreen from '../screen/Wishlist';
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -26,6 +28,7 @@ const Navigation = () => {
           <Stack.Screen name="TabNavigator" component={TabNavigator} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Splash" component={Splash} />
+          <Stack.Screen name="WishlistScreen" component={WishlistScreen} />
           <Stack.Screen name="LandingPage" component={LandingPage} />
         </Stack.Navigator>
       </NavigationContainer>

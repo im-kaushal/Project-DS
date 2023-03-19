@@ -6,7 +6,6 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
-  Alert,
   SafeAreaView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
@@ -18,6 +17,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {increment, decrement, clear, removeItem} from '../redux/CartSlice';
 import {cartTotalPriceSelector} from '../redux/Selector';
 import Product from './Product';
+import {AlertItem} from '../components/Alert';
 
 const CartContainer = () => {
   const Navigation = useNavigation();
@@ -25,21 +25,21 @@ const CartContainer = () => {
   const cart = useSelector(state => state.cart);
   const totalPrice = useSelector(cartTotalPriceSelector);
 
-  const AlertItem = () => {
-    Alert.alert(
-      'Are you sure you want to clear the cart?',
-      '',
-      [
-        {
-          text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
-          style: 'cancel',
-        },
-        {text: 'OK', onPress: () => dispatch(clear())},
-      ],
-      {cancelable: false},
-    );
-  };
+  // const AlertItem = () => {
+  //   Alert.alert(
+  //     'Are you sure you want to clear the cart?',
+  //     '',
+  //     [
+  //       {
+  //         text: 'Cancel',
+  //         onPress: () => console.log('Cancel Pressed'),
+  //         style: 'cancel',
+  //       },
+  //       {text: 'OK', onPress: () => dispatch(clear())},
+  //     ],
+  //     {cancelable: false},
+  //   );
+  // };
 
   const renderStoreItems = ({item}) => {
     return (

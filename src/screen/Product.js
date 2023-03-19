@@ -1,46 +1,64 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
-  FlatList,
+  TouchableOpacity,
+  SafeAreaView,
   StyleSheet,
   Image,
-  TouchableOpacity,
+  FlatList,
   Button,
-  SafeAreaView,
+  ActivityIndicator,
 } from 'react-native';
+
+/// inbuilt libraries
+import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {addToCart} from '../redux/CartSlice';
-import {useDispatch, useSelector} from 'react-redux';
-
-import API from '../assets/Axios';
+import {useDispatch} from 'react-redux';
+/// custom libraries
 import Header from '../components/Header';
+import {getFakeProducts} from '../API/Service';
 import {Colors} from '../assets/Colors';
+import {addToCart} from '../redux/CartSlice';
 
-const Product = () => {
-  const [data, setData] = useState([]);
+import {addItem} from '../redux/WishlistSlice';
 
+///component
+const ProductPage = () => {
+  const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [showDescription, setShowDescription] = useState(false);
-  const [loading, setLoading] = useState(true); // added `loading` state
-
-  //data from API -> Axios
-
-  const getAPIdata = async () => {
-    try {
-      const res = await API.get('/products');
-      setData(res.data);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getAPIdata();
+    const fetchProducts = async () => {
+      try {
+        const data = await getFakeProducts();
+        setItems(data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
-  const dispatch = useDispatch();
+  if (isLoading) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
+  if (!items.length) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text>No products found</Text>
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView>
@@ -48,55 +66,52 @@ const Product = () => {
       <View style={styles.container}>
         {/* Condiotional Rendering */}
 
-        {loading ? (
+        {/* {loading ? (
           <Text>Loading...</Text>
-        ) : (
-          <FlatList
-            data={data}
-            keyExtractor={({id}) => id.toString()}
-            renderItem={({item}) => (
-              <View style={styles.container}>
-                <Image style={styles.image} source={{uri: item.image}} />
-                <View style={styles.detailsContainer}>
-                  <View style={styles.tw}>
-                    <Text style={styles.title}>{item.title}</Text>
-                  </View>
-                  <View style={styles.rar}>
-                    <Text style={styles.par}>
-                      Price: ${item.price.toFixed(2)}
-                    </Text>
-                    <Text> Rating: {item.rating.rate} </Text>
-                    <Text style={styles.par}>
-                      ({item.rating.count} reviews)
-                    </Text>
-                    <TouchableOpacity>
-                      <Icon name="heart-outline" size={18} color="#000" />
-                    </TouchableOpacity>
-                  </View>
-
-                  {/* Dispatching Action  */}
-                  <Button
-                    style={styles.buttonText}
-                    title="Add to Cart"
-                    onPress={() => dispatch(addToCart(item))}
-                  />
-
-                  {showDescription && (
-                    <Text style={styles.description}>{item.description}</Text>
-                  )}
-                  {/* Toggle - LifeCycle Method */}
-                  <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => setShowDescription(!showDescription)}>
-                    <Text style={styles.buttonText}>
-                      {showDescription ? 'Hide' : 'Show'} Description
-                    </Text>
+        ) : ( */}
+        <FlatList
+          data={items}
+          keyExtractor={({id}) => id.toString()}
+          renderItem={({item}) => (
+            <View style={styles.container}>
+              <Image style={styles.image} source={{uri: item.image}} />
+              <View style={styles.detailsContainer}>
+                <View style={styles.tw}>
+                  <Text style={styles.title}>{item.title}</Text>
+                </View>
+                <View style={styles.rar}>
+                  <Text style={styles.par}>
+                    Price: ${item.price.toFixed(2)}
+                  </Text>
+                  <Text> Rating: {item.rating.rate} </Text>
+                  <Text style={styles.par}>({item.rating.count} reviews)</Text>
+                  <TouchableOpacity onPress={() => dispatch(addItem(item))}>
+                    <Icon name="heart-outline" size={18} color="#000" />
                   </TouchableOpacity>
                 </View>
+
+                {/* Dispatching Action  */}
+                <Button
+                  style={styles.buttonText}
+                  title="Add to Cart"
+                  onPress={() => dispatch(addToCart(item))}
+                />
+
+                {showDescription && (
+                  <Text style={styles.description}>{item.description}</Text>
+                )}
+                {/* Toggle - LifeCycle Method */}
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => setShowDescription(!showDescription)}>
+                  <Text style={styles.buttonText}>
+                    {showDescription ? 'Hide' : 'Show'} Description
+                  </Text>
+                </TouchableOpacity>
               </View>
-            )}
-          />
-        )}
+            </View>
+          )}
+        />
       </View>
     </SafeAreaView>
   );
@@ -173,4 +188,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Product;
+export default ProductPage;
