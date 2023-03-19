@@ -7,12 +7,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
   },
+  text: {
+    fontSize: moderateScale(16),
+    color: Colors.secondary,
+    marginBottom: moderateScale(2),
+    textAlign: 'justify',
+  },
   title: {
-    fontSize: moderateScale(24),
+    fontSize: moderateScale(22),
     fontWeight: 'bold',
     color: Colors.primary,
     textAlign: 'center',
-    marginBottom: moderateScale(15),
+    marginBottom: moderateScale(12),
   },
   subtitle: {
     fontSize: moderateScale(20),
@@ -65,6 +71,67 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     padding: moderateScale(10),
     borderRadius: 40,
+  },
+  activityIndicator: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+  productBox: {
+    backgroundColor: Colors.background,
+    marginHorizontal: moderateScale(2),
+    marginBottom: moderateScale(15),
+    borderRadius: moderateScale(10),
+    shadowColor: Colors.accent,
+    shadowOffset: {
+      width: moderateScale(2),
+      height: moderateScale(2),
+    },
+    shadowOpacity: moderateScale(0.25),
+    shadowRadius: moderateScale(3.8),
+    elevation: moderateScale(5),
+  },
+  productDetails: {
+    padding: 20,
+  },
+
+  productImage: {
+    width: '100%',
+    height: 250,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  productRar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  wishlist: {
+    position: 'absolute',
+    top: moderateScale(2),
+    right: moderateScale(5),
+    backgroundColor: Colors.bg,
+    padding: moderateScale(8),
+    borderRadius: moderateScale(100),
+  },
+  textInfo: {
+    color: Colors.text,
+    fontSize: moderateScale(14),
+    fontWeight: 'bold',
+    marginBottom: moderateScale(5),
+  },
+  productBtn1: {
+    backgroundColor: Colors.success,
+    borderRadius: moderateScale(10),
+    padding: moderateScale(8),
+
+    fontSize: moderateScale(16),
+
+    textAlign: 'center',
+  },
+  productBtn2: {
+    backgroundColor: Colors.warning,
+    borderRadius: moderateScale(10),
+    padding: moderateScale(8),
+
+    fontSize: moderateScale(16),
+
+    textAlign: 'center',
   },
 });
 

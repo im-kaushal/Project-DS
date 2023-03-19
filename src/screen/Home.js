@@ -1,9 +1,8 @@
 import {StyleSheet, Text, View, Image, ImageBackground} from 'react-native';
 import React from 'react';
+import Strings from '../statics/Strings';
 
 const Home = props => {
-  const description =
-    'Say goodbye to long lines and crowded stores with our e-commerce app. Shop anytime, anywhere, and get your purchases delivered straight to your doorstep. Get the ultimate shopping experience with our e-commerce app. With personalized recommendations, fast and secure checkout, and 24/7 customer support, we make shopping online easy and enjoyable.';
   return (
     <ImageBackground
       source={{
@@ -20,7 +19,7 @@ const Home = props => {
 
         <Text style={styles.mainHeader}>EcomExpress✨</Text>
 
-        <Text style={styles.paraStyle}>{description} </Text>
+        <Text style={styles.paraStyle}>{Strings.Description} </Text>
       </View>
     </ImageBackground>
   );
