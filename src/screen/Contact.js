@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -7,13 +7,13 @@ import {
   StyleSheet,
   ImageBackground,
 } from 'react-native';
-import {color} from 'react-native-reanimated';
-import {Colors} from '../assets/Colors';
+
+import Colors from '../statics/styles/Colors';
 
 const ContactUs = () => {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [message, setMessage] = React.useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleNameChange = value => setName(value);
   const handleEmailChange = value => setEmail(value);

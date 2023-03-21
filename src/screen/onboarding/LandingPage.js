@@ -2,9 +2,10 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import SignUpPage from './SignUpPage';
-import SvgComponent from '../components/Svg';
-import styles from '../statics/styles';
-import Strings from '../statics/Strings';
+import SvgComponent from '../../components/Svg';
+import styles from '../../statics/styles';
+import Strings from '../../statics/Strings';
+import LoginScreen from './Login';
 const LandingPage = () => {
   const Navigation = useNavigation();
   return (
@@ -20,7 +21,7 @@ const LandingPage = () => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            Navigation.navigate('LoginScreen');
+            Navigation.navigate(LoginScreen);
           }}>
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>

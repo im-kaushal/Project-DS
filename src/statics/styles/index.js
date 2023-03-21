@@ -22,9 +22,10 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: moderateScale(20),
+    fontWeight: 'bold',
     color: Colors.text,
     textAlign: 'center',
-    marginBottom: moderateScale(10),
+    // marginBottom: moderateScale(10),
   },
   button: {
     backgroundColor: Colors.secondary,
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
   productBtn1: {
     backgroundColor: Colors.success,
     borderRadius: moderateScale(10),
-    padding: moderateScale(8),
+    padding: moderateScale(2),
 
     fontSize: moderateScale(16),
 
@@ -127,11 +128,68 @@ const styles = StyleSheet.create({
   productBtn2: {
     backgroundColor: Colors.warning,
     borderRadius: moderateScale(10),
-    padding: moderateScale(8),
-
-    fontSize: moderateScale(16),
-
+    padding: moderateScale(2),
     textAlign: 'center',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+  },
+  // searchBox: {
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   backgroundColor: Colors.secondary,
+  //   borderRadius: moderateScale(5),
+  //   paddingHorizontal: moderateScale(10),
+  //   height: 35,
+  //   flex: 1,
+  //   marginHorizontal: moderateScale(10),
+  // },
+  // searchText: {
+  //   marginLeft: moderateScale(10),
+  //   color: Colors.text,
+  // },
+  splashImage: {
+    justifyContent: 'center',
+    width: moderateScale(250),
+    height: moderateScale(250),
+  },
+  splashContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.background,
+  },
+
+  /// Drawer
+  imgbg: {
+    display: 'flex',
+  },
+  avatar: {
+    height: moderateScale(100),
+    width: moderateScale(100),
+    borderRadius: moderateScale(50),
+    marginBottom: moderateScale(15),
+  },
+  user: {
+    color: Colors.error,
+    fontSize: moderateScale(20),
+  },
+  coins: {
+    color: Colors.primary,
+    marginRight: moderateScale(5),
+  },
+  coinContainer: {
+    flexDirection: 'row',
+  },
+  list: {
+    flex: 1,
+    backgroundColor: Colors.background,
+    paddingTop: moderateScale(10),
   },
 });
 

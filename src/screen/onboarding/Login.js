@@ -1,42 +1,43 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {Alert, StyleSheet, View, Text} from 'react-native';
 import {Input, Button} from 'react-native-elements';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
-
-import TabNavigator from '../navigation/BottomTab';
+import {useSelector} from 'react-redux';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const Navigation = useNavigation();
-  // const handleLogin = async () => {
-  //   const isValidEmail = regexValidator.validateEmail(email);
-  //   const isValidPassword = regexValidator.validatePassword(password);
-  //   if (isValidEmail && isValidPassword) {
-  //     try {
-  //       const user = await AsyncStorage.getItem('user');
-  //       if (user !== null) {
-  //         const {email: storedEmail, password: storedPassword} =
-  //           JSON.parse(user);
-  //         if (email === storedEmail && password === storedPassword) {
-  //           // Navigate to home screen
-  //           Navigation.navigate(Home);
-  //         } else {
-  //           setError('Invalid email or password');
-  //         }
-  //       } else {
-  //         setError('User not found');
-  //       }
-  //     } catch (e) {
-  //       setError('An error occurred');
-  //     }
-  //   } else {
-  //     setError('Invalid email or password');
-  //   }
-  // };
-  const handleLogin = Navigation.navigate(TabNavigator);
+
+  const person = useSelector(state => state.user);
+  // const handleLogin = Navigation.navigate(TabNavigator);
+
+  const login = async () => {
+    let found = false;
+    console.log('coming here', person);
+    for (let i = 0; i < person.data.length; i++) {
+      console.log(person.data[i].Email == email, 'email ');
+      if (person.data[i].Email == email) {
+        found = true;
+        console.log(person.data[i].Email == email, 'Email Matched');
+        if (person.data[i].Password == password) {
+          console.log('password match', person.data[i].Password == password);
+          await AsyncStorage.setItem('isLoggedIn', '1');
+          console.log('isLoggedIn');
+          Alert.alert(
+            'Success',
+            `User ${person.data[0].Email} has successfully logged in!`,
+          );
+        }
+        Navigation.navigate('TabNavigator');
+      } else {
+        Alert('Email or Password is Incorrect');
+        return false;
+      }
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -57,7 +58,7 @@ const LoginScreen = () => {
         leftIcon={{type: 'material', name: 'lock'}}
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
-      <Button title="Login" onPress={handleLogin} />
+      <Button title="Login" onPress={login} />
     </View>
   );
 };

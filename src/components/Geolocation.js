@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
-import {Colors} from '../assets/Colors';
+import Colors from '../statics/styles/Colors';
 const LocationComponent = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);

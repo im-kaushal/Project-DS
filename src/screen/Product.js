@@ -6,7 +6,6 @@ import {
   SafeAreaView,
   Image,
   FlatList,
-  Button,
   ActivityIndicator,
 } from 'react-native';
 

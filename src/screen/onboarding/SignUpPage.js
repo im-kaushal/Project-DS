@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {Alert, StyleSheet, View, Text} from 'react-native';
 import {Input, Button} from 'react-native-elements';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {adduser} from '../../redux/LoginSlice';
+import LoginScreen from './Login';
+
 const SignUpScreen = () => {
   const Navigation = useNavigation();
 
@@ -13,7 +16,16 @@ const SignUpScreen = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
+  const dispatch = useDispatch();
+
   const handleSignUp = async () => {
+    const userObj = {
+      Name: name,
+      Email: email,
+      Password: password,
+      Number: mobileNumber,
+    };
+
     if (
       name.length === 0 ||
       email.length === 0 ||
@@ -26,20 +38,23 @@ const SignUpScreen = () => {
       setError('Invalid email address');
     } else if (!isValidMobileNumber(mobileNumber)) {
       setError('Invalid mobile number');
-    } else if (!isValidPassword(password)) {
-      setError(
-        'Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, and one number',
-      );
-    } else if (password !== confirmPassword) {
-      setError('Passwords do not match');
-    } else {
+    }
+    //   setError('Passwords do not match');
+    // }
+    else {
       try {
-        const user = {name, email, mobileNumber, password};
-        await AsyncStorage.setItem('user', JSON.stringify(user));
-        Navigation.navigate(Login);
+        Alert.alert(
+          'Success!',
+          `${userObj.Name},your account created succeffsully!`,
+        );
+        Navigation.navigate(LoginScreen);
+        // const user = {name, email, mobileNumber, password};
+        // await AsyncStorage.setItem('user', JSON.stringify(user));
+        // Navigation.navigate(LoginScreen);
       } catch (e) {
         setError('An error occurred');
       }
+      dispatch(adduser(userObj));
     }
   };
 
