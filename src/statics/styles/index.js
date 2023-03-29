@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
-import Colors from './Colors';
+import Colors from '../Colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(16),
     paddingTop: moderateScale(10),
     paddingBottom: moderateScale(10),
-    backgroundColor: Colors.bg,
+    backgroundColor: Colors.background,
     elevation: 3,
   },
   landingFooter: {
@@ -131,14 +131,7 @@ const styles = StyleSheet.create({
     padding: moderateScale(2),
     textAlign: 'center',
   },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
 
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-  },
   // searchBox: {
   //   flexDirection: 'row',
   //   alignItems: 'center',
@@ -191,6 +184,83 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
     paddingTop: moderateScale(10),
   },
+  //cartScreen
+  storeItem: {
+    flexDirection: 'row',
+    padding: moderateScale(10),
+    marginBottom: moderateScale(10),
+    marginVertical: moderateScale(5),
+    marginHorizontal: moderateScale(5),
+    borderColor: Colors.text,
+    borderWidth: moderateScale(1),
+    borderRadius: moderateScale(5),
+    backgroundColor: Colors.background,
+    justifyContent: 'center',
+  },
+  storeItemImg: {
+    width: '30%',
+    height: 100,
+    borderRadius: moderateScale(5),
+    overflow: 'hidden',
+  },
+  storeItemImage: {
+    width: '100%',
+    height: '100%',
+  },
+  storeItemInfo: {
+    width: '70%',
+    padding: moderateScale(10),
+  },
+  storeItemTitle: {
+    fontSize: moderateScale(18),
+    fontWeight: 'bold',
+  },
+  storeItemPrice: {
+    fontSize: moderateScale(16),
+    color: 'red',
+  },
+  addToCart: {
+    backgroundColor: 'coral',
+    borderRadius: moderateScale(5),
+    marginTop: moderateScale(10),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cartItemAmount: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '80%',
+  },
+  cartItemAmountText: {
+    fontSize: moderateScale(18),
+    fontWeight: 'bold',
+  },
+  cartItemRemove: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cartItemRemoveButton: {
+    // marginHorizontal: 20,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+  },
+  cartFooter: {
+    justifyContent: 'space-between',
+  },
+  listHeader: {
+    flexDirection: 'row',
+    paddingRight: '2%',
+    justifyContent: 'flex-end',
+    backgroundColor: Colors.background,
+  },
+  dltIcon: {
+    backgroundColor: Colors.error,
+    borderRadius: moderateScale(50),
+    padding: '0.5%',
+  },
+  emptyCart: {height: moderateScale(650), backgroundColor: Colors.background},
 });
 
 export default styles;

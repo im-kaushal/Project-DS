@@ -1,4 +1,5 @@
 export const img = () => {
-  const splashImage =
+  splashImage =
     'https://github.com/im-kaushal/Media/blob/main/ecom.png?raw=true';
+  newape = 'abc';
 };

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
-import Colors from '../statics/styles/Colors';
+import Styles from './styles.index';
 const LocationComponent = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
@@ -18,39 +18,17 @@ const LocationComponent = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Current Location:</Text>
+    <View style={Styles.container}>
+      <Text style={Styles.title}>Current Location:</Text>
       {latitude && longitude ? (
-        <Text style={styles.location}>
+        <Text style={Styles.location}>
           Latitude: {latitude.toFixed(4)}, Longitude: {longitude.toFixed(4)}
         </Text>
       ) : (
-        <Text style={styles.loading}>Loading...</Text>
+        <Text style={Styles.loading}>Loading...</Text>
       )}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Colors.bg_light,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  location: {
-    fontSize: 18,
-    textAlign: 'center',
-  },
-  loading: {
-    fontSize: 18,
-    fontStyle: 'italic',
-  },
-});
 
 export default LocationComponent;

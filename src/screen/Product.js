@@ -15,18 +15,19 @@ import {useDispatch} from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 /// custom libraries
 import styles from '../statics/styles';
-import Header from '../components/Header';
+import ProductDetails from './ProductDetails';
 import {getFakeProducts} from '../API/Service';
 
 import {addToCart} from '../redux/CartSlice';
 
 ///component
-const ProductPage = () => {
+const ProductPage = props => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [showDescription, setShowDescription] = useState(false);
   const dispatch = useDispatch();
 
+  const Navigation = useNavigation();
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -60,7 +61,6 @@ const ProductPage = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
       <View>
         {/* Condiotional Rendering */}
 
@@ -73,7 +73,14 @@ const ProductPage = () => {
           renderItem={({item}) => (
             <View style={styles.productBox}>
               <View>
-                <Image style={styles.productImage} source={{uri: item.image}} />
+                <TouchableOpacity
+                  onPress={() => Navigation.navigate(ProductDetails, {item})}>
+                  <Image
+                    style={styles.productImage}
+                    source={{uri: item.image}}
+                  />
+                </TouchableOpacity>
+
                 <TouchableOpacity
                   style={styles.wishlist}
                   onPress={() => dispatch(addToCart(item))}>

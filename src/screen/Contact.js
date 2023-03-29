@@ -8,7 +8,7 @@ import {
   ImageBackground,
 } from 'react-native';
 
-import Colors from '../statics/styles/Colors';
+import Colors from '../statics/Colors';
 
 const ContactUs = () => {
   const [name, setName] = useState('');

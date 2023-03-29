@@ -13,7 +13,7 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import {useNavigation} from '@react-navigation/native';
-import styles from '../statics/styles';
+import styles from '../../statics/styles';
 import {useSelector} from 'react-redux';
 
 const CustomDrawer = props => {
@@ -23,7 +23,7 @@ const CustomDrawer = props => {
     getUserData();
   }, []);
 
-  const myName = useSelector(state => state.user.name);
+  myName = useSelector(state => state.user.name);
 
   const getUserData = async () => {
     const name = await AsyncStorage.getItem('userName');
@@ -40,10 +40,10 @@ const CustomDrawer = props => {
       {/* <View style={styles.container}> */}
       <DrawerContentScrollView {...props}>
         <ImageBackground
-          source={require('../assets/images/texture.jpg')}
+          source={require('../../assets/images/texture.jpg')}
           style={styles.imgDrawer}>
           <Image
-            source={require('../assets/images/avatar.jpg')}
+            source={require('../../assets/images/avatar.jpg')}
             style={styles.avatar}
           />
           <Text style={styles.user}>{myName}</Text>

@@ -1,13 +1,15 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-import SignUpPage from './SignUpPage';
+
 import SvgComponent from '../../components/Svg';
 import styles from '../../statics/styles';
 import Strings from '../../statics/Strings';
 import LoginScreen from './Login';
+import SignUpScreen from './SignUpPage';
 const LandingPage = () => {
   const Navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -40,7 +42,7 @@ const LandingPage = () => {
         <View style={styles.landingFooter}>
           <TouchableOpacity
             style={styles.signUpButton}
-            onPress={() => Navigation.navigate(SignUpPage)}>
+            onPress={() => Navigation.navigate(SignUpScreen)}>
             <Text style={styles.buttonText}>Sign Up Now</Text>
           </TouchableOpacity>
           <Text style={styles.subtitle}>Don't have an account?</Text>
