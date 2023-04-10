@@ -7,6 +7,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
   },
+  view: {
+    justifyContent: 'center',
+    alignContent: 'space-between',
+  },
+  imgBg: {
+    // marginLeft: moderateScale(30),
+    padding: moderateScale(10),
+  },
   text: {
     fontSize: moderateScale(16),
     color: Colors.secondary,
@@ -131,6 +139,24 @@ const styles = StyleSheet.create({
     padding: moderateScale(2),
     textAlign: 'center',
   },
+  quantityContainer: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: moderateScale(10),
+  },
+  quantityButton: {
+    backgroundColor: Colors.accent,
+    width: moderateScale(30),
+    height: moderateScale(30),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  quantityText: {
+    marginHorizontal: moderateScale(80),
+    fontSize: moderateScale(20),
+    fontWeight: 'bold',
+  },
 
   // searchBox: {
   //   flexDirection: 'row',
@@ -159,10 +185,11 @@ const styles = StyleSheet.create({
   },
 
   /// Drawer
-  imgbg: {
-    display: 'flex',
-  },
+  // imgbg: {
+  //   display: 'flex',
+  // },
   avatar: {
+    marginLeft: moderateScale(10),
     height: moderateScale(100),
     width: moderateScale(100),
     borderRadius: moderateScale(50),
@@ -171,10 +198,12 @@ const styles = StyleSheet.create({
   user: {
     color: Colors.error,
     fontSize: moderateScale(20),
+    marginLeft: moderateScale(10),
   },
   coins: {
     color: Colors.primary,
     marginRight: moderateScale(5),
+    marginLeft: moderateScale(10),
   },
   coinContainer: {
     flexDirection: 'row',
@@ -184,83 +213,15 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
     paddingTop: moderateScale(10),
   },
-  //cartScreen
-  storeItem: {
-    flexDirection: 'row',
-    padding: moderateScale(10),
-    marginBottom: moderateScale(10),
-    marginVertical: moderateScale(5),
-    marginHorizontal: moderateScale(5),
-    borderColor: Colors.text,
-    borderWidth: moderateScale(1),
-    borderRadius: moderateScale(5),
-    backgroundColor: Colors.background,
-    justifyContent: 'center',
-  },
-  storeItemImg: {
-    width: '30%',
-    height: 100,
-    borderRadius: moderateScale(5),
-    overflow: 'hidden',
-  },
-  storeItemImage: {
-    width: '100%',
-    height: '100%',
-  },
-  storeItemInfo: {
-    width: '70%',
-    padding: moderateScale(10),
-  },
-  storeItemTitle: {
-    fontSize: moderateScale(18),
-    fontWeight: 'bold',
-  },
-  storeItemPrice: {
-    fontSize: moderateScale(16),
-    color: 'red',
-  },
-  addToCart: {
-    backgroundColor: 'coral',
-    borderRadius: moderateScale(5),
-    marginTop: moderateScale(10),
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  cartItemAmount: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '80%',
-  },
-  cartItemAmountText: {
-    fontSize: moderateScale(18),
-    fontWeight: 'bold',
-  },
-  cartItemRemove: {
+  //badge
+  badge: {
+    backgroundColor: Colors.primary,
+    height: 20,
+    minWidth: 5,
+    borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  cartItemRemoveButton: {
-    // marginHorizontal: 20,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-  },
-  cartFooter: {
-    justifyContent: 'space-between',
-  },
-  listHeader: {
-    flexDirection: 'row',
-    paddingRight: '2%',
-    justifyContent: 'flex-end',
-    backgroundColor: Colors.background,
-  },
-  dltIcon: {
-    backgroundColor: Colors.error,
-    borderRadius: moderateScale(50),
-    padding: '0.5%',
-  },
-  emptyCart: {height: moderateScale(650), backgroundColor: Colors.background},
 });
 
 export default styles;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Svg, {Path, G} from 'react-native-svg';
 
-const SvgComponent = props => (
+const Buy = props => (
   <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" {...props}>
     <Path
       d="M77.66 236c-95.18 55-95.17 144.05 0 199s249.5 55 344.68 0 95.17-144 0-199-249.5-54.94-344.68 0Z"
@@ -1392,4 +1392,4 @@ const SvgComponent = props => (
   </Svg>
 );
 
-export default SvgComponent;
+export default Buy;

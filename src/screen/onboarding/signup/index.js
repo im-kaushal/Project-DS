@@ -1,13 +1,21 @@
 import React, {useState} from 'react';
-import {Alert, StyleSheet, View, Text} from 'react-native';
+import {View, Text, Alert} from 'react-native';
 import {Input, Button} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
-import {adduser} from '../../redux/LoginSlice';
-import LoginScreen from './Login';
+import {adduser} from '../../../redux/LoginSlice';
+import LoginScreen from '../login/index.js';
+import styles from './index.styles';
+import {
+  isValidEmail,
+  isValidMobileNumber,
+  isValidPassword,
+} from '../../../utils/validation';
+import {Storage} from '../../../utils/Storage';
 
 const SignUpScreen = () => {
-  const Navigation = useNavigation();
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -16,8 +24,6 @@ const SignUpScreen = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
-  const dispatch = useDispatch();
-
   const handleSignUp = async () => {
     const userObj = {
       Name: name,
@@ -25,52 +31,34 @@ const SignUpScreen = () => {
       Password: password,
       Number: mobileNumber,
     };
+    console.log('🚀 ~ file: index.js:34 ~ handleSignUp ~ userObj:', userObj);
 
-    if (
-      name.length === 0 ||
-      email.length === 0 ||
-      mobileNumber.length === 0 ||
-      password.length === 0 ||
-      confirmPassword.length === 0
-    ) {
-      setError('All fields are required');
-    } else if (!isValidEmail(email)) {
-      setError('Invalid email address');
-    } else if (!isValidMobileNumber(mobileNumber)) {
-      setError('Invalid mobile number');
+    const emailError = isValidEmail(email);
+    const mobileNumberError = isValidMobileNumber(mobileNumber);
+    const passwordError = isValidPassword(password);
+
+    if (emailError || mobileNumberError || passwordError) {
+      setError(emailError || mobileNumberError || passwordError);
+      return;
     }
-    //   setError('Passwords do not match');
-    // }
-    else {
-      try {
-        Alert.alert(
-          'Success!',
-          `${userObj.Name},your account created succeffsully!`,
-        );
-        Navigation.navigate(LoginScreen);
-        // const user = {name, email, mobileNumber, password};
-        // await AsyncStorage.setItem('user', JSON.stringify(user));
-        // Navigation.navigate(LoginScreen);
-      } catch (e) {
-        setError('An error occurred');
-      }
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+
+    try {
+      await Storage.storeData(email, userObj);
+      Alert.alert(
+        'Success!',
+        `${userObj.Name}, your account created successfully!`,
+      );
       dispatch(adduser(userObj));
+      navigation.navigate(LoginScreen);
+    } catch (error) {
+      console.log(error);
+      setError('Error occurred while storing data');
     }
-  };
-
-  const isValidEmail = email => {
-    const emailRegex = /^\S+@\S+\.\S+$/;
-    return emailRegex.test(email);
-  };
-
-  const isValidMobileNumber = mobileNumber => {
-    const mobileNumberRegex = /^[0-9]{10}$/;
-    return mobileNumberRegex.test(mobileNumber);
-  };
-
-  const isValidPassword = password => {
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
-    return passwordRegex.test(password);
   };
 
   return (
@@ -118,20 +106,4 @@ const SignUpScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 32,
-    marginBottom: 20,
-  },
-  error: {
-    color: 'red',
-    marginBottom: 10,
-  },
-});
 export default SignUpScreen;

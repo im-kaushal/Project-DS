@@ -9,22 +9,25 @@ import {
   Alert,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import EmptyCart from '../assets/images/emptyCart';
+import EmptyCart from '../../assets/svg/EmptyCart';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 import {useDispatch, useSelector} from 'react-redux';
-import Colors from '../statics/Colors';
 
-import {increment, decrement, clear, removeItem} from '../redux/CartSlice';
-import {cartTotalPriceSelector} from '../redux/Selector';
-import Product from './Product';
-import styles from '../statics/styles';
+import {increment, decrement, clear, removeItem} from '../../redux/CartSlice';
+import {cartTotalPriceSelector, cartTotalSelector} from '../../redux/Selector';
+import Product from '../product/items';
+import styles from './index.styles';
 
-const CartContainer = () => {
+const CartContainer = ({route}) => {
   const Navigation = useNavigation();
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
+  // const cartSize = cart.length;
+
   const totalPrice = useSelector(cartTotalPriceSelector);
+  const total = useSelector(cartTotalSelector);
+  console.log('🚀 ~ file: index.js:30 ~ CartContainer ~ total:', total);
 
   const AlertItem = () => {
     Alert.alert(
@@ -56,12 +59,9 @@ const CartContainer = () => {
           <View>
             <View style={styles.cartItemAmount}>
               <TouchableOpacity
-                style={{backgroundColor: Colors.primary}}
                 onPress={() => {
                   if (item.quantity === 1) {
                     dispatch(removeItem(item.id));
-
-                    console.log('removed');
                     return;
                   } else {
                     dispatch(decrement(item.id));
@@ -71,23 +71,21 @@ const CartContainer = () => {
               </TouchableOpacity>
               <Text style={styles.cartItemAmountText}>{item.quantity}</Text>
               <TouchableOpacity
-                style={{backgroundColor: Colors.primary}}
                 onPress={() => {
                   dispatch(increment(item.id));
                 }}>
                 <FontAwesomeIcon name="plus" size={25} />
               </TouchableOpacity>
             </View>
-            <View style={styles.cartItemRemove}>
-              <TouchableOpacity
-                onPress={() => {
-                  dispatch(removeItem(item.id));
-                }}
-                style={styles.cartItemRemoveButton}>
-                <FontAwesomeIcon name="trash-o" size={25} />
-              </TouchableOpacity>
-            </View>
           </View>
+        </View>
+        <View style={styles.cartItemRemove}>
+          <TouchableOpacity
+            onPress={() => {
+              dispatch(removeItem(item.id));
+            }}>
+            <FontAwesomeIcon name="trash-o" size={20} color={'red'} />
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -130,7 +128,7 @@ const CartContainer = () => {
                       }}
                     />
                     <Button
-                      onPress={() => Navigation.navigate(Product)}
+                      onPress={() => Navigation.navigate('Product')}
                       title="Continue Shopping"
                     />
                   </View>

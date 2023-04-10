@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {Alert, StyleSheet, View, Text} from 'react-native';
+import {TouchableOpacity, Alert, View, Text} from 'react-native';
 import {Input, Button} from 'react-native-elements';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
+import styles from './index.styles';
 import {useSelector} from 'react-redux';
 
 const LoginScreen = () => {
@@ -12,7 +13,6 @@ const LoginScreen = () => {
   const Navigation = useNavigation();
 
   const person = useSelector(state => state.user);
-  // const handleLogin = Navigation.navigate(TabNavigator);
 
   const login = async () => {
     let found = false;
@@ -39,6 +39,10 @@ const LoginScreen = () => {
     }
   };
 
+  const handleForgotPasswordClick = () => {
+    Navigation.navigate('ForgetPasswordScreen');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
@@ -59,24 +63,11 @@ const LoginScreen = () => {
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <Button title="Login" onPress={login} />
+      <TouchableOpacity onPress={handleForgotPasswordClick}>
+        <Text style={styles.forgotPassword}>Forgot Password?</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 32,
-    marginBottom: 20,
-  },
-  error: {
-    color: 'red',
-    marginBottom: 10,
-  },
-});
 export default LoginScreen;

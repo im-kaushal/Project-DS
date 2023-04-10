@@ -1,21 +1,20 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-import LandingPage from '../screen/onboarding/LandingPage';
-
-import Splash from '../screen/onboarding/SplashScreen';
-import Home from '../screen/Home';
-import TabNavigator from './BottomTab';
-import LoginScreen from '../screen/onboarding/Login';
-import SignUpScreen from '../screen/onboarding/SignUpPage';
+import LandingPage from '../screen/onboarding/display/LandingPage';
+import Splash from '../screen/onboarding/display/SplashScreen';
+import Home from '../screen/home';
+import TabNavigator from './Tabs';
+import LoginScreen from '../screen/onboarding/login/index.js';
+import SignUpScreen from '../screen/onboarding/signup';
 import DrawerNavigator from './DrawerNavigator';
-
-import WishlistScreen from '../screen/Wishlist';
-import CartScreen from '../screen/CartScreen';
-import ProductDetails from '../screen/ProductDetails';
-import ProductPage from '../screen/Product';
-import About from '../screen/Profile';
+import ProductDetails from '../screen/product/productDetails';
+import ProductPage from '../screen/product/items';
+import WishlistScreen from '../screen/wishlist';
+import ForgetPasswordScreen from '../screen/onboarding/auth/forgotPassword';
+import CartScreen from '../screen/cart';
+import About from '../screen/profile';
+import OtpScreen from '../screen/onboarding/auth/OTP';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,7 +28,11 @@ const Navigation = () => {
         <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
-
+        <Stack.Screen
+          name="ForgetPasswordScreen"
+          component={ForgetPasswordScreen}
+        />
+        <Stack.Screen name="OtpScreen" component={OtpScreen} />
         <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="TabNavigator" component={TabNavigator} />

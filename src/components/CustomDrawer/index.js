@@ -17,13 +17,13 @@ import styles from '../../statics/styles';
 import {useSelector} from 'react-redux';
 
 const CustomDrawer = props => {
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState();
   const Navigation = useNavigation();
   useEffect(() => {
     getUserData();
   }, []);
 
-  myName = useSelector(state => state.user.name);
+  myName = useSelector(state => state.user);
 
   const getUserData = async () => {
     const name = await AsyncStorage.getItem('userName');
@@ -37,7 +37,6 @@ const CustomDrawer = props => {
 
   return (
     <View style={styles.container}>
-      {/* <View style={styles.container}> */}
       <DrawerContentScrollView {...props}>
         <ImageBackground
           source={require('../../assets/images/texture.jpg')}
@@ -46,10 +45,9 @@ const CustomDrawer = props => {
             source={require('../../assets/images/avatar.jpg')}
             style={styles.avatar}
           />
-          <Text style={styles.user}>{myName}</Text>
+          <Text style={styles.user}>{myName.data[0].Name}</Text>
           <View>
-            <Text style={styles.coins}>1200 Coins</Text>
-            <FontAwesome5 name="coins" size={16} color="yellow" />
+            {/* <FontAwesome5 name="coins" size={16} color="yellow" /> */}
           </View>
         </ImageBackground>
         <View style={styles.list}>

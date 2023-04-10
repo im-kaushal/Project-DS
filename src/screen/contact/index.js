@@ -4,12 +4,9 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
   ImageBackground,
 } from 'react-native';
-
-import Colors from '../statics/Colors';
-
+import styles from './index.styles';
 const ContactUs = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -61,52 +58,5 @@ const ContactUs = () => {
     </ImageBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  header: {
-    backgroundColor: Colors.bg,
-    paddingHorizontal: 30,
-    paddingVertical: 15,
-    borderRadius: 10,
-    marginBottom: 20,
-  },
-  headerText: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: Colors.text,
-  },
-  form: {
-    width: '80%',
-    backgroundColor: Colors.bg,
-    padding: 20,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  input: {
-    color: 'black',
-    width: '100%',
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 5,
-    padding: 10,
-    marginVertical: 10,
-  },
-  button: {
-    backgroundColor: '#000',
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 20,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-});
 
 export default ContactUs;

@@ -1,14 +1,12 @@
 import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {View, Image} from 'react-native';
-import styles from '../../statics/styles';
-import SignUpScreen from './SignUpPage';
-import TabNavigator from '../../navigation/BottomTab';
+import styles from '../../../statics/styles';
+
+import TabNavigator from '../../../navigation/Tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LandingPage from './LandingPage';
-
-const splashImage =
-  'https://github.com/im-kaushal/Media/blob/main/ecom.png?raw=true';
+import {webImgs} from '../../../statics/Images';
 
 const Splash = () => {
   const Navigation = useNavigation();
@@ -32,7 +30,7 @@ const Splash = () => {
 
   return (
     <View style={styles.splashContainer}>
-      <Image source={{uri: splashImage}} style={styles.splashImage} />
+      <Image source={{uri: webImgs.splashImage}} style={styles.splashImage} />
     </View>
   );
 };

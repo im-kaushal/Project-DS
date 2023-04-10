@@ -2,11 +2,11 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 
-import SvgComponent from '../../components/Svg';
-import styles from '../../statics/styles';
-import Strings from '../../statics/Strings';
-import LoginScreen from './Login';
-import SignUpScreen from './SignUpPage';
+import SvgComponent from '../../../assets/svg/Buy';
+import styles from '../../../statics/styles';
+import Strings from '../../../statics/Strings';
+import LoginScreen from '../login/index.js';
+import SignUpScreen from '../signup';
 const LandingPage = () => {
   const Navigation = useNavigation();
 
