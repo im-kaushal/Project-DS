@@ -8,7 +8,7 @@ import Strings from '../../../statics/Strings';
 import LoginScreen from '../login/index.js';
 import SignUpScreen from '../signup';
 const LandingPage = () => {
-  const Navigation = useNavigation();
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -23,7 +23,7 @@ const LandingPage = () => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            Navigation.navigate(LoginScreen);
+            navigation.navigate(LoginScreen);
           }}>
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
@@ -42,7 +42,7 @@ const LandingPage = () => {
         <View style={styles.landingFooter}>
           <TouchableOpacity
             style={styles.signUpButton}
-            onPress={() => Navigation.navigate(SignUpScreen)}>
+            onPress={() => navigation.navigate(SignUpScreen)}>
             <Text style={styles.buttonText}>Sign Up Now</Text>
           </TouchableOpacity>
           <Text style={styles.subtitle}>Don't have an account?</Text>

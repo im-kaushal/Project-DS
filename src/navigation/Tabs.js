@@ -25,9 +25,8 @@ const TabNavigator = () => {
         tabBarIcon: ({focused}) => {
           let iconName;
 
-          if (route.name === 'Home') {
-            iconName = 'home';
-          } else if (route.name === 'Product') {
+          //
+          if (route.name === 'Product') {
             iconName = 'spinner';
           } else if (route.name === 'Cart') {
             iconName = 'shopping-cart';
@@ -46,15 +45,18 @@ const TabNavigator = () => {
             </View>
           );
         },
-      })}
-      initialRouteName="Home">
-      <Tab.Screen
+      })}>
+      {/* <Tab.Screen
         name="Home"
         component={DrawerNavigator}
         options={{headerShown: false}}
-      />
+      /> */}
 
-      <Tab.Screen name="Product" component={Product} />
+      <Tab.Screen
+        name="Product"
+        component={DrawerNavigator}
+        options={{headerShown: false}}
+      />
 
       <Tab.Screen
         name="Cart"

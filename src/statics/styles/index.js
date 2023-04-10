@@ -36,8 +36,9 @@ const styles = StyleSheet.create({
     // marginBottom: moderateScale(10),
   },
   button: {
+    margin: 10,
     backgroundColor: Colors.secondary,
-    borderRadius: moderateScale(8),
+    borderRadius: moderateScale(10),
     paddingVertical: moderateScale(10),
     paddingHorizontal: moderateScale(20),
     fontSize: moderateScale(16),
@@ -189,25 +190,18 @@ const styles = StyleSheet.create({
   //   display: 'flex',
   // },
   avatar: {
-    marginLeft: moderateScale(10),
-    height: moderateScale(100),
-    width: moderateScale(100),
-    borderRadius: moderateScale(50),
-    marginBottom: moderateScale(15),
+    height: moderateScale(110),
+    width: moderateScale(110),
+    borderRadius: moderateScale(100),
+    margin: moderateScale(15),
   },
   user: {
-    color: Colors.error,
+    color: Colors.test,
     fontSize: moderateScale(20),
+    marginBottom: moderateScale(15),
     marginLeft: moderateScale(10),
   },
-  coins: {
-    color: Colors.primary,
-    marginRight: moderateScale(5),
-    marginLeft: moderateScale(10),
-  },
-  coinContainer: {
-    flexDirection: 'row',
-  },
+
   list: {
     flex: 1,
     backgroundColor: Colors.background,

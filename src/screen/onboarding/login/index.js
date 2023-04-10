@@ -10,7 +10,7 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const Navigation = useNavigation();
+  const navigation = useNavigation();
 
   const person = useSelector(state => state.user);
 
@@ -31,7 +31,7 @@ const LoginScreen = () => {
             `User ${person.data[0].Email} has successfully logged in!`,
           );
         }
-        Navigation.navigate('TabNavigator');
+        navigation.navigate('TabNavigator');
       } else {
         Alert('Email or Password is Incorrect');
         return false;
@@ -40,7 +40,7 @@ const LoginScreen = () => {
   };
 
   const handleForgotPasswordClick = () => {
-    Navigation.navigate('ForgetPasswordScreen');
+    navigation.navigate('ForgetPasswordScreen');
   };
 
   return (

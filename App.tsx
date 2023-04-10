@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {store, persistor} from './src/redux/Store';
 
-import Navigation from './src/navigation/PageNavigation';
+import Navigation from './src/navigation/Navigation';
 
 const App = () => {
   return (

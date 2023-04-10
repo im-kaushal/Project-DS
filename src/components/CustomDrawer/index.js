@@ -18,12 +18,13 @@ import {useSelector} from 'react-redux';
 
 const CustomDrawer = props => {
   const [userName, setUserName] = useState();
-  const Navigation = useNavigation();
+  const navigation = useNavigation();
   useEffect(() => {
     getUserData();
   }, []);
 
-  myName = useSelector(state => state.user);
+  const myName = useSelector(state => state.user);
+  console.log(myName, 'jkl');
 
   const getUserData = async () => {
     const name = await AsyncStorage.getItem('userName');
@@ -32,7 +33,7 @@ const CustomDrawer = props => {
 
   const handleLogout = async () => {
     await AsyncStorage.clear();
-    Navigation.navigate('LoginScreen');
+    navigation.navigate('LoginScreen');
   };
 
   return (
@@ -46,9 +47,6 @@ const CustomDrawer = props => {
             style={styles.avatar}
           />
           <Text style={styles.user}>{myName.data[0].Name}</Text>
-          <View>
-            {/* <FontAwesome5 name="coins" size={16} color="yellow" /> */}
-          </View>
         </ImageBackground>
         <View style={styles.list}>
           <DrawerItemList {...props} />

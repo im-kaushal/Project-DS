@@ -6,10 +6,10 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import styles from './index.styles';
 
 const Header = () => {
-  const Navigation = useNavigation();
+  const navigation = useNavigation();
   return (
     <View style={styles.top}>
-      <TouchableOpacity onPress={() => Navigation.goBack()}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
         <FontAwesome name="arrow-left" size={25} color="black" />
       </TouchableOpacity>
 

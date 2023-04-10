@@ -16,11 +16,10 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {increment, decrement, clear, removeItem} from '../../redux/CartSlice';
 import {cartTotalPriceSelector, cartTotalSelector} from '../../redux/Selector';
-import Product from '../product/items';
 import styles from './index.styles';
 
 const CartContainer = ({route}) => {
-  const Navigation = useNavigation();
+  const navigation = useNavigation();
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
   // const cartSize = cart.length;
@@ -117,7 +116,7 @@ const CartContainer = ({route}) => {
                 ) : (
                   <View style={styles.checkoutFull}>
                     <Text style={styles.checkoutText}>
-                      Total: ${totalPrice}
+                      Total: ${totalPrice.toFixed(2)}
                     </Text>
 
                     <Button
@@ -128,7 +127,7 @@ const CartContainer = ({route}) => {
                       }}
                     />
                     <Button
-                      onPress={() => Navigation.navigate('Product')}
+                      onPress={() => navigation.navigate('Product')}
                       title="Continue Shopping"
                     />
                   </View>
