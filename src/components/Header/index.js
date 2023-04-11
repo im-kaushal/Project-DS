@@ -1,16 +1,16 @@
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, DrawerActions} from '@react-navigation/native';
 import React from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import styles from './index.styles';
 
 const Header = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.top}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <FontAwesome name="arrow-left" size={25} color="black" />
+      <TouchableOpacity
+        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+        <Icon name="menu" size={25} color="black" />
       </TouchableOpacity>
 
       <TouchableOpacity>

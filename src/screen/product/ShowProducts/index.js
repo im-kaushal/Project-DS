@@ -8,6 +8,7 @@ import styles from '../../../constants/styles';
 import {getFakeProducts} from '../../../API/Service';
 
 import RenderProducts from '../RenderProducts';
+import Header from '../../../components/Header';
 
 const ProductPage = () => {
   const [items, setItems] = useState([]);
@@ -32,6 +33,7 @@ const ProductPage = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header />
       {isLoading ? (
         <View style={styles.activityIndicator}>
           <ActivityIndicator />

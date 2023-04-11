@@ -20,6 +20,7 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
+        headerShown: false,
         tabBarLabel: () => null,
         tabBarStyle: {backgroundColor: Colors.background},
         tabBarIcon: ({focused}) => {

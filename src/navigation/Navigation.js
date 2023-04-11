@@ -20,6 +20,7 @@ const Stack = createNativeStackNavigator();
 
 const screenOptions = {
   headerTitle: '',
+  headerShown: false,
 };
 
 const Navigation = () => {
@@ -61,7 +62,7 @@ const Navigation = () => {
         <Stack.Screen
           name="TabNavigator"
           component={TabNavigator}
-          options={{headerShown: false}}
+          options={screenOptions}
         />
         <Stack.Screen
           name="Product"

@@ -9,7 +9,6 @@ const RenderProducts = ({item, navigation, dispatch}) => {
 
   const cartItem = cartProduct.find(cartItem => cartItem.id === item.id);
   const quantity = cartItem ? cartItem.quantity : 0;
-  console.log(quantity, 'quantity known');
 
   const handleAddToCart = () => {
     dispatch(addToCart(item));

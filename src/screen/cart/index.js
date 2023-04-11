@@ -17,6 +17,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {increment, decrement, clear, removeItem} from '../../redux/CartSlice';
 import {cartTotalPriceSelector, cartTotalSelector} from '../../redux/Selector';
 import styles from './index.styles';
+import Header from '../../components/Header';
 
 const CartContainer = ({route}) => {
   const navigation = useNavigation();
@@ -24,8 +25,6 @@ const CartContainer = ({route}) => {
   const cart = useSelector(state => state.cart);
 
   const totalPrice = useSelector(cartTotalPriceSelector);
-  const total = useSelector(cartTotalSelector);
-  console.log('🚀 ~ file: index.js:30 ~ CartContainer ~ total:', total);
 
   const AlertItem = () => {
     Alert.alert(
@@ -55,27 +54,6 @@ const CartContainer = ({route}) => {
             ${item.quantity * item.price}
           </Text>
           <View>
-            {/* <View style={styles.cartItemAmount}>
-              <TouchableOpacity
-                onPress={() => {
-                  if (item.quantity === 1) {
-                    dispatch(removeItem(item.id));
-                    return;
-                  } else {
-                    dispatch(decrement(item.id));
-                  }
-                }}>
-                <FontAwesomeIcon name="minus" size={25} />
-              </TouchableOpacity>
-              <Text style={styles.cartItemAmountText}>{item.quantity}</Text>
-              <TouchableOpacity
-                onPress={() => {
-                  dispatch(increment(item.id));
-                }}>
-                <Text> + </Text>
-              </TouchableOpacity>
-            </View> */}
-
             <View style={styles.quantityContainer}>
               <TouchableOpacity
                 style={styles.quantityButton}
@@ -114,6 +92,7 @@ const CartContainer = ({route}) => {
 
   return (
     <View>
+      <Header />
       <FlatList
         data={cart}
         renderItem={renderStoreItems}
