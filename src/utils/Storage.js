@@ -18,3 +18,6 @@ export const Storage = {
     }
   },
 };
+export const Logout = async () => {
+  await AsyncStorage.clear();
+};

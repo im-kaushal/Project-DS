@@ -15,12 +15,11 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {increment, decrement, clear, removeItem} from '../../redux/CartSlice';
-import {cartTotalPriceSelector, cartTotalSelector} from '../../redux/Selector';
+import {cartTotalPriceSelector} from '../../redux/Selector';
 import styles from './index.styles';
 import Header from '../../components/Header';
 
-const CartContainer = ({route}) => {
-  const navigation = useNavigation();
+const CartContainer = ({navigation}) => {
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
 
@@ -92,7 +91,7 @@ const CartContainer = ({route}) => {
 
   return (
     <View>
-      <Header />
+      <Header title="Cart" navigation={navigation} />
       <FlatList
         data={cart}
         renderItem={renderStoreItems}

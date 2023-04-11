@@ -9,7 +9,7 @@ const screenOptions = {
   headerTitle: '',
   headerShown: false,
 };
-const Navigation = () => {
+const Main = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -43,4 +43,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default Main;
