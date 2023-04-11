@@ -4,13 +4,13 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {store, persistor} from './src/redux/Store';
 
-import Navigation from './src/navigation/Navigation';
+import Main from './src/navigation/Stacks/Main';
 
 const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Navigation />
+        <Main />
       </PersistGate>
     </Provider>
   );

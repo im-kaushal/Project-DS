@@ -1,11 +1,12 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import Profile from '../screen/Profile';
-import Location from '../components/Location';
-import CustomDrawer from '../components/CustomDrawer';
-import CartScreen from '../screen/Cart';
+import Profile from '../../screen/Profile';
+import Location from '../../components/Location';
+import CustomDrawer from '../../components/CustomDrawer';
+import CartScreen from '../../screen/Cart';
 
-import ProductPage from '../screen/Product/ShowProducts';
+import ProductPage from '../../screen/Product/ShowProducts';
+import Header from '../../components/Header';
 
 const DrawerNavigator = () => {
   const Drawer = createDrawerNavigator();
