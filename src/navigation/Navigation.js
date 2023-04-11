@@ -5,15 +5,16 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LandingPage from '../screen/onboarding/display/LandingPage';
 import Splash from '../screen/onboarding/display/SplashScreen';
 import TabNavigator from './Tabs';
-import LoginScreen from '../screen/onboarding/login/index.js';
-import SignUpScreen from '../screen/onboarding/signup';
-import ProductDetails from '../screen/product/productDetails';
-import ProductPage from '../screen/product/items';
-import WishlistScreen from '../screen/wishlist';
-import ForgetPasswordScreen from '../screen/onboarding/auth/forgotPassword';
-import CartScreen from '../screen/cart';
-import About from '../screen/profile';
+import LoginScreen from '../screen/onboarding/LogIn';
+import SignUpScreen from '../screen/onboarding/SignUp';
+import ProductDetails from '../screen/Product/ProductDetails';
+import ProductPage from '../screen/Product/ShowProducts';
+import WishlistScreen from '../screen/Wishlist';
+import ForgetPasswordScreen from '../screen/onboarding/auth/ForgotPassword';
+import CartScreen from '../screen/Cart';
+import About from '../screen/Profile';
 import OtpScreen from '../screen/onboarding/auth/OTP';
+import StackOne from './StackOne';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,35 +25,36 @@ const screenOptions = {
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Splash">
+      <Stack.Screen name="Splash" component={Splash} options={screenOptions} />
+      <Stack.Screen
+        name="LandingPage"
+        component={LandingPage}
+        options={screenOptions}
+      />
+      <Stack.Screen
+        name="SignUpScreen"
+        component={SignUpScreen}
+        options={screenOptions}
+      />
+      <Stack.Screen
+        name="LoginScreen"
+        component={LoginScreen}
+        options={screenOptions}
+      />
+      <Stack.Screen
+        name="ForgetPasswordScreen"
+        component={ForgetPasswordScreen}
+        options={screenOptions}
+      />
+      <Stack.Screen
+        name="OtpScreen"
+        component={OtpScreen}
+        options={screenOptions}
+      />
+      <Stack.Navigator>
         <Stack.Screen
-          name="Splash"
-          component={Splash}
-          options={screenOptions}
-        />
-        <Stack.Screen
-          name="LandingPage"
-          component={LandingPage}
-          options={screenOptions}
-        />
-        <Stack.Screen
-          name="SignUpScreen"
-          component={SignUpScreen}
-          options={screenOptions}
-        />
-        <Stack.Screen
-          name="LoginScreen"
-          component={LoginScreen}
-          options={screenOptions}
-        />
-        <Stack.Screen
-          name="ForgetPasswordScreen"
-          component={ForgetPasswordScreen}
-          options={screenOptions}
-        />
-        <Stack.Screen
-          name="OtpScreen"
-          component={OtpScreen}
+          name="StackOne"
+          component={StackOne}
           options={screenOptions}
         />
 

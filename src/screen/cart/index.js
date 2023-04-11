@@ -22,7 +22,6 @@ const CartContainer = ({route}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
-  // const cartSize = cart.length;
 
   const totalPrice = useSelector(cartTotalPriceSelector);
   const total = useSelector(cartTotalSelector);
@@ -56,7 +55,7 @@ const CartContainer = ({route}) => {
             ${item.quantity * item.price}
           </Text>
           <View>
-            <View style={styles.cartItemAmount}>
+            {/* <View style={styles.cartItemAmount}>
               <TouchableOpacity
                 onPress={() => {
                   if (item.quantity === 1) {
@@ -73,7 +72,30 @@ const CartContainer = ({route}) => {
                 onPress={() => {
                   dispatch(increment(item.id));
                 }}>
-                <FontAwesomeIcon name="plus" size={25} />
+                <Text> + </Text>
+              </TouchableOpacity>
+            </View> */}
+
+            <View style={styles.quantityContainer}>
+              <TouchableOpacity
+                style={styles.quantityButton}
+                onPress={() => {
+                  if (item.quantity === 1) {
+                    dispatch(removeItem(item.id));
+                    return;
+                  } else {
+                    dispatch(decrement(item.id));
+                  }
+                }}>
+                <Text>-</Text>
+              </TouchableOpacity>
+              <Text style={styles.quantityText}>{item.quantity}</Text>
+              <TouchableOpacity
+                style={styles.quantityButton}
+                onPress={() => {
+                  dispatch(increment(item.id));
+                }}>
+                <Text>+</Text>
               </TouchableOpacity>
             </View>
           </View>

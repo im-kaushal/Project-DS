@@ -1,39 +1,38 @@
-import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
-import {useDispatch} from 'react-redux';
-import {addToCart} from '../../../redux/CartSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {addToCart, removeItem, clear} from '../../../redux/CartSlice';
 
 import styles from './index.styles';
-import Header from '../../../components/Header';
 
 const ProductDetails = ({route}) => {
   const dispatch = useDispatch();
   const item = route.params.item;
 
-  const [quantity, setQuantity] = useState(1);
-  const [inCart, setInCart] = useState(false);
+  const cartProduct = useSelector(state => state.cart);
+
+  const cartItem = cartProduct.find(cartItem => cartItem.id === item.id);
+  const quantity = cartItem ? cartItem.quantity : 0;
+  console.log(quantity, 'quantity known');
 
   const handleAddToCart = () => {
-    setInCart(true);
     dispatch(addToCart(item));
   };
 
   const handleIncrement = () => {
-    setQuantity(quantity + 1);
+    dispatch(addToCart(item));
   };
 
   const handleDecrement = () => {
     if (quantity > 1) {
-      setQuantity(quantity - 1);
+      dispatch(removeItem(item.id));
     } else {
-      setInCart(false);
-      setQuantity(1);
+      dispatch(clear(item));
     }
   };
 
   return (
     <ScrollView style={styles.container}>
-      <Header />
+      {/* <Header /> */}
       <View style={styles.view}>
         <Image style={styles.productImage} source={{uri: item.image}} />
 
@@ -53,7 +52,7 @@ const ProductDetails = ({route}) => {
             <Text style={styles.text}>{item.description}</Text>
           </View>
 
-          {inCart ? (
+          {quantity != 0 ? (
             <View style={styles.quantityContainer}>
               <TouchableOpacity
                 style={styles.quantityButton}

@@ -4,13 +4,13 @@ import {Input, Button} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import {adduser} from '../../../redux/LoginSlice';
-import LoginScreen from '../login/index.js';
+import LoginScreen from '../LogIn/index.js';
 import styles from './index.styles';
 import {
   isValidEmail,
   isValidMobileNumber,
   isValidPassword,
-} from '../../../utils/validation';
+} from '../../../utils/Validation';
 import {Storage} from '../../../utils/Storage';
 
 const SignUpScreen = () => {

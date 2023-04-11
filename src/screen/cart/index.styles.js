@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import Colors from '../../statics/Colors';
+import Colors from '../../constants/Colors';
 import {moderateScale} from 'react-native-size-matters';
 const styles = StyleSheet.create({
   storeItem: {
@@ -91,6 +91,25 @@ const styles = StyleSheet.create({
     color: Colors.success,
     fontWeight: 'bold',
     fontSize: moderateScale(18),
+  },
+  quantityContainer: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: moderateScale(10),
+  },
+  quantityButton: {
+    backgroundColor: Colors.accent,
+    width: moderateScale(30),
+    height: moderateScale(30),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: moderateScale(7),
+  },
+  quantityText: {
+    marginHorizontal: moderateScale(80),
+    fontSize: moderateScale(20),
+    fontWeight: 'bold',
   },
 
   item: {justifyContent: 'space-between'},

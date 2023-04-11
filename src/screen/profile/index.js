@@ -2,8 +2,8 @@ import {Text, TouchableOpacity, View, Image, Linking} from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
 import styles from './index.styles';
-import Strings from '../../statics/Strings';
-import {webImgs} from '../../statics/Images';
+import Strings from '../../constants/Strings';
+import {webImgs} from '../../constants/Images';
 const Profile = () => {
   const myName = useSelector(state => state.user);
   return (

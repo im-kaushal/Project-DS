@@ -13,7 +13,7 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import {useNavigation} from '@react-navigation/native';
-import styles from '../../statics/styles';
+import styles from '../../constants/styles';
 import {useSelector} from 'react-redux';
 
 const CustomDrawer = props => {
@@ -24,7 +24,6 @@ const CustomDrawer = props => {
   }, []);
 
   const myName = useSelector(state => state.user);
-  console.log(myName, 'jkl');
 
   const getUserData = async () => {
     const name = await AsyncStorage.getItem('userName');

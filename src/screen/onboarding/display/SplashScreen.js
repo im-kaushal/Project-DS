@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {View, Image} from 'react-native';
-import styles from '../../../statics/styles';
+import styles from '../../../constants/styles';
 
 import TabNavigator from '../../../navigation/Tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LandingPage from './LandingPage';
-import {webImgs} from '../../../statics/Images';
+import {webImgs} from '../../../constants/Images';
 
 const Splash = () => {
   const Navigation = useNavigation();

@@ -125,6 +125,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: moderateScale(5),
   },
+  productBtn: {
+    backgroundColor: Colors.primary,
+    paddingVertical: moderateScale(10),
+    paddingHorizontal: moderateScale(20),
+    borderRadius: moderateScale(10),
+    marginBottom: moderateScale(10),
+    alignSelf: 'flex-start',
+  },
   productBtn1: {
     backgroundColor: Colors.success,
     borderRadius: moderateScale(10),
@@ -159,20 +167,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  // searchBox: {
-  //   flexDirection: 'row',
-  //   alignItems: 'center',
-  //   backgroundColor: Colors.secondary,
-  //   borderRadius: moderateScale(5),
-  //   paddingHorizontal: moderateScale(10),
-  //   height: 35,
-  //   flex: 1,
-  //   marginHorizontal: moderateScale(10),
-  // },
-  // searchText: {
-  //   marginLeft: moderateScale(10),
-  //   color: Colors.text,
-  // },
   splashImage: {
     justifyContent: 'center',
     width: moderateScale(250),
@@ -185,10 +179,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
 
-  /// Drawer
-  // imgbg: {
-  //   display: 'flex',
-  // },
   avatar: {
     height: moderateScale(110),
     width: moderateScale(110),
@@ -196,10 +186,11 @@ const styles = StyleSheet.create({
     margin: moderateScale(15),
   },
   user: {
-    color: Colors.test,
+    color: Colors.error,
     fontSize: moderateScale(20),
     marginBottom: moderateScale(15),
     marginLeft: moderateScale(10),
+    textTransform: 'uppercase',
   },
 
   list: {

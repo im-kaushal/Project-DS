@@ -1,16 +1,18 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import Profile from '../screen/profile';
+import Profile from '../screen/Profile';
 import Location from '../components/Location';
 import CustomDrawer from '../components/CustomDrawer';
-import CartScreen from '../screen/cart';
+import CartScreen from '../screen/Cart';
 
-import ProductPage from '../screen/product/items';
+import ProductPage from '../screen/Product/ShowProducts';
 
 const DrawerNavigator = () => {
   const Drawer = createDrawerNavigator();
   return (
-    <Drawer.Navigator drawerContent={props => <CustomDrawer {...props} />}>
+    <Drawer.Navigator
+      drawerContent={props => <CustomDrawer {...props} />}
+      screenOptions={{headerShown: false}}>
       <Drawer.Screen name="Product" component={ProductPage} />
       <Drawer.Screen name="Cart" component={CartScreen} />
       <Drawer.Screen name="Profile" component={Profile} />

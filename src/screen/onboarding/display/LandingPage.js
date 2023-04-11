@@ -1,12 +1,12 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-
+import {webImgs} from '../../../constants/Images';
 import SvgComponent from '../../../assets/svg/Buy';
-import styles from '../../../statics/styles';
-import Strings from '../../../statics/Strings';
-import LoginScreen from '../login/index.js';
-import SignUpScreen from '../signup';
+import styles from '../../../constants/styles';
+import Strings from '../../../constants/Strings';
+import LoginScreen from '../LogIn/index.js';
+import SignUpScreen from '../SignUp';
 const LandingPage = () => {
   const navigation = useNavigation();
 
@@ -17,7 +17,7 @@ const LandingPage = () => {
         <Image
           style={styles.logo}
           source={{
-            uri: 'https://github.com/im-kaushal/Media/blob/main/ecom.png?raw=true',
+            uri: webImgs.logo,
           }}
         />
         <TouchableOpacity
