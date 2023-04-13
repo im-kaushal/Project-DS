@@ -45,7 +45,7 @@ const CustomDrawer = props => {
             source={require('../../assets/images/avatar.jpg')}
             style={styles.avatar}
           />
-          <Text style={styles.user}>{myName.data[0].Name}</Text>
+          {/* <Text style={styles.user}>{myName.data[0].Name}</Text> */}
         </ImageBackground>
         <View style={styles.list}>
           <DrawerItemList {...props} />

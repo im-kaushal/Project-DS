@@ -61,8 +61,6 @@ const ContactUs = () => {
           placeholder="Message"
           value={message}
           onChangeText={handleMessageChange}
-          multiline
-          minHeight={120}
           style={[styles.input, styles.messageInput]}
         />
         <TouchableOpacity style={styles.sendButton} onPress={handleSendPress}>

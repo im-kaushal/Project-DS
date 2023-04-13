@@ -7,10 +7,12 @@ import styles from '../../../constants/styles';
 import Strings from '../../../constants/Strings';
 import SignUpScreen from '../SignUp';
 import LoginScreen from '../LogIn';
+import BackHandling from '../../../components/BackHandling';
 const LandingPage = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
+      <BackHandling />
       <View style={styles.landingHeader}>
         <Image
           style={styles.logo}

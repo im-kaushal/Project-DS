@@ -12,6 +12,7 @@ import {
   isValidPassword,
 } from '../../../utils/Validation';
 import {Storage} from '../../../utils/Storage';
+import BackHandling from '../../../components/BackHandling';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
@@ -31,7 +32,6 @@ const SignUpScreen = () => {
       Password: password,
       Number: mobileNumber,
     };
-    console.log('🚀 ~ file: index.js:34 ~ handleSignUp ~ userObj:', userObj);
 
     const emailError = isValidEmail(email);
     const mobileNumberError = isValidMobileNumber(mobileNumber);
@@ -63,6 +63,7 @@ const SignUpScreen = () => {
 
   return (
     <View style={styles.container}>
+      <BackHandling />
       <Text style={styles.title}>Sign Up</Text>
       <Input
         placeholder="Name"
@@ -71,6 +72,7 @@ const SignUpScreen = () => {
         value={name}
         leftIcon={{type: 'material', name: 'person'}}
       />
+
       <Input
         placeholder="Email"
         keyboardType="email-address"
@@ -79,6 +81,7 @@ const SignUpScreen = () => {
         value={email}
         leftIcon={{type: 'material', name: 'email'}}
       />
+
       <Input
         placeholder="Mobile Number"
         keyboardType="phone-pad"
@@ -86,6 +89,7 @@ const SignUpScreen = () => {
         value={mobileNumber}
         leftIcon={{type: 'material', name: 'phone'}}
       />
+
       <Input
         placeholder="Password"
         secureTextEntry
@@ -93,6 +97,7 @@ const SignUpScreen = () => {
         value={password}
         leftIcon={{type: 'material', name: 'lock'}}
       />
+
       <Input
         placeholder="Confirm Password"
         secureTextEntry
