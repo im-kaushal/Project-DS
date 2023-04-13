@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: moderateScale(50),
-    height: moderateScale(40),
+    height: moderateScale(60),
     resizeMode: 'contain',
   },
   landingImage: {

@@ -1,15 +1,15 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import LandingPage from '../../screen/onboarding/display/LandingPage';
-import Splash from '../../screen/onboarding/display/SplashScreen';
-import LoginScreen from '../../screen/onboarding/LogIn';
-import SignUpScreen from '../../screen/onboarding/SignUp';
-import ForgetPasswordScreen from '../../screen/onboarding/auth/ForgotPassword';
-import OtpScreen from '../../screen/onboarding/auth/OTP';
-import ProductPage from '../../screen/Product/ShowProducts';
-import ProductDetails from '../../screen/Product/ProductDetails';
-import WishlistScreen from '../../screen/Wishlist';
-import CartScreen from '../../screen/Cart';
-import About from '../../screen/Profile';
+import LandingPage from '../../screens/onboarding/display/LandingPage';
+import Splash from '../../screens/onboarding/display/SplashScreen';
+import LoginScreen from '../../screens/onboarding/LogIn';
+import SignUpScreen from '../../screens/onboarding/SignUp';
+import ForgetPasswordScreen from '../../screens/onboarding/auth/ForgotPassword';
+import OTPScreen from '../../screens/onboarding/auth/OTP';
+import ProductPage from '../../screens/Product/ShowProducts';
+import ProductDetails from '../../screens/Product/ProductDetails';
+import WishlistScreen from '../../screens/Wishlist';
+import CartScreen from '../../screens/Cart';
+import About from '../../screens/Profile';
 
 const screenOptions = {
   headerTitle: '',
@@ -32,6 +32,7 @@ export const AuthStack = () => {
         component={SignUpScreen}
         options={screenOptions}
       />
+
       <Stack.Screen
         name="LoginScreen"
         component={LoginScreen}
@@ -43,8 +44,8 @@ export const AuthStack = () => {
         options={screenOptions}
       />
       <Stack.Screen
-        name="OtpScreen"
-        component={OtpScreen}
+        name="OTPScreen"
+        component={OTPScreen}
         options={screenOptions}
       />
     </Stack.Navigator>
@@ -69,6 +70,11 @@ export const ProductStack = () => {
         component={WishlistScreen}
         options={screenOptions}
       />
+      <Stack.Screen
+        name="Cart"
+        component={CartScreen}
+        options={screenOptions}
+      />
     </Stack.Navigator>
   );
 };
@@ -77,18 +83,6 @@ export const ProfileStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Profile" component={About} options={screenOptions} />
-    </Stack.Navigator>
-  );
-};
-
-export const DrawerStack = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Cart"
-        component={CartScreen}
-        options={screenOptions}
-      />
     </Stack.Navigator>
   );
 };
