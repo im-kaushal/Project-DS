@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, Alert} from 'react-native';
-import {Input, Button} from 'react-native-elements';
+import Input from '../../../components/Input';
+import Button from '../../../components/Button';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import {adduser} from '../../../redux/LoginSlice';
@@ -12,8 +13,9 @@ import {
   isValidPassword,
 } from '../../../utils/Validation';
 import {Storage} from '../../../utils/Storage';
-import BackHandling from '../../../components/BackHandling';
-
+//import BackHandling from '../../../utils/BackHandling';
+import Strings from '../../../constants/Strings';
+import SignupImage from '../../../assets/svg/SignupImage';
 const SignUpScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -63,14 +65,14 @@ const SignUpScreen = () => {
 
   return (
     <View style={styles.container}>
-      <BackHandling />
-      <Text style={styles.title}>Sign Up</Text>
+      <SignupImage style={styles.img} />
+      {/* <BackHandling /> */}
+      <Text style={styles.title}>{Strings.sign_up}</Text>
       <Input
         placeholder="Name"
         autoCapitalize="words"
         onChangeText={setName}
         value={name}
-        leftIcon={{type: 'material', name: 'person'}}
       />
 
       <Input
@@ -79,7 +81,6 @@ const SignUpScreen = () => {
         autoCapitalize="none"
         onChangeText={setEmail}
         value={email}
-        leftIcon={{type: 'material', name: 'email'}}
       />
 
       <Input
@@ -87,7 +88,6 @@ const SignUpScreen = () => {
         keyboardType="phone-pad"
         onChangeText={setMobileNumber}
         value={mobileNumber}
-        leftIcon={{type: 'material', name: 'phone'}}
       />
 
       <Input
@@ -95,7 +95,6 @@ const SignUpScreen = () => {
         secureTextEntry
         onChangeText={setPassword}
         value={password}
-        leftIcon={{type: 'material', name: 'lock'}}
       />
 
       <Input
@@ -103,10 +102,9 @@ const SignUpScreen = () => {
         secureTextEntry
         onChangeText={setConfirmPassword}
         value={confirmPassword}
-        leftIcon={{type: 'material', name: 'lock'}}
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
-      <Button title="Sign Up" onPress={handleSignUp} />
+      <Button text={Strings.sign_up} onPress={handleSignUp} icon="signup" />
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -16,10 +16,6 @@ const ContactUs = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    console.log('🚀 ~ file: index.js:28 ');
-  }, []);
 
   const handleNameChange = text => {
     setName(text);
@@ -41,8 +37,8 @@ const ContactUs = () => {
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
-      <ContactImage style={styles.headerImage} />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <ContactImage style={styles.headerImage} />
         <Text style={styles.title}>Contact Us</Text>
         <CustomTextInput
           placeholder="Name"
@@ -66,15 +62,11 @@ const ContactUs = () => {
         <TouchableOpacity style={styles.sendButton} onPress={handleSendPress}>
           <Text style={styles.sendButtonText}>Send Message</Text>
         </TouchableOpacity>
-        <View style={styles.icons}>
-          <View>
-            <ContactButton type="email" value="example@example.com" />
-          </View>
-          <View>
-            <ContactButton type="phone" value="1234567890" />
-          </View>
-        </View>
       </ScrollView>
+      <View style={styles.popupContainer}>
+        <ContactButton name="phone" value="1234567890" />
+        <ContactButton name="email" value="example@example.com" />
+      </View>
     </KeyboardAvoidingView>
   );
 };

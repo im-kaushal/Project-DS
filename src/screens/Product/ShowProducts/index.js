@@ -9,7 +9,7 @@ import {getFakeProducts} from '../../../api/Service';
 
 import RenderProducts from '../RenderProducts';
 import Header from '../../../components/Header';
-import BackHandling from '../../../components/BackHandling';
+import BackHandling from '../../../utils/BackHandling';
 
 const ProductPage = () => {
   const [items, setItems] = useState([]);

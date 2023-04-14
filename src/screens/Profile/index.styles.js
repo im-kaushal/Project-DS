@@ -61,5 +61,16 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     marginBottom: moderateScale(20),
   },
+  cameraIcon: {
+    position: 'absolute',
+    bottom: 5,
+    right: 5,
+    backgroundColor: 'transparent',
+    zIndex: 2,
+  },
+  cameraImage: {
+    width: 40,
+    height: 40,
+  },
 });
 export default styles;

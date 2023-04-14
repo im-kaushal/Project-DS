@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import {TouchableOpacity, Alert, View, Text} from 'react-native';
-import {Input, Button} from 'react-native-elements';
+import {Alert, View, Text} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import styles from './index.styles';
 import {useSelector} from 'react-redux';
 import Strings from '../../../constants/Strings';
+import Input from '../../../components/Input';
+import LoginImg from '../../../assets/svg/LoginImg';
+import Button from '../../../components/Button';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -25,14 +27,11 @@ const LoginScreen = () => {
           console.log('password match', person.data[i].Password == password);
           await AsyncStorage.setItem('isLoggedIn', '1');
           // console.log('isLoggedIn');
-          Alert.alert(
-            'Success',
-            `User ${person.data[0].Email} has successfully logged in!`,
-          );
+          Alert.alert('Success!', `${person.data[0].Name} Welcome :)`);
         }
         navigation.navigate('TabNavigator');
       } else {
-        Alert('Email or Password is Incorrect');
+        Alert('{Strings.error_email_password}');
         return false;
       }
     }
@@ -44,34 +43,37 @@ const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
+      <LoginImg style={styles.img} />
       <Text style={styles.title}>{Strings.login_title}</Text>
       <Input
-        placeholder="Email"
+        placeholder={Strings.email_placeholder}
         keyboardType="email-address"
-        autoCapitalize="none"
         onChangeText={setEmail}
         value={email}
-        leftIcon={{type: 'material', name: 'email'}}
+        leftIcon={{name: 'email'}}
       />
       <Input
-        placeholder="Password"
+        abc={styles.input}
+        placeholder={Strings.password_placeholder}
         secureTextEntry
         onChangeText={setPassword}
         value={password}
-        leftIcon={{type: 'material', name: 'lock'}}
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <View style={styles.btn}>
-        <Button title="Login" onPress={login} />
-        <View style={styles.space}></View>
         <Button
-          title="Don't Have Account ?"
+          text={Strings.sign_up}
+          icon="signup"
           onPress={() => navigation.navigate('SignUpScreen')}
         />
+        <Button text={Strings.login_title} onPress={login} icon="login" />
+        <View style={styles.space}></View>
       </View>
-      <TouchableOpacity onPress={handleForgotPasswordClick}>
-        <Text style={styles.forgotPassword}>Forgot Password?</Text>
-      </TouchableOpacity>
+      <Button
+        onPress={handleForgotPasswordClick}
+        text={Strings.forgot_password}
+        icon="forgot"
+      />
     </View>
   );
 };

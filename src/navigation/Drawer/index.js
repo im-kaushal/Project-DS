@@ -7,6 +7,7 @@ import CartScreen from '../../screens/Cart';
 
 import Tabs from '../Tabs';
 import ContactUs from '../../screens/Contact';
+import CustomIcon from '../../components/Icon';
 
 const DrawerNavigator = () => {
   const Drawer = createDrawerNavigator();
@@ -14,12 +15,51 @@ const DrawerNavigator = () => {
     <Drawer.Navigator
       drawerContent={props => <CustomDrawer {...props} />}
       screenOptions={{headerShown: false}}>
-      <Drawer.Screen name="Shop" component={Tabs} />
-      {/* <Drawer.Screen name="Product" component={ProductPage} /> */}
-      <Drawer.Screen name="Cart" component={CartScreen} />
-      <Drawer.Screen name="Profile" component={Profile} />
-      <Drawer.Screen name="ContactUs" component={ContactUs} />
-      <Drawer.Screen name="Location" component={Location} />
+      <Drawer.Screen
+        options={{
+          drawerIcon: () => (
+            <CustomIcon name="shopping-bag" size={20} color="black" />
+          ),
+        }}
+        name="Shop"
+        component={Tabs}
+      />
+      <Drawer.Screen
+        options={{
+          drawerIcon: () => (
+            <CustomIcon name="shopping-cart" size={20} color="black" />
+          ),
+        }}
+        name="Cart"
+        component={CartScreen}
+      />
+      <Drawer.Screen
+        options={{
+          drawerIcon: () => <CustomIcon name="user" size={20} color="black" />,
+        }}
+        name="Profile"
+        component={Profile}
+      />
+
+      <Drawer.Screen
+        options={{
+          drawerIcon: () => (
+            <CustomIcon name="map-marker" size={20} color="black" />
+          ),
+        }}
+        name="Location"
+        component={Location}
+      />
+
+      <Drawer.Screen
+        options={{
+          drawerIcon: () => (
+            <CustomIcon name="address-book" size={20} color="black" />
+          ),
+        }}
+        name="Contact Us"
+        component={ContactUs}
+      />
     </Drawer.Navigator>
   );
 };

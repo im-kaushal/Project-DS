@@ -1,11 +1,12 @@
 import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {addToCart, removeItem, clear} from '../../../redux/CartSlice';
-
+import {addToCart, decrement, clear} from '../../../redux/CartSlice';
+import CustomIcon from '../../../components/Icon';
 import styles from './index.styles';
-
-const ProductDetails = ({route}) => {
+import Button from '../../../components/Button';
+const ProductDetails = ({route, navigation}) => {
   const dispatch = useDispatch();
+
   const item = route.params.item;
 
   const cartProduct = useSelector(state => state.cart);
@@ -23,7 +24,7 @@ const ProductDetails = ({route}) => {
 
   const handleDecrement = () => {
     if (quantity > 1) {
-      dispatch(removeItem(item.id));
+      dispatch(decrement(item.id));
     } else {
       dispatch(clear(item));
     }
@@ -31,7 +32,8 @@ const ProductDetails = ({route}) => {
 
   return (
     <ScrollView style={styles.container}>
-      {/* <Header /> */}
+      <Button onPress={navigation.goBack} icon="back" />
+
       <View style={styles.view}>
         <Image style={styles.productImage} source={{uri: item.image}} />
 

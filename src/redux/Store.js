@@ -2,7 +2,7 @@ import {configureStore, combineReducers} from '@reduxjs/toolkit';
 import counterReducer from '../redux/CounterSlice';
 import MyCartReducer from '../redux/CartSlice';
 import WishlistReducer from './WishlistSlice';
-import LoginSlice from './LoginSlice';
+import LoginReducer from './LoginSlice';
 
 import {persistReducer, persistStore} from 'redux-persist';
 
@@ -20,7 +20,7 @@ const persistedReducer = persistReducer(
   combineReducers({
     counter: counterReducer,
     cart: MyCartReducer,
-    user: LoginSlice,
+    user: LoginReducer,
     wishlist: WishlistReducer,
   }),
 );

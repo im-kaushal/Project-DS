@@ -43,12 +43,22 @@ export default styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   headerImage: {
-    height: '40%',
+    alignSelf: 'center',
+    height: '30%',
     width: '100%',
   },
-  icons: {
-    marginBottom: '5',
+
+  popupContainer: {
     flexDirection: 'row',
+    alignContent: 'space-between',
+
     justifyContent: 'space-between',
+    alignSelf: 'baseline',
+    position: 'absolute',
+    bottom: 10,
+    left: 10,
+    right: 10,
+    alignItems: 'center',
+    // zIndex: 100,
   },
 });

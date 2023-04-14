@@ -6,12 +6,17 @@ export default styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: moderateScale(20),
+  },
+  img: {
+    height: '50%',
+    width: '70%',
   },
   title: {
+    color: Colors.primary,
     fontSize: moderateScale(30),
-    marginBottom: moderateScale(20),
+    fontWeight: '600',
   },
+
   error: {
     color: Colors.error,
     marginBottom: moderateScale(10),
@@ -22,10 +27,11 @@ export default styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
   btn: {
+    alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
   },
   space: {
-    width: moderateScale(30),
+    width: moderateScale(0),
   },
 });

@@ -2,7 +2,12 @@ import React, {useState, useMemo} from 'react';
 import {Text, View, TouchableOpacity, Image} from 'react-native';
 import {useSelector} from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {addToCart, removeItem, clear} from '../../../redux/CartSlice';
+import {
+  addToCart,
+  decrement,
+  removeItem,
+  clear,
+} from '../../../redux/CartSlice';
 import styles from '../../../constants/styles';
 
 const RenderProducts = ({item, navigation, dispatch}) => {
@@ -21,7 +26,7 @@ const RenderProducts = ({item, navigation, dispatch}) => {
 
   const handleDecrement = () => {
     if (quantity > 1) {
-      dispatch(removeItem(item.id));
+      dispatch(decrement(item.id));
     } else {
       dispatch(clear(item));
     }

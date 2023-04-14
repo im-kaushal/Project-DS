@@ -1,16 +1,17 @@
 import {StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import Colors from '../../constants/Colors';
-const styles = StyleSheet.create({
+export default styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.background,
+    width: '90%',
+    backgroundColor: Colors.bg,
     borderRadius: moderateScale(10),
     paddingHorizontal: moderateScale(10),
     paddingVertical: moderateScale(10),
     marginVertical: moderateScale(8),
   },
   input: {
-    fontSize: moderateScale(8),
-    color: Colors.secondary,
+    fontSize: moderateScale(15),
+    color: Colors.error,
   },
 });

@@ -1,7 +1,7 @@
 import {useNavigation, DrawerActions} from '@react-navigation/native';
 import React from 'react';
 import {View, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from '../Icon';
 import styles from './index.styles';
 
 const Header = () => {
@@ -10,7 +10,7 @@ const Header = () => {
     <View style={styles.top}>
       <TouchableOpacity
         onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
-        <Icon name="menu" size={25} color="black" />
+        <Icon name="bars" size={25} color="black" />
       </TouchableOpacity>
 
       <TouchableOpacity>

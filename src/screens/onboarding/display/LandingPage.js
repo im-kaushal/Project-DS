@@ -7,7 +7,8 @@ import styles from '../../../constants/styles';
 import Strings from '../../../constants/Strings';
 import SignUpScreen from '../SignUp';
 import LoginScreen from '../LogIn';
-import BackHandling from '../../../components/BackHandling';
+import BackHandling from '../../../utils/BackHandling';
+
 const LandingPage = () => {
   const navigation = useNavigation();
   return (

@@ -1,14 +1,14 @@
 import React from 'react';
 import {TouchableOpacity, Linking, Platform} from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
-const ContactButton = ({type, value}) => {
+import styles from './index.styles';
+import CustomIcon from '../Icon';
+const ContactButton = ({name, value}) => {
   const handlePress = () => {
     let url;
 
-    if (type === 'email') {
+    if (name === 'email') {
       url = `mailto:${value}`;
-    } else if (type === 'phone') {
+    } else if (name === 'phone') {
       url = `tel:${value}`;
     }
 
@@ -29,10 +29,10 @@ const ContactButton = ({type, value}) => {
 
   return (
     <TouchableOpacity onPress={handlePress}>
-      <FontAwesome
-        name={type === 'email' ? 'envelope-o' : 'phone'}
-        size={30}
-        color="#007AFF"
+      <CustomIcon
+        style={styles.btn}
+        name={name === 'email' ? 'envelope-o' : 'phone'}
+        size={20}
       />
     </TouchableOpacity>
   );

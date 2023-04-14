@@ -8,12 +8,18 @@ export default styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: moderateScale(20),
   },
+  img: {
+    height: '50%',
+    width: '100%',
+  },
   title: {
+    color: Colors.primary,
     fontSize: moderateScale(20),
     fontWeight: 'bold',
     marginBottom: moderateScale(20),
   },
   description: {
+    color: Colors.secondary,
     fontSize: moderateScale(16),
     marginBottom: moderateScale(20),
     textAlign: 'center',

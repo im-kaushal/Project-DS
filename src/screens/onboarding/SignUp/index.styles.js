@@ -9,8 +9,13 @@ export default styles = StyleSheet.create({
     padding: moderateScale(20),
   },
   title: {
+    fontWeight: 'bold',
     fontSize: moderateScale(20),
     marginBottom: moderateScale(20),
+  },
+  img: {
+    height: '20%',
+    width: '100%',
   },
   error: {
     color: Colors.error,

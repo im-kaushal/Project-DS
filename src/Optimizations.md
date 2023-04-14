@@ -46,8 +46,8 @@
 [X] Stack switch on auth check
 [X] Different stacks onboarding and home
 [X] Logout utils clear cache 
-[ ] OTP design
-[X] Authentication
+[x] OTP design
+[ ] Authentication
 [X] Component driven - input, buttons
 
 ### ASSESSMENT

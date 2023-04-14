@@ -11,6 +11,9 @@ export default styles = StyleSheet.create({
     padding: moderateScale(20),
     justifyContent: 'center',
   },
+  icon: {
+    margin: moderateScale(15),
+  },
   productImage: {
     height: moderateScale(280),
 
