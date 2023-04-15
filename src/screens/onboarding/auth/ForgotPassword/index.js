@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {View, TextInput, Text} from 'react-native';
-import firebase from '../firebase';
+import {View, Text} from 'react-native';
+
 import Input from '../../../../components/Input';
 import styles from './index.styles';
 import Strings from '../../../../constants/Strings';

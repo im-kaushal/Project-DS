@@ -4,6 +4,7 @@ import {moderateScale} from 'react-native-size-matters';
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
     backgroundColor: Colors.background,
   },
   scrollContainer: {
@@ -18,14 +19,14 @@ export default styles = StyleSheet.create({
     marginBottom: 24,
     color: Colors.primary,
   },
-  input: {
-    backgroundColor: Colors.bg,
-    borderRadius: moderateScale(10),
-    paddingHorizontal: moderateScale(16),
-    paddingVertical: moderateScale(16),
-    marginVertical: 8,
-    color: Colors.secondary,
-  },
+  // input: {
+  //   backgroundColor: Colors.bg,
+  //   borderRadius: moderateScale(10),
+  //   paddingHorizontal: moderateScale(16),
+  //   paddingVertical: moderateScale(16),
+  //   marginVertical: 8,
+  //   color: Colors.secondary,
+  // },
   messageInput: {
     height: moderateScale(300),
     textAlignVertical: 'top',

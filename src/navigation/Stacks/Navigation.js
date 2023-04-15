@@ -10,7 +10,7 @@ import ProductDetails from '../../screens/Product/ProductDetails';
 import WishlistScreen from '../../screens/Wishlist';
 import CartScreen from '../../screens/Cart';
 import About from '../../screens/Profile';
-
+import ResetPassord from '../../screens/onboarding/auth/ResetPassword';
 const screenOptions = {
   headerTitle: '',
   headerShown: false,
@@ -20,7 +20,7 @@ const Stack = createStackNavigator();
 
 export const AuthStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Splash">
       <Stack.Screen name="Splash" component={Splash} options={screenOptions} />
       <Stack.Screen
         name="LandingPage"
@@ -46,6 +46,11 @@ export const AuthStack = () => {
       <Stack.Screen
         name="OTPScreen"
         component={OTPScreen}
+        options={screenOptions}
+      />
+      <Stack.Screen
+        name="ResetPassord"
+        component={ResetPassord}
         options={screenOptions}
       />
     </Stack.Navigator>

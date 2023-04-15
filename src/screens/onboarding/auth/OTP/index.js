@@ -1,83 +1,40 @@
-import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ImageBackground,
-  Image,
-  Pressable,
-  Keyboard,
-  Alert,
-} from 'react-native';
-
-import OTPInputField from '../../../../components/OtpInput';
-import {useNavigation} from '@react-navigation/native';
-import {webImgs} from '../../../../constants/Images';
-import styles from './index.styles';
-
-const OTPScreen = props => {
-  const navigation = useNavigation();
-
+import React, {useState, useEffect} from 'react';
+import OTPInput from 'react-native-otp-forminput';
+import {Button, View} from 'react-native';
+import OtpImg from '../../../../assets/svg/OtpImg';
+import styles from '../../../../constants/styles';
+const OTPScreen = ({navigation}) => {
   const [code, setCode] = useState('');
-  const [pinReady, setPinReady] = useState(false);
-  const MAX_CODE_LENGTH = 6;
 
-  const confirm = props.route.params;
+  const CODE_LENGTH = 4;
+  const [buttonColor, setButtonColor] = useState('#CCCCCC');
 
-  async function confirmCode() {
-    if (code) {
-      try {
-        console.log(confirm.confirm(code), 'code is here ');
-        await confirm.confirm(code);
-        navigation.navigate('SignInScreen');
-      } catch (error) {
-        Alert.alert('Invalid OTP');
-      }
+  const handleValidate = () => {
+    console.log('Validating code:', code);
+    navigation.navigate('ResetPassword');
+  };
+
+  useEffect(() => {
+    if (code.length === CODE_LENGTH) {
+      setButtonColor('#007AFF');
     } else {
-      Alert.alert('Please enter OTP');
+      setButtonColor('#CCCCCC');
     }
-  }
+  }, [code]);
 
   return (
-    <View style={styles.container1}>
-      <ImageBackground
-        source={webImgs.cartoon}
-        style={{
-          flex: 1,
+    <View style={styles.container}>
+      <OtpImg style={styles.img} />
+
+      <OTPInput
+        title="Enter OTP"
+        type="outline"
+        onChange={code => {
+          console.log(code);
         }}
-        resizeMode="cover">
-        <View style={styles.container}>
-          <View style={styles.otpImageContainer}>
-            <Image style={styles.otpImage} source={webImgs.cartoon} />
-          </View>
-          <Text style={styles.title}>Enter OTP?</Text>
-          <Text style={styles.subtitle}>
-            An 6 digit code has been sent to your mobile number{' '}
-          </Text>
-          <Pressable onPress={Keyboard.dismiss}>
-            <OTPInputField
-              setPinReady={setPinReady}
-              code={code}
-              setCode={setCode}
-              maxLength={MAX_CODE_LENGTH}
-            />
-          </Pressable>
+      />
 
-          <TouchableOpacity
-            disabled={!pinReady}
-            onPress={() => {
-              confirmCode();
-            }}>
-            <View style={styles.button}>
-              <Text style={styles.buttonTxt}>Submit</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => {}}>
-            <Text style={styles.resend}>Resend OTP</Text>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
+      <Button title="Validate" onPress={handleValidate} color={buttonColor} />
     </View>
   );
 };

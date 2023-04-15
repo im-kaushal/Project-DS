@@ -3,7 +3,7 @@ import {TouchableOpacity, Text} from 'react-native';
 import Icon from '../Icon';
 import styles from './index.styles';
 
-const CustomButton = ({text, onPress, icon}) => {
+const CustomButton = ({newStyle, text, onPress, icon}) => {
   let iconComponent;
 
   switch (icon) {
@@ -36,7 +36,7 @@ const CustomButton = ({text, onPress, icon}) => {
   }
 
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity style={[styles.button, newStyle]} onPress={onPress}>
       {iconComponent}
       <Text style={styles.buttonText}>{text}</Text>
     </TouchableOpacity>

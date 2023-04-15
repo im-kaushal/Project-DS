@@ -18,7 +18,7 @@ import Profile from '../../screens/Profile';
 import ContactUs from '../../screens/Contact';
 import WishlistScreen from '../../screens/Wishlist';
 import DrawerNavigator from '../Drawer';
-
+import ResetPassword from '../../screens/onboarding/auth/ResetPassword';
 const Stack = createStackNavigator();
 const screenOptions = {
   headerTitle: '',
@@ -85,6 +85,11 @@ const Main = () => {
         <Stack.Screen
           name="OTPScreen"
           component={OTPScreen}
+          options={screenOptions}
+        />
+        <Stack.Screen
+          name="ResetPassword"
+          component={ResetPassword}
           options={screenOptions}
         />
 

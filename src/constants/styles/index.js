@@ -11,6 +11,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignContent: 'space-between',
   },
+  img: {height: '55%', width: '100%'},
+
   imgBg: {
     // marginLeft: moderateScale(30),
     padding: moderateScale(10),

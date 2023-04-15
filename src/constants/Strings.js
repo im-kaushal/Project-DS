@@ -29,7 +29,6 @@ const Strings = {
   contact_number_placeholder: '+91 7970513448',
 
   ///Linkes:
-
   user_linkedIn: 'https://www.linkedin.com/in/im-kaushal/',
   user_github: 'https://github.com/im-kaushal',
   user_instagram: 'https://www.instagram.com/ixkaushal/',

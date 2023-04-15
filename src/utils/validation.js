@@ -1,3 +1,5 @@
+import React from 'react';
+import {emailRegex, mobileNumberRegex, passwordRegex} from '../constants/Regex';
 export const validateName = name => {
   if (!name) {
     return 'Name is required';
@@ -9,7 +11,7 @@ export const isValidEmail = email => {
   if (!email) {
     return 'Email is required';
   }
-  const emailRegex = /^\S+@\S+\.\S+$/;
+
   if (!emailRegex.test(email)) {
     return 'Invalid email address';
   }
@@ -20,7 +22,7 @@ export const isValidMobileNumber = mobileNumber => {
   if (!mobileNumber) {
     return 'Mobile number is required';
   }
-  const mobileNumberRegex = /^[0-9]{10}$/;
+
   if (!mobileNumberRegex.test(mobileNumber)) {
     return 'Invalid mobile number';
   }
@@ -31,7 +33,7 @@ export const isValidPassword = password => {
   if (!password) {
     return 'Password is required';
   }
-  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+
   if (!passwordRegex.test(password)) {
     return 'Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, and one number';
   }
