@@ -1,6 +1,8 @@
 export const localImgs = {
   cartoon: require('../assets/images/cartoon.png'),
   camera: require('../assets/images/camera.png'),
+  avatar: require('../assets/images/avatar.jpg'),
+  texture: require('../assets/images/texture.jpg'),
 };
 
 export const webImgs = {

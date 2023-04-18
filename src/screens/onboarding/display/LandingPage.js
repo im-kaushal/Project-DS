@@ -1,5 +1,5 @@
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
+
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {webImgs} from '../../../constants/Images';
 import SvgComponent from '../../../assets/svg/Buy';
@@ -9,8 +9,7 @@ import SignUpScreen from '../SignUp';
 import LoginScreen from '../LogIn';
 import BackHandling from '../../../utils/BackHandling';
 
-const LandingPage = () => {
-  const navigation = useNavigation();
+const LandingPage = ({navigation}) => {
   return (
     <View style={styles.container}>
       <BackHandling />
@@ -24,7 +23,7 @@ const LandingPage = () => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            navigation.navigate(LoginScreen);
+            navigation.navigate('AuthStack', {screen: LoginScreen});
           }}>
           <Text style={styles.buttonText}>{Strings.login_title}</Text>
         </TouchableOpacity>
@@ -41,7 +40,9 @@ const LandingPage = () => {
         <View style={styles.landingFooter}>
           <TouchableOpacity
             style={styles.signUpButton}
-            onPress={() => navigation.navigate(SignUpScreen)}>
+            onPress={() =>
+              navigation.navigate('AuthStack', {screen: SignUpScreen})
+            }>
             <Text style={styles.buttonText}>{Strings.sign_up}</Text>
           </TouchableOpacity>
           <Text style={styles.subtitle}>{Strings.no_account}</Text>

@@ -4,7 +4,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {View} from 'react-native';
 import {cartTotalSelector} from '../../redux/Selector';
-
 import CartScreen from '../../screens/Cart';
 import Colors from '../../constants/Colors';
 import styles from '../../constants/styles';

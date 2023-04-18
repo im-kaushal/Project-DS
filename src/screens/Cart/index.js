@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -5,24 +6,27 @@ import {
   SafeAreaView,
   Image,
   FlatList,
-  Button,
   Alert,
 } from 'react-native';
 
 import EmptyCart from '../../assets/svg/EmptyCart';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
+import Button from '../../components/Button';
 import {useDispatch, useSelector} from 'react-redux';
-
 import {increment, decrement, clear, removeItem} from '../../redux/CartSlice';
 import {cartTotalPriceSelector} from '../../redux/Selector';
+import CouponCodeForm from '../../components/CouponCode';
 import styles from './index.styles';
 import Header from '../../components/Header';
+import ProductPage from '../Product/ShowProducts';
+import CustomIcon from '../../components/Icon';
+import Strings from '../../constants/Strings';
+import Quantity from '../../components/Quantity';
 
 const CartContainer = ({navigation}) => {
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
-
+  const [couponCode, setCouponCode] = useState('');
   const totalPrice = useSelector(cartTotalPriceSelector);
 
   const AlertItem = () => {
@@ -49,32 +53,11 @@ const CartContainer = ({navigation}) => {
         </View>
         <View style={styles.storeItemInfo}>
           <Text style={styles.storeItemTitle}>{item.title}</Text>
-          <Text style={styles.storeItemPrice}>
-            ${item.quantity * item.price}
-          </Text>
-          <View>
-            <View style={styles.quantityContainer}>
-              <TouchableOpacity
-                style={styles.quantityButton}
-                onPress={() => {
-                  if (item.quantity === 1) {
-                    dispatch(removeItem(item.id));
-                    return;
-                  } else {
-                    dispatch(decrement(item.id));
-                  }
-                }}>
-                <Text>-</Text>
-              </TouchableOpacity>
-              <Text style={styles.quantityText}>{item.quantity}</Text>
-              <TouchableOpacity
-                style={styles.quantityButton}
-                onPress={() => {
-                  dispatch(increment(item.id));
-                }}>
-                <Text>+</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={styles.storeItemPrice}>
+              ${item.quantity * item.price}
+            </Text>
+            <Quantity item={item} />
           </View>
         </View>
         <View style={styles.cartItemRemove}>
@@ -82,7 +65,7 @@ const CartContainer = ({navigation}) => {
             onPress={() => {
               dispatch(removeItem(item.id));
             }}>
-            <FontAwesomeIcon name="trash-o" size={20} color={'red'} />
+            <CustomIcon name="trash-o" size={20} />
           </TouchableOpacity>
         </View>
       </View>
@@ -112,27 +95,43 @@ const CartContainer = ({navigation}) => {
                       <Text style={styles.checkoutText}>
                         Total: ${totalPrice.toFixed(2)}
                       </Text>
-                      <View style={styles.listHeader}>
-                        <TouchableOpacity onPress={AlertItem}>
-                          <FontAwesomeIcon
-                            name="trash-o"
-                            size={20}
-                            style={styles.dltIcon}
-                          />
-                        </TouchableOpacity>
-                      </View>
+
+                      <TouchableOpacity onPress={AlertItem}>
+                        <Text style={styles.checkoutText}>
+                          {Strings.clear_cart}
+                        </Text>
+                      </TouchableOpacity>
                     </View>
-                    <Button
-                      title="Checkout"
-                      color="#ff5a5f"
-                      onPress={() => {
-                        dispatch(checkout());
-                      }}
+
+                    {/* coupon Code Container */}
+                    <CouponCodeForm
+                      couponCode={couponCode}
+                      setCouponCode={setCouponCode}
+                      totalPrice={totalPrice}
                     />
-                    <Button
-                      onPress={() => navigation.navigate('Product')}
-                      title="Continue Shopping"
-                    />
+
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        alignSelf: 'stretch',
+                      }}>
+                      <Button
+                        onPress={() =>
+                          navigation.navigate('ProductStack', {
+                            screen: ProductPage,
+                          })
+                        }
+                        text={Strings.shopping}
+                      />
+
+                      <Button
+                        text={Strings.checkout}
+                        onPress={() => {
+                          dispatch(checkout());
+                        }}
+                      />
+                    </View>
                   </View>
                 )}
               </View>

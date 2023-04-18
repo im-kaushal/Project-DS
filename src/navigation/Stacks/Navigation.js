@@ -3,14 +3,15 @@ import LandingPage from '../../screens/onboarding/display/LandingPage';
 import Splash from '../../screens/onboarding/display/SplashScreen';
 import LoginScreen from '../../screens/onboarding/LogIn';
 import SignUpScreen from '../../screens/onboarding/SignUp';
-import ForgetPasswordScreen from '../../screens/onboarding/auth/ForgotPassword';
+import ForgotPassword from '../../screens/onboarding/auth/ForgotPassword';
 import OTPScreen from '../../screens/onboarding/auth/OTP';
 import ProductPage from '../../screens/Product/ShowProducts';
 import ProductDetails from '../../screens/Product/ProductDetails';
+import RenderProducts from '../../screens/Product/RenderProducts';
 import WishlistScreen from '../../screens/Wishlist';
 import CartScreen from '../../screens/Cart';
 import About from '../../screens/Profile';
-import ResetPassord from '../../screens/onboarding/auth/ResetPassword';
+import ResetPassword from '../../screens/onboarding/auth/ResetPassword';
 const screenOptions = {
   headerTitle: '',
   headerShown: false,
@@ -39,8 +40,8 @@ export const AuthStack = () => {
         options={screenOptions}
       />
       <Stack.Screen
-        name="ForgetPasswordScreen"
-        component={ForgetPasswordScreen}
+        name="ForgotPassword"
+        component={ForgotPassword}
         options={screenOptions}
       />
       <Stack.Screen
@@ -49,8 +50,8 @@ export const AuthStack = () => {
         options={screenOptions}
       />
       <Stack.Screen
-        name="ResetPassord"
-        component={ResetPassord}
+        name="ResetPassword"
+        component={ResetPassword}
         options={screenOptions}
       />
     </Stack.Navigator>
@@ -63,6 +64,11 @@ export const ProductStack = () => {
       <Stack.Screen
         name="Product"
         component={ProductPage}
+        options={screenOptions}
+      />
+      <Stack.Screen
+        name="RenderProducts"
+        component={RenderProducts}
         options={screenOptions}
       />
       <Stack.Screen

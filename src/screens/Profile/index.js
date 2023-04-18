@@ -6,28 +6,38 @@ import {
   Linking,
   ScrollView,
 } from 'react-native';
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, {useState} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import styles from './index.styles';
 import Strings from '../../constants/Strings';
 import {webImgs} from '../../constants/Images';
 import Header from '../../components/Header';
+import ImagePicker from '../../components/ImagePicker';
+
 const Profile = () => {
   const myName = useSelector(state => state.user);
+  const [image, setImage] = useState(webImgs.avatar);
+  const dispatch = useDispatch();
+
+  const handleImageChange = uri => {
+    dispatch({type: 'UPDATE_USER_AVATAR', payload: uri});
+    setImage(uri);
+  };
+
   return (
     <View>
-      <Header />
+      <Header title="Profile" />
       <ScrollView>
         <View style={styles.aboutContainer}>
-          <View>
-            <Image style={styles.imgStyle} source={{uri: webImgs.avatar}} />
-          </View>
+          <TouchableOpacity onPress={() => ImagePicker(handleImageChange)}>
+            <Image style={styles.imgStyle} source={{uri: image}} />
+          </TouchableOpacity>
 
           {/* <Text style={styles.mainHeader}>{myName.data[0].Name}</Text> */}
           <Text style={styles.minparaStyle}> {Strings.Title} </Text>
 
           <View style={styles.aboutLayout}>
-            <Text style={styles.subHeader}> About Me </Text>
+            <Text style={styles.subHeader}>{Strings.about}</Text>
             <Text style={[styles.paraStyle, styles.aboutPara]}>
               {Strings.About}
             </Text>
@@ -76,69 +86,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-// import React, {useState} from 'react';
-// import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-// import ImagePickerComponent from '../../components/ImagePicker';
-// import {webImgs} from '../../constants/Images';
-// const Profile = () => {
-//   const [profileImage, setProfileImage] = useState(
-//     'https://via.placeholder.com/200x200.png?text=Profile+Image',
-//   );
-
-//   const handleImageUpload = imageUri => {
-//     setProfileImage(imageUri);
-//   };
-
-//   return (
-//     <View style={styles.container}>
-//       <TouchableOpacity style={styles.imageContainer} onPress={() => {}}>
-//         <Image source={{uri: webImgs.avatar}} style={styles.image} />
-//       </TouchableOpacity>
-//       <View style={styles.infoContainer}>
-//         <Text style={styles.name}>John Doe</Text>
-//         <Text style={styles.email}>johndoe@example.com</Text>
-//       </View>
-//       <View style={styles.buttonContainer}>
-//         <ImagePickerComponent onImageUpload={handleImageUpload} />
-//       </View>
-//     </View>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   imageContainer: {
-//     width: 150,
-//     height: 150,
-//     borderRadius: 75,
-//     overflow: 'hidden',
-//     marginBottom: 20,
-//   },
-//   image: {
-//     flex: 1,
-//     width: null,
-//     height: null,
-//   },
-//   infoContainer: {
-//     alignItems: 'center',
-//     marginBottom: 20,
-//   },
-//   name: {
-//     fontSize: 24,
-//     fontWeight: 'bold',
-//   },
-//   email: {
-//     fontSize: 16,
-//     color: '#999',
-//   },
-//   buttonContainer: {
-//     marginTop: 20,
-//   },
-// });
-
-// export default Profile;

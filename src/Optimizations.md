@@ -1,6 +1,11 @@
 # Pending Work
 
-## Area of Improvement
+## Self Assesment
+
+Pop up (Media)
+Firebase Notification(Implementation)
+
+
 
 ## QnA 2
 
@@ -8,7 +13,7 @@
 
 [X] Conditional chaining
 [X] Memoization
-[ ] Nested navigation
+[x] Nested navigation
 [X] Hooks
 [X] Need to study Life cycle methods again
 [X] Hot reloading and live reloading not clear
@@ -47,7 +52,7 @@
 [X] Different stacks onboarding and home
 [X] Logout utils clear cache 
 [x] OTP design
-[ ] Authentication
+[x] Authentication
 [X] Component driven - input, buttons
 
 ### ASSESSMENT

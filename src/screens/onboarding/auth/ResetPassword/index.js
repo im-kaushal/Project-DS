@@ -5,9 +5,13 @@ import Strings from '../../../../constants/Strings';
 import {View} from 'react-native';
 import styles from '../../../../constants/styles';
 import ResetImage from '../../../../assets/svg/ResetImage';
-const ResetPassword = () => {
+const ResetPassword = ({navigation}) => {
   const setPassword = () => {
     console.log('file: index.js:7 ~ ResetPassord');
+  };
+
+  const handleReset = () => {
+    navigation.navigate('ProductStack', {screen: Product});
   };
 
   return (
@@ -20,7 +24,7 @@ const ResetPassword = () => {
         onChangeText={setPassword}
         // value={password}
       />
-      <Button text="Set Password" />
+      <Button text="Set Password" onPress={handleReset} />
     </View>
   );
 };

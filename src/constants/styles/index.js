@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
   },
+
   view: {
     justifyContent: 'center',
     alignContent: 'space-between',
@@ -208,6 +209,15 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  otpInput: {
+    color: Colors.text,
+  },
+  otp: {
+    width: '100%',
+    height: 190,
+    marginLeft: 10,
+    marginBottom: 30,
   },
 });
 

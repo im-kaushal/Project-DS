@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, Alert} from 'react-native';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
-import {useNavigation} from '@react-navigation/native';
+
 import {useDispatch} from 'react-redux';
 import {adduser} from '../../../redux/LoginSlice';
 import LoginScreen from '../LogIn/index.js';
@@ -16,10 +16,9 @@ import {Storage} from '../../../utils/Storage';
 //import BackHandling from '../../../utils/BackHandling';
 import Strings from '../../../constants/Strings';
 import SignupImage from '../../../assets/svg/SignupImage';
-const SignUpScreen = () => {
-  const navigation = useNavigation();
-  const dispatch = useDispatch();
 
+const SignUpScreen = ({navigation}) => {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [mobileNumber, setMobileNumber] = useState('');
@@ -45,21 +44,18 @@ const SignUpScreen = () => {
     }
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError(`${Strings.no_password}`);
       return;
     }
 
     try {
       await Storage.storeData(email, userObj);
-      Alert.alert(
-        'Success!',
-        `${userObj.Name}, your account created successfully!`,
-      );
+      Alert.alert('Success!', `${userObj.Name}`, `${Strings.account_created}`);
       dispatch(adduser(userObj));
-      navigation.navigate(LoginScreen);
+      navigation.navigate('AuthStack', {screen: LoginScreen});
     } catch (error) {
       console.log(error);
-      setError('Error occurred while storing data');
+      setError(`${Strings.data_error}`);
     }
   };
 
@@ -69,14 +65,14 @@ const SignUpScreen = () => {
       {/* <BackHandling /> */}
       <Text style={styles.title}>{Strings.sign_up}</Text>
       <Input
-        placeholder="Name"
+        placeholder={Strings.name}
         autoCapitalize="words"
         onChangeText={setName}
         value={name}
       />
 
       <Input
-        placeholder="Email"
+        placeholder={Strings.email}
         keyboardType="email-address"
         autoCapitalize="none"
         onChangeText={setEmail}
@@ -84,21 +80,21 @@ const SignUpScreen = () => {
       />
 
       <Input
-        placeholder="Mobile Number"
+        placeholder={Strings.contact_number_placeholder}
         keyboardType="phone-pad"
         onChangeText={setMobileNumber}
         value={mobileNumber}
       />
 
       <Input
-        placeholder="Password"
+        placeholder={Strings.password}
         secureTextEntry
         onChangeText={setPassword}
         value={password}
       />
 
       <Input
-        placeholder="Confirm Password"
+        placeholder={Strings.confirm_password_placeholder}
         secureTextEntry
         onChangeText={setConfirmPassword}
         value={confirmPassword}

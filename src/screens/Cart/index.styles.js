@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   storeItemPrice: {
-    fontSize: moderateScale(16),
+    marginTop: 10,
+    fontSize: moderateScale(18),
     color: Colors.success,
   },
   last: {
@@ -61,10 +62,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   cartItemRemove: {
-    alignItems: 'baseline',
-    marginTop: 0,
-    marginHorizontal: 1,
-    justifyContent: 'flex-end',
+    alignSelf: 'flex-start',
+    alignItems: 'flex-start',
+
+    backgroundColor: Colors.error,
+    borderRadius: 10,
   },
   cartItemRemoveButton: {
     // marginHorizontal: 20,
@@ -81,6 +83,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     backgroundColor: Colors.background,
   },
+  coupon: {
+    alignItems: 'stretch',
+    justifyContent: 'space-between',
+  },
   dltIcon: {
     backgroundColor: Colors.error,
     borderRadius: moderateScale(50),
@@ -91,25 +97,8 @@ const styles = StyleSheet.create({
     color: Colors.success,
     fontWeight: 'bold',
     fontSize: moderateScale(18),
-  },
-  quantityContainer: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: moderateScale(10),
-  },
-  quantityButton: {
-    backgroundColor: Colors.accent,
-    width: moderateScale(30),
-    height: moderateScale(30),
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: moderateScale(7),
-  },
-  quantityText: {
-    marginHorizontal: moderateScale(80),
-    fontSize: moderateScale(20),
-    fontWeight: 'bold',
+
+    marginHorizontal: 12,
   },
 
   item: {justifyContent: 'space-between'},

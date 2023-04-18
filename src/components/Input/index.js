@@ -9,20 +9,18 @@ const Input = ({
   onChangeText,
   secureTextEntry,
   keyboardType,
-  abc,
+  newStyles,
 }) => {
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={[styles.input, abc]}
-        placeholder={placeholder}
-        placeholderTextColor={Colors.secondary}
-        value={value}
-        onChangeText={onChangeText}
-        secureTextEntry={secureTextEntry}
-        keyboardType={keyboardType}
-      />
-    </View>
+    <TextInput
+      style={[styles.input, newStyles]}
+      placeholder={placeholder}
+      placeholderTextColor={Colors.warning}
+      value={value}
+      onChangeText={onChangeText}
+      secureTextEntry={secureTextEntry}
+      keyboardType={keyboardType}
+    />
   );
 };
 

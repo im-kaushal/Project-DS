@@ -2,6 +2,7 @@ import React from 'react';
 import {TouchableOpacity, Linking, Platform} from 'react-native';
 import styles from './index.styles';
 import CustomIcon from '../Icon';
+import Colors from '../../constants/Colors';
 const ContactButton = ({name, value}) => {
   const handlePress = () => {
     let url;
@@ -32,7 +33,8 @@ const ContactButton = ({name, value}) => {
       <CustomIcon
         style={styles.btn}
         name={name === 'email' ? 'envelope-o' : 'phone'}
-        size={20}
+        size={25}
+        color={Colors.primary}
       />
     </TouchableOpacity>
   );

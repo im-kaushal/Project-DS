@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {View, Text} from 'react-native';
-
+import auth from '@react-native-firebase/auth';
+import {showMessage} from 'react-native-flash-message';
+import {useDispatch} from 'react-redux';
 import Input from '../../../../components/Input';
 import styles from './index.styles';
 import Strings from '../../../../constants/Strings';
@@ -8,28 +10,29 @@ import Button from '../../../../components/Button';
 import ResetImage from '../../../../assets/svg/ResetImage';
 
 const ForgotPasswordScreen = ({navigation}) => {
-  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState(null);
+  const [confirm, setConfirm] = useState(null);
 
-  const handleResetPassword = () => {
-    // try {
-    //   const otp = otpGenerator.generate(6, {
-    //     digits: true,
-    //     alphabets: false,
-    //     upperCase: false,
-    //     specialChars: false,
-    //   });
-    //   await firebase.auth().sendPasswordResetEmail(email, {
-    //     handleCodeInApp: true,
-    //     oobCode: otp,
-    //   });
-    //setMessage('Password reset link has been sent to your email address');
-    // navigation.navigate('OTPScreen', {email});
-    // } catch (error) {
-    //   setMessage(`Error: ${error.message}`);
-    // }
-    navigation.navigate('OTPScreen');
+  const handleResetPassword = async () => {
+    try {
+      // const withCountryCode = `+91${phone}`;
+      // console.log('with country code ', withCountryCode);
+      // const confirmation = await auth().signInWithPhoneNumber(withCountryCode);
+      // console.log('confirmaton... here...', confirmation);
+      // setConfirm(confirmation);
+      // navigation.navigate('OTPScreen', {
+      //   confirm: confirmation,
+      //   phone,
+      // });
+      navigation.navigate('OTPScreen');
+    } catch (error) {
+      showMessage({
+        message: error.message,
+        type: 'danger',
+      });
+    }
   };
   return (
     <View style={styles.container}>
@@ -38,12 +41,11 @@ const ForgotPasswordScreen = ({navigation}) => {
 
       <Text style={styles.description}>{Strings.forgot_text}</Text>
       <Input
-        value={email}
-        onChangeText={text => setEmail(text)}
+        value={phone}
+        onChangeText={text => setPhone(text)}
         style={styles.input}
-        placeholder="+91 7970513448"
+        placeholder={Strings.contact_number_placeholder}
         keyboardType="phone-pad"
-        autoCapitalize="none"
       />
       <Button text={Strings.reset} onPress={handleResetPassword} />
       {message && (

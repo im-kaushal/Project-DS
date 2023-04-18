@@ -15,6 +15,8 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import styles from '../../constants/styles';
 import {useSelector} from 'react-redux';
+import Strings from '../../constants/Strings';
+import {localImgs} from '../../constants/Images';
 
 const CustomDrawer = props => {
   const [userName, setUserName] = useState();
@@ -32,26 +34,21 @@ const CustomDrawer = props => {
 
   const handleLogout = async () => {
     await AsyncStorage.clear();
-    navigation.navigate('LoginScreen');
+    navigation.navigate('AuthStack', {screen: 'LoginScreen'});
   };
 
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
-        <ImageBackground
-          source={require('../../assets/images/texture.jpg')}
-          style={styles.imgDrawer}>
-          <Image
-            source={require('../../assets/images/avatar.jpg')}
-            style={styles.avatar}
-          />
+        <ImageBackground source={localImgs.texture} style={styles.imgDrawer}>
+          <Image source={localImgs.avatar} style={styles.avatar} />
           {/* <Text style={styles.user}>{myName.data[0].Name}</Text> */}
         </ImageBackground>
         <View style={styles.list}>
           <DrawerItemList {...props} />
         </View>
         <TouchableOpacity style={styles.button} onPress={handleLogout}>
-          <Text style={styles.buttonText}>Logout</Text>
+          <Text style={styles.buttonText}>{Strings.logout}</Text>
         </TouchableOpacity>
       </DrawerContentScrollView>
     </View>

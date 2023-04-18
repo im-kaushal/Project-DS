@@ -3,10 +3,8 @@ import {moderateScale} from 'react-native-size-matters';
 import Colors from '../../constants/Colors';
 export default styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: Colors.background,
   },
   title: {
     color: Colors.primary,
@@ -22,5 +20,9 @@ export default styles = StyleSheet.create({
   loading: {
     color: Colors.secondary,
     fontSize: moderateScale(18),
+  },
+  icon: {
+    alignSelf: 'flex-start',
+    margin: 20,
   },
 });

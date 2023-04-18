@@ -1,9 +1,12 @@
 import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {addToCart, decrement, clear} from '../../../redux/CartSlice';
-import CustomIcon from '../../../components/Icon';
+
 import styles from './index.styles';
-import Button from '../../../components/Button';
+import CustomIcon from '../../../components/Icon';
+import Strings from '../../../constants/Strings';
+import Colors from '../../../constants/Colors';
+
 const ProductDetails = ({route, navigation}) => {
   const dispatch = useDispatch();
 
@@ -32,7 +35,9 @@ const ProductDetails = ({route, navigation}) => {
 
   return (
     <ScrollView style={styles.container}>
-      <Button onPress={navigation.goBack} icon="back" />
+      <TouchableOpacity style={styles.icon} onPress={navigation.goBack}>
+        <CustomIcon name="chevron-left" size={25} color={Colors.primary} />
+      </TouchableOpacity>
 
       <View style={styles.view}>
         <Image style={styles.productImage} source={{uri: item.image}} />
@@ -49,7 +54,7 @@ const ProductDetails = ({route, navigation}) => {
           </View>
 
           <View>
-            <Text style={styles.textInfo}>Description:</Text>
+            <Text style={styles.textInfo}>{Strings.description}</Text>
             <Text style={styles.text}>{item.description}</Text>
           </View>
 
@@ -71,7 +76,7 @@ const ProductDetails = ({route, navigation}) => {
             <TouchableOpacity
               style={styles.productBtn}
               onPress={handleAddToCart}>
-              <Text style={styles.subtitle}>Add to Cart</Text>
+              <Text style={styles.subtitle}>{Strings.add_to_cart}</Text>
             </TouchableOpacity>
           )}
         </View>

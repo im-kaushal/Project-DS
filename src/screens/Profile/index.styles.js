@@ -2,12 +2,17 @@ import {StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import Colors from '../../constants/Colors';
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'space-between',
+    backgroundColor: Colors.background,
+  },
   aboutContainer: {
     display: 'flex',
     alignItems: 'center',
     height: '100%',
     justifyContent: 'space-between',
-    backgroundColor: Colors.background,
+    // backgroundColor: Colors.background,
   },
   imgStyle: {
     width: moderateScale(100),
