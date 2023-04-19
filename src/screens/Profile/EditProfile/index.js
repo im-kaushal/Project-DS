@@ -13,13 +13,9 @@ import {updateUserDetails} from '../../../redux/LoginSlice';
 import CustomButton from '../../../components/Button';
 import CustomIcon from '../../../components/Icon';
 import {localImgs} from '../../../constants/Images';
-import Storage from '../../../utils/Storage';
+import ImagePicker from 'react-native-image-crop-picker';
 import Colors from '../../../constants/Colors';
 import Input from '../../../components/Input';
-import {
-  takePhotoFromCamera,
-  choosePhotoFromLibrary,
-} from '../../../components/ImagePicker';
 
 const EditProfileScreen = () => {
   const [FirstName, setFirstName] = useState('');
@@ -28,10 +24,32 @@ const EditProfileScreen = () => {
   const [Contact, setContact] = useState('');
   const [City, setCity] = useState('');
 
-  const [image, setImage] = useState(localImgs.avatar);
+  const [image, setImage] = useState('');
   const userData = useSelector(state => state.user);
 
   const dispatch = useDispatch();
+
+  const takePhotoFromCamera = async () => {
+    ImagePicker.openCamera({
+      compressImageMaxWidth: 300,
+      compressImageMaxHeight: 400,
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+      setImage(image.path);
+    });
+  };
+
+  const choosePhotoFromLibrary = async () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+      setImage(image.path);
+    });
+  };
 
   const handleSubmit = () => {
     dispatch(
@@ -44,7 +62,7 @@ const EditProfileScreen = () => {
       }),
     );
     Alert.alert('Profile Updated Successfully!!');
-    console.log(FirstName, LastName, Email, Contact, City, 'USER DETAILS..');
+    console.log(FirstName, LastName, Email, Contact, City);
   };
 
   return (
@@ -55,7 +73,7 @@ const EditProfileScreen = () => {
             onPress={choosePhotoFromLibrary}
             style={styles.imageContainer}>
             {userData.image ? (
-              <Image style={styles.image} source={{uri: userData.image}} />
+              <Image style={styles.image} source={{uri: image}} />
             ) : (
               <Image
                 style={styles.imagePlaceholder}
@@ -68,43 +86,30 @@ const EditProfileScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.formContainer}>
+        <View style={styles.container}>
           <View style={styles.socialContainer}>
             <Text style={styles.socialHeading}>Edit Your Profile</Text>
           </View>
           <Input
-            style={styles.input}
             value={FirstName}
             onChangeText={setFirstName}
             placeholder="First Name"
           />
 
           <Input
-            style={styles.input}
             value={LastName}
             onChangeText={setLastName}
             placeholder="Last Name"
           />
 
           <Input
-            style={styles.input}
             value={Contact}
             onChangeText={setContact}
             placeholder="Contact Number"
           />
-          <Input
-            style={styles.input}
-            value={Email}
-            onChangeText={setEmail}
-            placeholder="Email"
-          />
+          <Input value={Email} onChangeText={setEmail} placeholder="Email" />
 
-          <Input
-            style={styles.input}
-            value={City}
-            onChangeText={setCity}
-            placeholder="Address"
-          />
+          <Input value={City} onChangeText={setCity} placeholder="Address" />
         </View>
 
         <CustomButton
