@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.17.11",
+    "@react-native-async-storage/async-storage": "^1.18.1",
     "@react-native-camera-roll/camera-roll": "^5.3.1",
     "@react-native-community/geolocation": "^3.0.5",
     "@react-native-community/masked-view": "^0.1.11",
@@ -30,7 +30,7 @@
     "react-native-flash-message": "^0.4.1",
     "react-native-gesture-handler": "^2.9.0",
     "react-native-gifted-chat": "^1.1.1",
-    "react-native-image-picker": "^5.3.1",
+    "react-native-image-crop-picker": "^0.39.0",
     "react-native-otp-forminput": "^1.0.2",
     "react-native-permissions": "^3.8.0",
     "react-native-reanimated": "^2.14.4",

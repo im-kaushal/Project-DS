@@ -9,7 +9,7 @@ import Strings from '../../../../constants/Strings';
 import Button from '../../../../components/Button';
 import ResetImage from '../../../../assets/svg/ResetImage';
 
-const ForgotPasswordScreen = ({navigation}) => {
+const ForgotPasswordScreen = ({navigation, route}) => {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState(null);
@@ -17,16 +17,15 @@ const ForgotPasswordScreen = ({navigation}) => {
 
   const handleResetPassword = async () => {
     try {
-      // const withCountryCode = `+91${phone}`;
-      // console.log('with country code ', withCountryCode);
-      // const confirmation = await auth().signInWithPhoneNumber(withCountryCode);
-      // console.log('confirmaton... here...', confirmation);
-      // setConfirm(confirmation);
-      // navigation.navigate('OTPScreen', {
-      //   confirm: confirmation,
-      //   phone,
-      // });
-      navigation.navigate('OTPScreen');
+      const withCountryCode = `+91${phone}`;
+      console.log('with country code ', withCountryCode);
+      const confirmation = await auth().signInWithPhoneNumber(withCountryCode);
+      console.log('confirmaton... here...', confirmation);
+      setConfirm(confirmation);
+      navigation.navigate('OTPScreen', {
+        confirm: confirmation,
+        phone,
+      });
     } catch (error) {
       showMessage({
         message: error.message,

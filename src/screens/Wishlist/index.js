@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Text, Button} from 'react-native';
-import {addItem, removeItem, clearWishlist} from '../../redux/WishlistSlice';
+
 import Product from '../Product/ShowProducts';
 const WishlistScreen = () => {
   const items = useSelector(state => state.wishlist);

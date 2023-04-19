@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Button, Text, View} from 'react-native';
 import Strings from '../../constants/Strings';
 import styles from './index.styles';
-const ResendOTPButton = () => {
+const ResendOTPButton = ({handleVerify, handleResend}) => {
   const [showButton, setShowButton] = useState(true);
   const [showTimer, setShowTimer] = useState(false);
   const [disabled, setDisabled] = useState(false);
@@ -29,12 +29,12 @@ const ResendOTPButton = () => {
   return (
     <View style={styles.container}>
       {showButton ? (
-        <Button title={Strings.send_otp} onPress={handleButtonPress} />
+        <Button title={Strings.send_otp} onPress={handleVerify} />
       ) : (
         <Button
           title={Strings.resend_otp}
           disabled={disabled}
-          onPress={handleButtonPress}
+          onPress={handleResend}
         />
       )}
       {showTimer && (

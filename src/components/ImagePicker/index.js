@@ -1,45 +1,39 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
-import ImagePicker from 'react-native-image-picker';
-import {
-  requestCameraPermission,
-  requestStoragePermission,
-} from '../../utils/Permissions';
+import ImagePicker from 'react-native-image-crop-picker';
 
-const ImagePickerComponent = () => {
-  const [avatar, setAvatar] = useState(null);
+export default ImagePickerComponent = () => {
+  const [image, setImage] = useState();
 
-  const handleChooseAvatar = async () => {
-    // Request camera and storage permissions
+  const checkCameraAndStoragePermissions = async () => {
     const cameraPermission = await requestCameraPermission();
     const storagePermission = await requestStoragePermission();
 
-    // Check if camera and storage permissions granted
     if (cameraPermission === 'granted' && storagePermission === 'granted') {
-      const options = {
-        noData: true,
-      };
-      ImagePicker.launchImageLibrary(options, response => {
-        if (response.uri) {
-          setAvatar(response);
-        }
-      });
+      return true;
     } else {
       console.log('Permissions not granted');
+      return false;
     }
   };
-
-  return (
-    <View>
-      <TouchableOpacity onPress={handleChooseAvatar}>
-        {avatar ? (
-          <Image source={{uri: avatar.uri}} style={{height: 100, width: 100}} />
-        ) : (
-          <Text>Select a Profile Picture</Text>
-        )}
-      </TouchableOpacity>
-    </View>
-  );
+};
+export const takePhotoFromCamera = async () => {
+  ImagePicker.openCamera({
+    compressImageMaxWidth: 300,
+    compressImageMaxHeight: 400,
+    cropping: true,
+  }).then(image => {
+    console.log(image);
+    setImage(image.path);
+  });
 };
 
-export default ImagePickerComponent;
+export const choosePhotoFromLibrary = async () => {
+  ImagePicker.openPicker({
+    width: 300,
+    height: 400,
+    cropping: true,
+  }).then(image => {
+    console.log(image);
+    setImage(image.path);
+  });
+};

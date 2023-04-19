@@ -1,6 +1,6 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import Profile from '../../screens/Profile';
+import Profile from '../../screens/Profile/EditProfile';
 import Location from '../../components/Location';
 import CustomDrawer from '../../components/CustomDrawer';
 import CartScreen from '../../screens/Cart';

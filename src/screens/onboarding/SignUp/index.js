@@ -12,8 +12,8 @@ import {
   isValidMobileNumber,
   isValidPassword,
 } from '../../../utils/Validation';
-import {Storage} from '../../../utils/Storage';
-//import BackHandling from '../../../utils/BackHandling';
+
+import BackHandling from '../../../utils/BackHandling';
 import Strings from '../../../constants/Strings';
 import SignupImage from '../../../assets/svg/SignupImage';
 
@@ -49,20 +49,23 @@ const SignUpScreen = ({navigation}) => {
     }
 
     try {
-      await Storage.storeData(email, userObj);
-      Alert.alert('Success!', `${userObj.Name}`, `${Strings.account_created}`);
+      Alert.alert('Success!', userObj.Name);
       dispatch(adduser(userObj));
-      navigation.navigate('AuthStack', {screen: LoginScreen});
+      navigation.navigate('LoginScreen');
     } catch (error) {
       console.log(error);
       setError(`${Strings.data_error}`);
     }
   };
 
+  // const handleSignUp = async () => {
+  //   console.log('chal gya');
+  // };
+
   return (
     <View style={styles.container}>
       <SignupImage style={styles.img} />
-      {/* <BackHandling /> */}
+      <BackHandling />
       <Text style={styles.title}>{Strings.sign_up}</Text>
       <Input
         placeholder={Strings.name}

@@ -18,6 +18,7 @@ const LoginScreen = () => {
   const person = useSelector(state => state.user);
 
   const login = async () => {
+    console.log('data coming here', person);
     for (let i = 0; i < person.data.length; i++) {
       console.log(person.data[i].Email == email, 'email ');
       if (person.data[i].Email == email) {
@@ -26,7 +27,7 @@ const LoginScreen = () => {
         if (person.data[i].Password == password) {
           console.log('password match', person.data[i].Password == password);
           await AsyncStorage.setItem('isLoggedIn', '1');
-          // console.log('isLoggedIn');
+          console.log('isLoggedIn');
           Alert.alert('Success!', `${person.data[0].Name} Welcome :)`);
         }
         navigation.navigate('TabNavigator');

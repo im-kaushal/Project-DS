@@ -29,7 +29,7 @@ const Strings = {
   error_email_password: 'Your Email or Password is Incorrect',
   enter_otp: 'Enter OTP',
   otp_subtitle: 'Enter OTP To Reset Your Password',
-  send_otp: 'SEND OTP',
+  send_otp: 'Verify',
   resend_otp: 'RESEND OTP',
   logout: 'Logout',
   add_to_cart: 'Add to Cart',

@@ -30,6 +30,8 @@ const CustomButton = ({newStyle, text, onPress, icon}) => {
       break;
     case 'signup':
       iconComponent = <Icon name="user-plus" size={25} color="black" />;
+    case 'edit':
+      iconComponent = <Icon name="edit" size={25} color="black" />;
       break;
     default:
       iconComponent = null;

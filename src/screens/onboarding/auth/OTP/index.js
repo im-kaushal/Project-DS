@@ -8,14 +8,35 @@ import styles from '../../../../constants/styles';
 import Colors from '../../../../constants/Colors';
 import Strings from '../../../../constants/Strings';
 
-const OTPScreen = ({navigation}) => {
+const OTPScreen = ({navigation, route}) => {
   const [code, setCode] = useState('');
+
+  const {confirm, phone} = route.params;
+  // console.log('🚀 ~ file: index.js:14 ~ OTPScreen ~ phone:', phone);
+  // console.log('🚀 ~ file: index.js:14 ~ OTPScreen ~ confirm:', confirm);
 
   const CODE_LENGTH = 6;
 
-  const handleValidate = () => {
-    console.log('Validating code:', code);
-    navigation.navigate('ResetPassword');
+  async function handleVerify() {
+    if (code) {
+      try {
+        console.log(Object.keys(confirm), 'hiii');
+        await confirm.confirm(code);
+        navigation.navigate('AuthStack', {
+          screen: 'ResetPassword',
+          params: {phone},
+        });
+      } catch (error) {
+        alert('Invalid OTP');
+        console.log('error', error);
+      }
+    } else {
+      alert('Please enter OTP');
+    }
+  }
+
+  const handleResend = () => {
+    console.log('resend OTP');
   };
 
   return (
@@ -32,12 +53,13 @@ const OTPScreen = ({navigation}) => {
         cursorColor={Colors.primary}
         borderColor={Colors.primary}
         inputStyle={styles.otpInput}
-        onChange={code => {
-          console.log(code);
-        }}
+        onChange={setCode}
       />
 
-      <ResendOTPButton onPress={handleValidate} />
+      <ResendOTPButton
+        handleVerify={handleVerify}
+        handleResend={handleResend}
+      />
     </View>
   );
 };

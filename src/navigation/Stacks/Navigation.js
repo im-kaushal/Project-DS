@@ -10,7 +10,7 @@ import ProductDetails from '../../screens/Product/ProductDetails';
 import RenderProducts from '../../screens/Product/RenderProducts';
 import WishlistScreen from '../../screens/Wishlist';
 import CartScreen from '../../screens/Cart';
-import About from '../../screens/Profile';
+import About from '../../screens/Profile/EditProfile';
 import ResetPassword from '../../screens/onboarding/auth/ResetPassword';
 const screenOptions = {
   headerTitle: '',

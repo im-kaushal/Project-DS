@@ -7,7 +7,7 @@ import {cartTotalSelector} from '../../redux/Selector';
 import CartScreen from '../../screens/Cart';
 import Colors from '../../constants/Colors';
 import styles from '../../constants/styles';
-import Profile from '../../screens/Profile';
+import Profile from '../../screens/Profile/EditProfile';
 import ProductPage from '../../screens/Product/ShowProducts';
 
 const Tab = createBottomTabNavigator();

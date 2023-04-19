@@ -13,7 +13,7 @@ const screenOptions = {
 const Main = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="AuthStack, {screen: Splash}">
+      <Stack.Navigator>
         {/* Drawer should be prioritised */}
         <Stack.Screen
           name="DrawerNavigator"
