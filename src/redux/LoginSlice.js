@@ -40,6 +40,7 @@ const loginSlice = createSlice({
         Email: email,
         ContactNumber: contactNumber,
         City: city,
+        img: image.path,
       };
       console.log(updatedUser, 'myLog');
       console.log(state);

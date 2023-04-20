@@ -5,6 +5,7 @@ export default styles = StyleSheet.create({
   input: {
     backgroundColor: Colors.bg,
     fontSize: moderateScale(15),
+
     color: Colors.text,
     width: '90%',
 

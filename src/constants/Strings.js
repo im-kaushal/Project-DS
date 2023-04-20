@@ -7,7 +7,7 @@ const Strings = {
     'Say goodbye to long lines and crowded stores with our e-commerce app. Shop anytime, anywhere, and get your purchases delivered straight to your doorstep. Get the ultimate shopping experience with our e-commerce app. With personalized recommendations, fast and secure checkout, and 24/7 customer support, we make shopping online easy and enjoyable.',
   Connect: 'Connect Me Through:',
   Shop: ' Shop the latest products and deals',
-
+  //strings got converted
   no_password: 'Passwords do not match',
   account_created: 'your account created successfully!',
   data_error: 'Error occurred while storing data',

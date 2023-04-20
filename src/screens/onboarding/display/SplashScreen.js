@@ -11,6 +11,8 @@ const Splash = ({navigation}) => {
   const retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('isLoggedIn', (err, result) => {
+        console.log('🚀 ~ file: SplashScreen.js:14 ~ value ~ result:', result);
+
         navigation.navigate(result != 1 ? LandingPage : TabNavigator);
         console.log(value);
       });

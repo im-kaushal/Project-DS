@@ -12,7 +12,7 @@ import styles from './index.styles';
 import {updateUserDetails} from '../../../redux/LoginSlice';
 import CustomButton from '../../../components/Button';
 import CustomIcon from '../../../components/Icon';
-import {localImgs} from '../../../constants/Images';
+import {webImgs} from '../../../constants/Images';
 import ImagePicker from 'react-native-image-crop-picker';
 import Colors from '../../../constants/Colors';
 import Input from '../../../components/Input';
@@ -23,8 +23,8 @@ const EditProfileScreen = () => {
   const [Email, setEmail] = useState('');
   const [Contact, setContact] = useState('');
   const [City, setCity] = useState('');
+  const [image, setImage] = useState(webImgs.avatar);
 
-  const [image, setImage] = useState('');
   const userData = useSelector(state => state.user);
 
   const dispatch = useDispatch();
@@ -72,14 +72,14 @@ const EditProfileScreen = () => {
           <TouchableOpacity
             onPress={choosePhotoFromLibrary}
             style={styles.imageContainer}>
-            {userData.image ? (
-              <Image style={styles.image} source={{uri: image}} />
-            ) : (
+            {/* {userData.image ? ( */}
+            <Image style={styles.image} source={{uri: image}} />
+            {/* ) : (
               <Image
                 style={styles.imagePlaceholder}
                 source={localImgs.avatar}
               />
-            )}
+            )} */}
           </TouchableOpacity>
           <TouchableOpacity onPress={takePhotoFromCamera}>
             <CustomIcon name="camera" size={15} color={Colors.primary} />
