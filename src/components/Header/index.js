@@ -9,7 +9,7 @@ const Header = ({title}) => {
   return (
     <View style={styles.top}>
       <TouchableOpacity
-        onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
+        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
         <Icon name="bars" size={25} color="black" />
       </TouchableOpacity>
       <Text style={styles.header}>{title}</Text>

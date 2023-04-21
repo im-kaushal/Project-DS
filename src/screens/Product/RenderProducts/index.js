@@ -1,15 +1,33 @@
 import {Text, View, TouchableOpacity, Image} from 'react-native';
 import {useSelector} from 'react-redux';
 import Icon from '../../../components/Icon';
-import {addToCart} from '../../../redux/CartSlice';
+
 import styles from '../../../constants/styles';
 import Strings from '../../../constants/Strings';
-import Quantity from '../../../components/Quantity';
+import {
+  addToCart,
+  decrement,
+  removeItem,
+  clear,
+} from '../../../redux/CartSlice';
 
 const RenderProducts = ({item, navigation, dispatch}) => {
   const cartProduct = useSelector(state => state.cart);
 
-  const quantity = cartProduct.length;
+  const cartItem = cartProduct.find(cartItem => cartItem.id === item.id);
+  const quantity = cartItem ? cartItem.quantity : 0;
+
+  const handleIncrement = () => {
+    dispatch(addToCart(item));
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      dispatch(decrement(item.id));
+    } else {
+      dispatch(clear(item));
+    }
+  };
 
   const handleAddToCart = () => {
     dispatch(addToCart(item));
@@ -19,14 +37,7 @@ const RenderProducts = ({item, navigation, dispatch}) => {
     <View style={styles.productBox}>
       <View>
         <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('ProductStack', {
-              screen: 'ProductDetails',
-              params: {
-                item,
-              },
-            })
-          }>
+          onPress={() => navigation.navigate('ProductDetails', {item})}>
           <Image style={styles.productImage} source={{uri: item.image}} />
         </TouchableOpacity>
 
@@ -52,7 +63,19 @@ const RenderProducts = ({item, navigation, dispatch}) => {
             <Text style={styles.subtitle}>{Strings.add_to_cart}</Text>
           </TouchableOpacity>
         ) : (
-          <Quantity item={item} />
+          <View style={styles.quantityContainer}>
+            <TouchableOpacity
+              style={styles.quantityButton}
+              onPress={handleDecrement}>
+              <Text>-</Text>
+            </TouchableOpacity>
+            <Text style={styles.quantityText}>{quantity}</Text>
+            <TouchableOpacity
+              style={styles.quantityButton}
+              onPress={handleIncrement}>
+              <Text>+</Text>
+            </TouchableOpacity>
+          </View>
         )}
       </View>
     </View>

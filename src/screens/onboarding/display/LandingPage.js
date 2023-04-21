@@ -23,7 +23,7 @@ const LandingPage = ({navigation}) => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            navigation.navigate('AuthStack', {screen: LoginScreen});
+            navigation.navigate('LoginScreen');
           }}>
           <Text style={styles.buttonText}>{Strings.login_title}</Text>
         </TouchableOpacity>
@@ -40,9 +40,7 @@ const LandingPage = ({navigation}) => {
         <View style={styles.landingFooter}>
           <TouchableOpacity
             style={styles.signUpButton}
-            onPress={() =>
-              navigation.navigate('AuthStack', {screen: SignUpScreen})
-            }>
+            onPress={() => navigation.navigate('SignUpScreen')}>
             <Text style={styles.buttonText}>{Strings.sign_up}</Text>
           </TouchableOpacity>
           <Text style={styles.subtitle}>{Strings.no_account}</Text>

@@ -38,7 +38,7 @@ const CustomDrawer = props => {
 
   const handleLogout = async () => {
     await AsyncStorage.clear();
-    navigation.navigate('AuthStack', {screen: 'LoginScreen'});
+    navigation.navigate('LoginScreen');
   };
   // ------------------------------
   // const onChangeLng = async lng => {
