@@ -9,7 +9,7 @@ import Colors from '../../constants/Colors';
 import styles from '../../constants/styles';
 import Profile from '../../screens/Profile/EditProfile';
 import ProductPage from '../../screens/Product/ShowProducts';
-
+import DrawerNavigator from '../Drawer';
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
@@ -42,7 +42,7 @@ const TabNavigator = () => {
           );
         },
       })}>
-      <Tab.Screen name="Product" component={ProductPage} />
+      <Tab.Screen name="Product" component={DrawerNavigator} />
 
       <Tab.Screen
         name="Cart"

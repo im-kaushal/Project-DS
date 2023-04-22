@@ -2,7 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import TabNavigator from '../Tabs';
+import Tabs from '../Tabs';
 import DrawerNavigator from '../Drawer';
 
 import LandingPage from '../../screens/onboarding/display/LandingPage';
@@ -48,7 +48,7 @@ const Main = () => {
         />
         <Stack.Screen
           name="TabNavigator"
-          component={TabNavigator}
+          component={Tabs}
           options={screenOptions}
         />
 

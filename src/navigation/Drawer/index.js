@@ -5,9 +5,10 @@ import Location from '../../components/Location';
 import CustomDrawer from '../../components/CustomDrawer';
 import CartScreen from '../../screens/Cart';
 
-import Tabs from '../Tabs';
+import TabNavigator from '../Tabs';
 import ContactUs from '../../screens/Contact';
 import CustomIcon from '../../components/Icon';
+import ProductPage from '../../screens/Product/ShowProducts';
 
 const DrawerNavigator = () => {
   const Drawer = createDrawerNavigator();
@@ -22,7 +23,7 @@ const DrawerNavigator = () => {
           ),
         }}
         name="Shop"
-        component={Tabs}
+        component={ProductPage}
       />
       <Drawer.Screen
         options={{
