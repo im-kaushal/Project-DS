@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import {View, Text, Alert} from 'react-native';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
-
+import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
 import {adduser} from '../../../redux/LoginSlice';
-import LoginScreen from '../LogIn/index.js';
+
 import styles from './index.styles';
 import {
   isValidEmail,
@@ -14,7 +14,7 @@ import {
 } from '../../../utils/Validation';
 
 import BackHandling from '../../../utils/BackHandling';
-import Strings from '../../../constants/Strings';
+
 import SignupImage from '../../../assets/svg/SignupImage';
 
 const SignUpScreen = ({navigation}) => {
@@ -26,6 +26,7 @@ const SignUpScreen = ({navigation}) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
+  const {t, i18n} = useTranslation();
   const handleSignUp = async () => {
     const userObj = {
       Name: name,
@@ -44,7 +45,7 @@ const SignUpScreen = ({navigation}) => {
     }
 
     if (password !== confirmPassword) {
-      setError(`${Strings.no_password}`);
+      setError(`${t('no_password')}`);
       return;
     }
 
@@ -54,28 +55,24 @@ const SignUpScreen = ({navigation}) => {
       navigation.navigate('LoginScreen');
     } catch (error) {
       console.log(error);
-      setError(`${Strings.data_error}`);
+      setError(`${t('data_error')}`);
     }
   };
-
-  // const handleSignUp = async () => {
-  //   console.log('chal gya');
-  // };
 
   return (
     <View style={styles.container}>
       <SignupImage style={styles.img} />
       <BackHandling />
-      <Text style={styles.title}>{Strings.sign_up}</Text>
+      <Text style={styles.title}>{t('sign_up')}</Text>
       <Input
-        placeholder={Strings.name}
+        placeholder={t('name')}
         autoCapitalize="words"
         onChangeText={setName}
         value={name}
       />
 
       <Input
-        placeholder={Strings.email}
+        placeholder={t('email')}
         keyboardType="email-address"
         autoCapitalize="none"
         onChangeText={setEmail}
@@ -83,27 +80,27 @@ const SignUpScreen = ({navigation}) => {
       />
 
       <Input
-        placeholder={Strings.contact_number_placeholder}
+        placeholder={t('contact_number_placeholder')}
         keyboardType="phone-pad"
         onChangeText={setMobileNumber}
         value={mobileNumber}
       />
 
       <Input
-        placeholder={Strings.password}
+        placeholder={t('password')}
         secureTextEntry
         onChangeText={setPassword}
         value={password}
       />
 
       <Input
-        placeholder={Strings.confirm_password_placeholder}
+        placeholder={t('confirm_password_placeholder')}
         secureTextEntry
         onChangeText={setConfirmPassword}
         value={confirmPassword}
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
-      <Button text={Strings.sign_up} onPress={handleSignUp} icon="signup" />
+      <Button text={t('sign_up')} onPress={handleSignUp} icon="signup" />
     </View>
   );
 };

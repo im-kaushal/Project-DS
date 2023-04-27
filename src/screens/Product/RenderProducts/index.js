@@ -3,13 +3,11 @@ import {useSelector} from 'react-redux';
 import Icon from '../../../components/Icon';
 
 import styles from '../../../constants/styles';
-import Strings from '../../../constants/Strings';
-import {
-  addToCart,
-  decrement,
-  removeItem,
-  clear,
-} from '../../../redux/CartSlice';
+
+import {addToCart, decrement, clear} from '../../../redux/CartSlice';
+
+import i18n from '../../../i18n';
+import {useTranslation} from 'react-i18next';
 
 const RenderProducts = ({item, navigation, dispatch}) => {
   const cartProduct = useSelector(state => state.cart);
@@ -32,6 +30,8 @@ const RenderProducts = ({item, navigation, dispatch}) => {
   const handleAddToCart = () => {
     dispatch(addToCart(item));
   };
+
+  const {t, i18n} = useTranslation();
 
   return (
     <View style={styles.productBox}>
@@ -60,7 +60,7 @@ const RenderProducts = ({item, navigation, dispatch}) => {
           <TouchableOpacity
             style={styles.productBtn1}
             onPress={handleAddToCart}>
-            <Text style={styles.subtitle}>{Strings.add_to_cart}</Text>
+            <Text style={styles.subtitle}>{t('add_to_cart')}</Text>
           </TouchableOpacity>
         ) : (
           <View style={styles.quantityContainer}>

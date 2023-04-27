@@ -7,8 +7,7 @@ import {cartTotalSelector} from '../../redux/Selector';
 import CartScreen from '../../screens/Cart';
 import Colors from '../../constants/Colors';
 import styles from '../../constants/styles';
-import Profile from '../../screens/Profile/EditProfile';
-import ProductPage from '../../screens/Product/ShowProducts';
+import Settings from '../../screens/Settings';
 import DrawerNavigator from '../Drawer';
 const Tab = createBottomTabNavigator();
 
@@ -27,8 +26,8 @@ const TabNavigator = () => {
             iconName = 'spinner';
           } else if (route.name === 'Cart') {
             iconName = 'shopping-cart';
-          } else if (route.name === 'Profile') {
-            iconName = 'user';
+          } else if (route.name === 'Settings') {
+            iconName = 'gear';
           }
 
           return (
@@ -53,7 +52,7 @@ const TabNavigator = () => {
         })}
       />
 
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );
 };

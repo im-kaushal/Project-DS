@@ -6,6 +6,7 @@ import styles from './index.styles';
 
 const Header = ({title}) => {
   const navigation = useNavigation();
+
   return (
     <View style={styles.top}>
       <TouchableOpacity

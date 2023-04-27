@@ -5,7 +5,6 @@ import Location from '../../components/Location';
 import CustomDrawer from '../../components/CustomDrawer';
 import CartScreen from '../../screens/Cart';
 
-import TabNavigator from '../Tabs';
 import ContactUs from '../../screens/Contact';
 import CustomIcon from '../../components/Icon';
 import ProductPage from '../../screens/Product/ShowProducts';

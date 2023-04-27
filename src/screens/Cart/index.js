@@ -9,18 +9,19 @@ import {
   Alert,
 } from 'react-native';
 
+import i18n from '../../i18n';
+import {useTranslation} from 'react-i18next';
 import EmptyCart from '../../assets/svg/EmptyCart';
-
 import Button from '../../components/Button';
 import {useDispatch, useSelector} from 'react-redux';
-import {increment, decrement, clear, removeItem} from '../../redux/CartSlice';
+import {clear, removeItem} from '../../redux/CartSlice';
 import {cartTotalPriceSelector} from '../../redux/Selector';
 import CouponCodeForm from '../../components/CouponCode';
 import styles from './index.styles';
 import Header from '../../components/Header';
 import ProductPage from '../Product/ShowProducts';
 import CustomIcon from '../../components/Icon';
-import Strings from '../../constants/Strings';
+
 import Quantity from '../../components/Quantity';
 
 const CartContainer = ({navigation}) => {
@@ -28,7 +29,7 @@ const CartContainer = ({navigation}) => {
   const cart = useSelector(state => state.cart);
   const [couponCode, setCouponCode] = useState('');
   const totalPrice = useSelector(cartTotalPriceSelector);
-
+  const {t, i18n} = useTranslation();
   const AlertItem = () => {
     Alert.alert(
       'Are you sure you want to clear the cart?',
@@ -74,7 +75,7 @@ const CartContainer = ({navigation}) => {
 
   return (
     <View>
-      <Header title="Cart" navigation={navigation} />
+      <Header title={t('cart')} navigation={navigation} />
       <FlatList
         data={cart}
         renderItem={renderStoreItems}
@@ -93,12 +94,12 @@ const CartContainer = ({navigation}) => {
                         justifyContent: 'space-between',
                       }}>
                       <Text style={styles.checkoutText}>
-                        Total: ${totalPrice.toFixed(2)}
+                        {t('total')}: ${totalPrice.toFixed(2)}
                       </Text>
 
                       <TouchableOpacity onPress={AlertItem}>
                         <Text style={styles.checkoutText}>
-                          {Strings.clear_cart}
+                          {t('clear_cart')}
                         </Text>
                       </TouchableOpacity>
                     </View>
@@ -117,16 +118,12 @@ const CartContainer = ({navigation}) => {
                         alignSelf: 'stretch',
                       }}>
                       <Button
-                        onPress={() =>
-                          navigation.navigate('ProductStack', {
-                            screen: ProductPage,
-                          })
-                        }
-                        text={Strings.shopping}
+                        onPress={() => navigation.navigate(ProductPage)}
+                        text={t('shopping')}
                       />
 
                       <Button
-                        text={Strings.checkout}
+                        text={t('checkout')}
                         onPress={() => {
                           dispatch(checkout());
                         }}

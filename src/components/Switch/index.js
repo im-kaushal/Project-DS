@@ -1,38 +1,37 @@
-import React, {useState} from 'react';
-import {View, Switch, StyleSheet, Text} from 'react-native';
+import React from 'react';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import I18n from '../../i18n';
 
-const SwitchButton = () => {
-  const [isEnabled, setIsEnabled] = useState(false);
-
-  const toggleSwitch = () => {
-    setIsEnabled(!isEnabled);
+const LanguageSwitchButton = () => {
+  const switchLanguage = () => {
+    // Update the language based on the current locale
+    const newLanguage = I18n.Locales === 'en' ? 'hi' : 'en';
+    I18n.Locales = newLanguage;
+    // Force re-rendering of the component to update the language
+    // (you can use a state variable for this as well)
+    window.location.reload();
   };
 
   return (
-    <View style={styles.container}>
-      <Switch
-        trackColor={{false: '#767577', true: '#81b0ff'}}
-        thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-        onValueChange={toggleSwitch}
-        value={isEnabled}
-      />
+    <TouchableOpacity onPress={switchLanguage} style={styles.container}>
       <Text style={styles.text}>
-        {isEnabled ? 'Switch is ON' : 'Switch is OFF'}
+        {I18n.Locales === 'en' ? 'हिन्दी' : 'English'}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    backgroundColor: 'lightgray',
+    borderRadius: 8,
   },
   text: {
-    marginTop: 16,
-    fontSize: 18,
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 
-export default SwitchButton;
+export default LanguageSwitchButton;

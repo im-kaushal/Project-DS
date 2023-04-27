@@ -5,11 +5,12 @@ import {webImgs} from '../../../constants/Images';
 import SvgComponent from '../../../assets/svg/Buy';
 import styles from '../../../constants/styles';
 import Strings from '../../../constants/Strings';
-import SignUpScreen from '../SignUp';
-import LoginScreen from '../LogIn';
+
 import BackHandling from '../../../utils/BackHandling';
+import {useTranslation} from 'react-i18next';
 
 const LandingPage = ({navigation}) => {
+  const {t, i18n} = useTranslation();
   return (
     <View style={styles.container}>
       <BackHandling />
@@ -25,7 +26,7 @@ const LandingPage = ({navigation}) => {
           onPress={() => {
             navigation.navigate('LoginScreen');
           }}>
-          <Text style={styles.buttonText}>{Strings.login_title}</Text>
+          <Text style={styles.buttonText}>{t('login_title')}</Text>
         </TouchableOpacity>
       </View>
 
@@ -33,6 +34,7 @@ const LandingPage = ({navigation}) => {
         <View style={styles.landingImage}>
           <SvgComponent />
         </View>
+
         <View>
           <Text style={styles.title}>{Strings.Welcome}</Text>
           <Text style={styles.subtitle}>{Strings.Shop}</Text>
@@ -41,9 +43,9 @@ const LandingPage = ({navigation}) => {
           <TouchableOpacity
             style={styles.signUpButton}
             onPress={() => navigation.navigate('SignUpScreen')}>
-            <Text style={styles.buttonText}>{Strings.sign_up}</Text>
+            <Text style={styles.buttonText}>{t('sign_up')}</Text>
           </TouchableOpacity>
-          <Text style={styles.subtitle}>{Strings.no_account}</Text>
+          <Text style={styles.subtitle}>{t('no_account')}</Text>
         </View>
       </View>
     </View>

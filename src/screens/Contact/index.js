@@ -11,14 +11,17 @@ import CustomTextInput from '../../components/Input';
 import styles from './index.styles';
 import ContactImage from '../../assets/svg/ContactImage';
 import ContactButton from '../../components/ContactButton';
-import Strings from '../../constants/Strings';
+
 import CustomIcon from '../../components/Icon';
 import Colors from '../../constants/Colors';
+import {useTranslation} from 'react-i18next';
 
 const ContactUs = ({navigation}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+
+  const {t, i18n} = useTranslation();
 
   const handleNameChange = text => {
     setName(text);
@@ -45,30 +48,28 @@ const ContactUs = ({navigation}) => {
       </TouchableOpacity>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <ContactImage style={styles.headerImage} />
-        <Text style={styles.title}>{Strings.contact_us}</Text>
+        <Text style={styles.title}>{t('contact_us')}</Text>
         <CustomTextInput
-          placeholder={Strings.name_placeholder}
+          placeholder={t('name_placeholder')}
           value={name}
           onChangeText={handleNameChange}
           style={styles.input}
         />
         <CustomTextInput
-          placeholder={Strings.email}
+          placeholder={t('email')}
           value={email}
           onChangeText={handleEmailChange}
           keyboardType="email-address"
           style={styles.input}
         />
         <CustomTextInput
-          placeholder={Strings.message_placeholder}
+          placeholder={t('message_placeholder')}
           value={message}
           onChangeText={handleMessageChange}
           style={[styles.input, styles.messageInput]}
         />
         <TouchableOpacity style={styles.sendButton} onPress={handleSendPress}>
-          <Text style={styles.sendButtonText}>
-            {Strings.message_placeholder}
-          </Text>
+          <Text style={styles.sendButtonText}>{t('message_placeholder')}</Text>
         </TouchableOpacity>
       </ScrollView>
       <View style={styles.popupContainer}>

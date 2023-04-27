@@ -2,10 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import Button from '../Button';
 import {useDispatch} from 'react-redux';
-import {
-  cartTotalPriceSelector,
-  cartDiscountedPriceSelector,
-} from '../../redux/Selector';
+import {cartDiscountedPriceSelector} from '../../redux/Selector';
 import Input from '../Input';
 
 const CouponCodeForm = ({totalPrice, couponCode, setCouponCode}) => {

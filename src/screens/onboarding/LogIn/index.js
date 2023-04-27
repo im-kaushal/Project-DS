@@ -4,10 +4,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import styles from './index.styles';
 import {useSelector} from 'react-redux';
-import Strings from '../../../constants/Strings';
+//import Strings from '../../../constants/Strings';
 import Input from '../../../components/Input';
 import LoginImg from '../../../assets/svg/LoginImg';
 import Button from '../../../components/Button';
+///
+import {useTranslation} from 'react-i18next';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +18,9 @@ const LoginScreen = () => {
   const navigation = useNavigation();
 
   const person = useSelector(state => state.user);
-
+  ////
+  const {t, i18n} = useTranslation();
+  ////
   const login = async () => {
     console.log('data coming here', person);
     for (let i = 0; i < person.data.length; i++) {
@@ -27,12 +31,15 @@ const LoginScreen = () => {
         if (person.data[i].Password == password) {
           console.log('password match', person.data[i].Password == password);
           await AsyncStorage.setItem('isLoggedIn', '1');
-          console.log('isLoggedIn');
+          await AsyncStorage.setItem('EMAIL', email);
+          await AsyncStorage.setItem('PASSWORD', password);
+          console.log('EMAIL:', email);
+          console.log('PASSWORD:', password);
           Alert.alert('Success!', `${person.data[0].Name} Welcome :)`);
         }
         navigation.navigate('TabNavigator');
       } else {
-        Alert('{Strings.error_email_password}');
+        Alert('{t("error_email_password")}');
         return false;
       }
     }
@@ -45,17 +52,16 @@ const LoginScreen = () => {
   return (
     <View style={styles.container}>
       <LoginImg style={styles.img} />
-      <Text style={styles.title}>{Strings.login_title}</Text>
+      <Text style={styles.title}>{t('login_title')}</Text>
       <Input
-        placeholder={Strings.email_placeholder}
+        placeholder={t('email_placeholder')}
         keyboardType="email-address"
         onChangeText={setEmail}
         value={email}
-        leftIcon={{name: 'email'}}
       />
       <Input
         abc={styles.input}
-        placeholder={Strings.password_placeholder}
+        placeholder={t('password_placeholder')}
         secureTextEntry
         onChangeText={setPassword}
         value={password}
@@ -63,16 +69,16 @@ const LoginScreen = () => {
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <View style={styles.btn}>
         <Button
-          text={Strings.sign_up}
+          text={t('sign_up')}
           icon="signup"
           onPress={() => navigation.navigate('SignUpScreen')}
         />
-        <Button text={Strings.login_title} onPress={login} icon="login" />
+        <Button text={t('login_title')} onPress={login} icon="login" />
         <View style={styles.space}></View>
       </View>
       <Button
         onPress={handleForgotPasswordClick}
-        text={Strings.forgot_password}
+        text={t('forgot_password')}
         icon="forgot"
       />
     </View>

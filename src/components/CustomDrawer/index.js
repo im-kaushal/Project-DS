@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-//import Strings from '../../constants/lng/LocalizedStrings';
+
 import {
   DrawerContentScrollView,
   DrawerItemList,
@@ -18,9 +18,9 @@ import styles from '../../constants/styles';
 import {useSelector} from 'react-redux';
 import Strings from '../../constants/Strings';
 import {localImgs} from '../../constants/Images';
-import {Storage} from '../../utils/Storage';
+
 ///-----------------
-//import {setLng, getLng} from '../../utils/helper/changeLng';
+import {useTranslation} from 'react-i18next';
 
 const CustomDrawer = props => {
   const [userName, setUserName] = useState();
@@ -40,32 +40,8 @@ const CustomDrawer = props => {
     await AsyncStorage.clear();
     navigation.navigate('LoginScreen');
   };
-  // ------------------------------
-  // const onChangeLng = async lng => {
-  //   if (lng === 'en') {
-  //     await I18nManager.forceRTL(false);
-  //     setLng('en');
-  //     RNRestart.Restart();
-  //     return;
-  //   }
-  //   if (lng === 'hi') {
-  //     await I18nManager.forceRTL(false);
-  //     setLng('hi');
-  //     RNRestart.Restart();
-  //     return;
-  //   }
-  // };
-  // useEffect(() => {
-  //   selectedLng();
-  // }, []);
-
-  // const selectedLng = async () => {
-  //   const lngData = await getLng();
-  //   if (!!lngData) {
-  //     Strings.setLanguage(lngData);
-  //   }
-  //   console.log('selected Language data==>>>', lngData);
-  // };
+  ////////////////
+  const {t, i18n} = useTranslation();
 
   return (
     <View style={styles.container}>
@@ -77,10 +53,16 @@ const CustomDrawer = props => {
         </ImageBackground>
         <View style={styles.list}>
           <DrawerItemList {...props} />
+          {/* /////////////
+          <View>
+            <Switch switchLanguage={switchLanguage} />
+            <Text>Current Language: {currentLanguage}</Text>
+          </View>*/}
         </View>
-        <TouchableOpacity style={styles.button} onPress={handleLogout}>
-          <Text style={styles.buttonText}>{Strings.logout}</Text>
-        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleLogout}></TouchableOpacity>
       </DrawerContentScrollView>
     </View>
   );
