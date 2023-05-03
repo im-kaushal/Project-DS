@@ -75,7 +75,12 @@ const CartContainer = ({navigation}) => {
 
   return (
     <View>
-      <Header title={t('cart')} navigation={navigation} />
+      <Header
+        title={t('cart')}
+        navigation={navigation}
+        showHeartIcon={true}
+        showBellIcon={false}
+      />
       <FlatList
         data={cart}
         renderItem={renderStoreItems}

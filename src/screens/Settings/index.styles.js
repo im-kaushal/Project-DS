@@ -1,47 +1,39 @@
 import {StyleSheet} from 'react-native';
 import Colors from '../../constants/Colors';
+import {moderateScale} from 'react-native-size-matters';
 export default styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: Colors.background,
+    padding: moderateScale(10),
+  },
+  menuContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '30%',
     justifyContent: 'space-between',
-    marginBottom: 20,
   },
+
   label: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
+    marginBottom: 10,
+    color: Colors.primary,
   },
-  dropDownContainer: {
-    flex: 1,
-    height: 40,
+  dropdownContainer: {
+    width: '40%',
   },
-  dropDown: {
-    backgroundColor: Colors.background,
-    borderColor: Colors.primary,
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    fontSize: 16,
-    marginLeft: 70,
-  },
-  item: {
-    // justifyContent: 'flex-start',
-    marginLeft: 50,
-  },
-  dropDownMenu: {
+  dropdown: {
     backgroundColor: Colors.bg,
-    borderColor: Colors.success,
+    borderColor: Colors.secondary,
     borderWidth: 1,
-    borderRadius: 5,
-    marginTop: 5,
   },
-  label1: {
-    marginTop: 80,
+
+  dropdownItem: {
+    justifyContent: 'flex-start',
   },
-  label2: {
+
+  dropdownLabel: {
     fontSize: 16,
-    fontWeight: 'bold',
+    color: Colors.success,
   },
 });

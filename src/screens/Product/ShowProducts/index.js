@@ -7,7 +7,7 @@ import {getFakeProducts} from '../../../api/Service';
 import RenderProducts from '../RenderProducts';
 import Header from '../../../components/Header';
 import BackHandling from '../../../utils/BackHandling';
-import i18n from '../../../i18n';
+
 import {useTranslation} from 'react-i18next';
 
 const ProductPage = ({navigation}) => {
@@ -15,7 +15,7 @@ const ProductPage = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -34,7 +34,11 @@ const ProductPage = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <BackHandling />
-      <Header title={t('product_list')} />
+      <Header
+        title={t('product_list')}
+        showHeartIcon={true}
+        showBellIcon={false}
+      />
       {isLoading ? (
         <View style={styles.activityIndicator}>
           <ActivityIndicator />

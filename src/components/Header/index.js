@@ -4,7 +4,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from '../Icon';
 import styles from './index.styles';
 
-const Header = ({title}) => {
+const Header = ({title, showHeartIcon, showBellIcon}) => {
   const navigation = useNavigation();
 
   return (
@@ -14,10 +14,18 @@ const Header = ({title}) => {
         <Icon name="bars" size={25} color="black" />
       </TouchableOpacity>
       <Text style={styles.header}>{title}</Text>
-      <TouchableOpacity>
-        <Icon name="heart" size={25} color="red" />
-      </TouchableOpacity>
+      {showHeartIcon && (
+        <TouchableOpacity>
+          <Icon name="heart" size={25} color="red" />
+        </TouchableOpacity>
+      )}
+      {showBellIcon && (
+        <TouchableOpacity>
+          <Icon name="bell" size={25} color="black" />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
+
 export default Header;

@@ -5,6 +5,8 @@ import {useTranslation} from 'react-i18next';
 import Header from '../../components/Header';
 import styles from './index.styles';
 import {useNavigation} from '@react-navigation/native';
+import ReferralCode from '../../components/ReferralCode';
+
 const Settings = () => {
   const {t, i18n} = useTranslation();
   const [open, setOpen] = useState(false);
@@ -16,20 +18,30 @@ const Settings = () => {
   const navigation = useNavigation();
   return (
     <View>
-      <Header title={t('setting_screen')} />
-      <View style={styles.container}>
-        <View>
-          <Text style={styles.label}>{t('language')}</Text>
+      <Header
+        title={t('setting_screen')}
+        showHeartIcon={false}
+        showBellIcon={true}
+      />
+      <View style={{padding: 10}}>
+        <View style={styles.label}>
+          <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
+            <Text style={styles.label}>{t('edit_profile')}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => <ReferralCode code="ABC123" />}>
+            <Text style={styles.label}>{t('refer_earn')}</Text>
+          </TouchableOpacity>
         </View>
-
-        <View>
+        <View style={styles.menuContainer}>
+          <Text style={styles.label}>{t('language')}</Text>
           <DropDownPicker
             placeholder={t('language')}
             defaultValue="English"
-            containerStyle={styles.dropDownContainer}
-            style={styles.dropDown}
-            itemStyle={styles.item}
-            dropDownStyle={styles.dropDownMenu}
+            containerStyle={styles.dropdownContainer}
+            style={styles.dropdown}
+            itemStyle={styles.dropdownItem}
+            dropDownStyle={styles.dropdown}
+            labelStyle={styles.dropdownLabel}
             open={open}
             items={items}
             value={value}
@@ -40,11 +52,6 @@ const Settings = () => {
             }}
           />
         </View>
-      </View>
-      <View style={styles.label1}>
-        <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
-          <Text style={styles.label2}>Edit Profile</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
