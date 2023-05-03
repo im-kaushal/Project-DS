@@ -8,13 +8,14 @@ import styles from './index.styles';
 import Strings from '../../../../constants/Strings';
 import Button from '../../../../components/Button';
 import ResetImage from '../../../../assets/svg/ResetImage';
+import {useTranslation} from 'react-i18next';
 
 const ForgotPasswordScreen = ({navigation, route}) => {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState(null);
   const [confirm, setConfirm] = useState(null);
-
+  const {t} = useTranslation();
   const handleResetPassword = async () => {
     try {
       const withCountryCode = `+91${phone}`;
@@ -35,18 +36,18 @@ const ForgotPasswordScreen = ({navigation, route}) => {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{Strings.forgot_password}</Text>
+      <Text style={styles.title}>{t('forgot_password')}</Text>
       <ResetImage style={styles.img} />
 
-      <Text style={styles.description}>{Strings.forgot_text}</Text>
+      <Text style={styles.description}>{t('forgot_text')}</Text>
       <Input
         value={phone}
         onChangeText={text => setPhone(text)}
         style={styles.input}
-        placeholder={Strings.contact_number_placeholder}
+        placeholder={t('contact_number_placeholder')}
         keyboardType="phone-pad"
       />
-      <Button text={Strings.reset} onPress={handleResetPassword} />
+      <Button text="Reset Password" onPress={handleResetPassword} />
       {message && (
         <Text style={[styles.message, styles.success]}>{message}</Text>
       )}

@@ -36,8 +36,8 @@ const LandingPage = ({navigation}) => {
         </View>
 
         <View>
-          <Text style={styles.title}>{Strings.Welcome}</Text>
-          <Text style={styles.subtitle}>{Strings.Shop}</Text>
+          <Text style={styles.title}>{t('Welcome')}</Text>
+          <Text style={styles.subtitle}>{t('Shop')}</Text>
         </View>
         <View style={styles.landingFooter}>
           <TouchableOpacity

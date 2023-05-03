@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
 import {Button, Text, View} from 'react-native';
-import Strings from '../../constants/Strings';
 import styles from './index.styles';
-const ResendOTPButton = ({handleVerify, handleResend}) => {
+import {useTranslation} from 'react-i18next';
+
+const ResendOTPButton = ({handleVerify}) => {
   const [showButton, setShowButton] = useState(true);
   const [showTimer, setShowTimer] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [remainingTime, setRemainingTime] = useState(60);
+  const {t} = useTranslation();
 
-  const handleButtonPress = () => {
+  const handleResend = () => {
     setShowButton(false);
     setShowTimer(true);
     setDisabled(true);
@@ -29,17 +31,17 @@ const ResendOTPButton = ({handleVerify, handleResend}) => {
   return (
     <View style={styles.container}>
       {showButton ? (
-        <Button title={Strings.send_otp} onPress={handleVerify} />
+        <Button title={t('send_otp')} onPress={handleVerify} />
       ) : (
         <Button
-          title={Strings.resend_otp}
+          title={t('resend_otp')}
           disabled={disabled}
           onPress={handleResend}
         />
       )}
       {showTimer && (
         <Text style={styles.timer}>
-          {Strings.resend_otp} in {remainingTime} seconds
+          {t('resend_otp')} in {remainingTime} seconds
         </Text>
       )}
     </View>

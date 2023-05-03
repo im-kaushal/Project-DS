@@ -2,30 +2,45 @@ import React, {useState} from 'react';
 import {View} from 'react-native';
 
 import OTPInput from 'react-native-otp-forminput';
-import ResendOTPButton from '../../../../components/ResendOtp';
+//import ResendOTPButton from '../../../../components/ResendOtp';
 import OtpImg from '../../../../assets/svg/OtpImg';
 import styles from '../../../../constants/styles';
 import Colors from '../../../../constants/Colors';
-import Strings from '../../../../constants/Strings';
 
+import {useTranslation} from 'react-i18next';
 const OTPScreen = ({navigation, route}) => {
   const [code, setCode] = useState('');
-
+  const [seconds, setSeconds] = useState(60);
+  const [timerActive, setTimerActive] = useState(true);
+  const {t} = useTranslation();
   const {confirm, phone} = route.params;
   // console.log('🚀 ~ file: index.js:14 ~ OTPScreen ~ phone:', phone);
-  // console.log('🚀 ~ file: index.js:14 ~ OTPScreen ~ confirm:', confirm);
+
+  useEffect(() => {
+    if (seconds > 0 && timerActive) {
+      const intervalId = setInterval(() => {
+        setSeconds(prevSeconds => prevSeconds - 1);
+      }, 1000);
+
+      return () => clearInterval(intervalId);
+    } else {
+      setTimerActive(false);
+    }
+  }, [seconds, timerActive]);
+
+  const handleResendOTP = () => {
+    setSeconds(60);
+    setTimerActive(true);
+  };
 
   const CODE_LENGTH = 6;
 
-  async function handleVerify() {
+  async function handleVerify({phone}) {
     if (code) {
       try {
-        console.log(Object.keys(confirm), 'hiii');
+        console.log(Object.keys(confirm));
         await confirm.confirm(code);
-        navigation.navigate('AuthStack', {
-          screen: 'ResetPassword',
-          params: {phone},
-        });
+        navigation.navigate('ResetPassword', (phone = 'phone'));
       } catch (error) {
         alert('Invalid OTP');
         console.log('error', error);
@@ -35,18 +50,18 @@ const OTPScreen = ({navigation, route}) => {
     }
   }
 
-  const handleResend = () => {
-    console.log('resend OTP');
-  };
+  // const handleResend = () => {
+  //   console.log('resend OTP');
+  // };
 
   return (
     <View style={styles.container}>
       <OtpImg style={styles.img} />
 
       <OTPInput
-        title={Strings.enter_otp}
+        title={t('enter_otp')}
         titleStyle={styles.title}
-        subtitle={Strings.otp_subtitle}
+        subtitle={t('otp_subtitle')}
         subtitleStyle={styles.subtitle}
         type="outline"
         numberOfInputs={CODE_LENGTH}
@@ -56,10 +71,13 @@ const OTPScreen = ({navigation, route}) => {
         onChange={setCode}
       />
 
-      <ResendOTPButton
+      {/* <ResendOTPButton
         handleVerify={handleVerify}
         handleResend={handleResend}
-      />
+      /> */}
+
+      <Text>Timer: {seconds}</Text>
+      {!timerActive && <Button title="Resend OTP" onPress={handleResendOTP} />}
     </View>
   );
 };

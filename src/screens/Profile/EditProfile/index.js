@@ -17,7 +17,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import Colors from '../../../constants/Colors';
 import Input from '../../../components/Input';
 
-const EditProfileScreen = () => {
+const EditProfileScreen = ({navigation}) => {
   const [FirstName, setFirstName] = useState('');
   const [LastName, setLastName] = useState('');
   const [Email, setEmail] = useState('');
@@ -67,6 +67,11 @@ const EditProfileScreen = () => {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+        onPress={navigation.goBack}
+        style={{marginLeft: 15, marginTop: 10}}>
+        <CustomIcon name="chevron-left" size={25} color={Colors.primary} />
+      </TouchableOpacity>
       <ScrollView contentContainerStyle={styles.scrollViewContentContainer}>
         <View style={styles.imageContainer}>
           <TouchableOpacity

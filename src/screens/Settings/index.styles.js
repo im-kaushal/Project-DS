@@ -1,40 +1,47 @@
 import {StyleSheet} from 'react-native';
+import Colors from '../../constants/Colors';
 export default styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '100%',
-    paddingHorizontal: 20,
+    width: '30%',
+    justifyContent: 'space-between',
     marginBottom: 20,
   },
   label: {
-    flex: 1,
     fontSize: 16,
     fontWeight: 'bold',
-    marginRight: 10,
   },
   dropDownContainer: {
     flex: 1,
     height: 40,
   },
   dropDown: {
-    backgroundColor: '#fff',
-    borderColor: '#ccc',
+    backgroundColor: Colors.background,
+    borderColor: Colors.primary,
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
     paddingVertical: 5,
     fontSize: 16,
+    marginLeft: 70,
   },
   item: {
-    justifyContent: 'flex-start',
+    // justifyContent: 'flex-start',
+    marginLeft: 50,
   },
   dropDownMenu: {
-    backgroundColor: '#fff',
-    borderColor: '#ccc',
+    backgroundColor: Colors.bg,
+    borderColor: Colors.success,
     borderWidth: 1,
     borderRadius: 5,
     marginTop: 5,
-    width: '30%',
+  },
+  label1: {
+    marginTop: 80,
+  },
+  label2: {
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

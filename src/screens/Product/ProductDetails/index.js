@@ -1,7 +1,7 @@
 import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {addToCart, decrement, clear} from '../../../redux/CartSlice';
-
+import {useTranslation} from 'react-i18next';
 import styles from './index.styles';
 import CustomIcon from '../../../components/Icon';
 import Strings from '../../../constants/Strings';
@@ -11,7 +11,7 @@ const ProductDetails = ({route, navigation}) => {
   const dispatch = useDispatch();
 
   const item = route.params.item;
-
+  const {t, i18n} = useTranslation();
   const cartProduct = useSelector(state => state.cart);
 
   const cartItem = cartProduct.find(cartItem => cartItem.id === item.id);
@@ -76,7 +76,7 @@ const ProductDetails = ({route, navigation}) => {
             <TouchableOpacity
               style={styles.productBtn}
               onPress={handleAddToCart}>
-              <Text style={styles.subtitle}>{Strings.add_to_cart}</Text>
+              <Text style={styles.subtitle}>{t('add_to_cart')}</Text>
             </TouchableOpacity>
           )}
         </View>

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     alignContent: 'space-between',
   },
   img: {height: '55%', width: '100%'},
-
+  resetImage: {justifyContent: 'center', alignItems: 'center'},
   imgBg: {
     // marginLeft: moderateScale(30),
     padding: moderateScale(10),

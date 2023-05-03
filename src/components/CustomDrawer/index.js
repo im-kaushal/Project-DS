@@ -16,7 +16,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import styles from '../../constants/styles';
 import {useSelector} from 'react-redux';
-import Strings from '../../constants/Strings';
+
 import {localImgs} from '../../constants/Images';
 
 ///-----------------
@@ -60,9 +60,9 @@ const CustomDrawer = props => {
           </View>*/}
         </View>
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleLogout}></TouchableOpacity>
+        <TouchableOpacity onPress={handleLogout}>
+          <Text style={styles.button}>{t('logout')}</Text>
+        </TouchableOpacity>
       </DrawerContentScrollView>
     </View>
   );

@@ -47,6 +47,7 @@ const Strings = {
   // message_placeholder: 'Message',
   // contact_us: 'Contact Us',
 
+  reset_password: 'Reset Password',
   ///Linkes:
   user_linkedIn: 'https://www.linkedin.com/in/im-kaushal/',
   user_github: 'https://github.com/im-kaushal',
