@@ -9,7 +9,6 @@ import {
   Alert,
 } from 'react-native';
 
-import i18n from '../../i18n';
 import {useTranslation} from 'react-i18next';
 import EmptyCart from '../../assets/svg/EmptyCart';
 import Button from '../../components/Button';
@@ -19,17 +18,18 @@ import {cartTotalPriceSelector} from '../../redux/Selector';
 import CouponCodeForm from '../../components/CouponCode';
 import styles from './index.styles';
 import Header from '../../components/Header';
-import ProductPage from '../Product/ShowProducts';
-import CustomIcon from '../../components/Icon';
 
+import CustomIcon from '../../components/Icon';
+import {useNavigation} from '@react-navigation/native';
 import Quantity from '../../components/Quantity';
 
-const CartContainer = ({navigation}) => {
+const CartContainer = () => {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
   const [couponCode, setCouponCode] = useState('');
   const totalPrice = useSelector(cartTotalPriceSelector);
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   const AlertItem = () => {
     Alert.alert(
       'Are you sure you want to clear the cart?',
@@ -123,7 +123,7 @@ const CartContainer = ({navigation}) => {
                         alignSelf: 'stretch',
                       }}>
                       <Button
-                        onPress={() => navigation.navigate(ProductPage)}
+                        onPress={() => navigation.navigate('Product')}
                         text={t('shopping')}
                       />
 

@@ -41,7 +41,7 @@ const CustomDrawer = props => {
     navigation.navigate('LoginScreen');
   };
   ////////////////
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
 
   return (
     <View style={styles.container}>
@@ -53,11 +53,6 @@ const CustomDrawer = props => {
         </ImageBackground>
         <View style={styles.list}>
           <DrawerItemList {...props} />
-          {/* /////////////
-          <View>
-            <Switch switchLanguage={switchLanguage} />
-            <Text>Current Language: {currentLanguage}</Text>
-          </View>*/}
         </View>
 
         <TouchableOpacity onPress={handleLogout}>

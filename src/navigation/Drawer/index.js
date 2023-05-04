@@ -4,13 +4,14 @@ import Profile from '../../screens/Profile/EditProfile';
 import Location from '../../components/Location';
 import CustomDrawer from '../../components/CustomDrawer';
 import CartScreen from '../../screens/Cart';
-
+import {useTranslation} from 'react-i18next';
 import ContactUs from '../../screens/Contact';
 import CustomIcon from '../../components/Icon';
 import ProductPage from '../../screens/Product/ShowProducts';
 
 const DrawerNavigator = () => {
   const Drawer = createDrawerNavigator();
+  const {t} = useTranslation();
   return (
     <Drawer.Navigator
       drawerContent={props => <CustomDrawer {...props} />}
@@ -21,7 +22,7 @@ const DrawerNavigator = () => {
             <CustomIcon name="shopping-bag" size={20} color="black" />
           ),
         }}
-        name="Shop"
+        name={t('shop')}
         component={ProductPage}
       />
       <Drawer.Screen
@@ -30,14 +31,14 @@ const DrawerNavigator = () => {
             <CustomIcon name="shopping-cart" size={20} color="black" />
           ),
         }}
-        name="Cart"
+        name={t('cart')}
         component={CartScreen}
       />
       <Drawer.Screen
         options={{
           drawerIcon: () => <CustomIcon name="user" size={20} color="black" />,
         }}
-        name="Profile"
+        name={t('profile')}
         component={Profile}
       />
 
@@ -47,7 +48,7 @@ const DrawerNavigator = () => {
             <CustomIcon name="map-marker" size={20} color="black" />
           ),
         }}
-        name="Location"
+        name={t('location')}
         component={Location}
       />
 
@@ -57,7 +58,7 @@ const DrawerNavigator = () => {
             <CustomIcon name="address-book" size={20} color="black" />
           ),
         }}
-        name="Contact Us"
+        name={t('contact_us')}
         component={ContactUs}
       />
     </Drawer.Navigator>

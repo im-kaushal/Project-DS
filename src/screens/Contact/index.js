@@ -7,13 +7,12 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import Back from '../../components/Back';
 import CustomTextInput from '../../components/Input';
 import styles from './index.styles';
 import ContactImage from '../../assets/svg/ContactImage';
 import ContactButton from '../../components/ContactButton';
 
-import CustomIcon from '../../components/Icon';
-import Colors from '../../constants/Colors';
 import {useTranslation} from 'react-i18next';
 
 const ContactUs = ({navigation}) => {
@@ -43,9 +42,7 @@ const ContactUs = ({navigation}) => {
     <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <TouchableOpacity onPress={navigation.goBack}>
-        <CustomIcon name="chevron-left" size={25} color={Colors.primary} />
-      </TouchableOpacity>
+      <Back />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <ContactImage style={styles.headerImage} />
         <Text style={styles.title}>{t('contact_us')}</Text>

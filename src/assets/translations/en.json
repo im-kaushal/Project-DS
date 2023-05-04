@@ -2,7 +2,7 @@
   "Shop": " Shop the latest products and deals",
   "product_list": "Product List",
 
-  "cart": "Cart Screen",
+  "cart": "Cart",
   "total": "Total",
   "setting_screen": "Settings",
 
@@ -43,6 +43,11 @@
   "contact_us": "Contact Us",
   "edit_profile": "Edit Profile",
   "refer_earn": "Refer & Earn",
+
+  "shop": "Shop",
+  "profile": "Profile",
+  "location": "Location",
+
   "verify": "Verify OTP",
   "Welcome": "Welcome On EcomExpress",
   "About": "A self-driven, hardworking, and astute learner having team collaboration, marketing, management, and leadership qualities.",

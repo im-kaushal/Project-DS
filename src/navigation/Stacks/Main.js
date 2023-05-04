@@ -14,11 +14,11 @@ import OTPScreen from '../../screens/onboarding/auth/OTP';
 import ProductPage from '../../screens/Product/ShowProducts';
 import ProductDetails from '../../screens/Product/ProductDetails';
 import RenderProducts from '../../screens/Product/RenderProducts';
-import WishlistScreen from '../../screens/Wishlist';
+import Wishlist from '../../screens/Wishlist';
 import CartScreen from '../../screens/Cart';
 import EditProfile from '../../screens/Profile/EditProfile';
 import ResetPassword from '../../screens/onboarding/auth/ResetPassword';
-
+import Notification from '../../screens/Notification';
 const Stack = createStackNavigator();
 const screenOptions = {
   headerTitle: '',
@@ -93,8 +93,8 @@ const Main = () => {
           options={screenOptions}
         />
         <Stack.Screen
-          name="WishlistScreen"
-          component={WishlistScreen}
+          name="Wishlist"
+          component={Wishlist}
           options={screenOptions}
         />
         <Stack.Screen
@@ -105,6 +105,11 @@ const Main = () => {
         <Stack.Screen
           name="EditProfile"
           component={EditProfile}
+          options={screenOptions}
+        />
+        <Stack.Screen
+          name="Notification"
+          component={Notification}
           options={screenOptions}
         />
       </Stack.Navigator>

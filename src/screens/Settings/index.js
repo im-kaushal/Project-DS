@@ -23,6 +23,7 @@ const Settings = () => {
   };
 
   const navigation = useNavigation();
+
   return (
     <View>
       <Header

@@ -15,13 +15,13 @@ const Header = ({title, showHeartIcon, showBellIcon}) => {
       </TouchableOpacity>
       <Text style={styles.header}>{title}</Text>
       {showHeartIcon && (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Wishlist')}>
           <Icon name="heart" size={25} color="red" />
         </TouchableOpacity>
       )}
       {showBellIcon && (
-        <TouchableOpacity>
-          <Icon name="bell-o" size={25} color="red" />
+        <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
+          <Icon name="bell-o" size={24} color="red" />
         </TouchableOpacity>
       )}
     </View>

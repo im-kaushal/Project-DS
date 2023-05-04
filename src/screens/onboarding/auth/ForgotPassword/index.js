@@ -5,7 +5,7 @@ import {showMessage} from 'react-native-flash-message';
 import {useDispatch} from 'react-redux';
 import Input from '../../../../components/Input';
 import styles from './index.styles';
-import Strings from '../../../../constants/Strings';
+
 import Button from '../../../../components/Button';
 import ResetImage from '../../../../assets/svg/ResetImage';
 import {useTranslation} from 'react-i18next';

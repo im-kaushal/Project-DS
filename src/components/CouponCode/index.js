@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import Button from '../Button';
 import {useDispatch} from 'react-redux';
 import {cartDiscountedPriceSelector} from '../../redux/Selector';
 import Input from '../Input';
 
-const CouponCodeForm = ({totalPrice, couponCode, setCouponCode}) => {
+const CouponCodeForm = ({totalPrice}) => {
+  const [couponCode, setCouponCode] = useState('');
+
   const dispatch = useDispatch();
+
   const handleApplyCoupon = () => {
     if (couponCode == 'COUPON1' || 'COUPON2') {
       dispatch(cartDiscountedPriceSelector(totalPrice));
