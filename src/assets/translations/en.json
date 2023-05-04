@@ -1,9 +1,4 @@
 {
-  "Welcome": "Welcome On EcomExpress",
-  "About": "A self-driven, hardworking, and astute learner having team collaboration, marketing, management, and leadership qualities.",
-  "Title": "SET @Damco Solutions 😀",
-  "Description": "Say goodbye to long lines and crowded stores with our e-commerce app. Shop anytime, anywhere, and get your purchases delivered straight to your doorstep. Get the ultimate shopping experience with our e-commerce app. With personalized recommendations, fast and secure checkout, and 24/7 customer support, we make shopping online easy and enjoyable.",
-  "Connect": "Connect Me Through:",
   "Shop": " Shop the latest products and deals",
   "product_list": "Product List",
 
@@ -30,8 +25,8 @@
   "error_email_password": "Your Email or Password is Incorrect",
   "enter_otp": "Enter OTP",
   "otp_subtitle": "Enter OTP To Reset Your Password",
-  "send_otp": "Verify",
-  "resend_otp": "RESEND OTP",
+  "send_otp": "Send OTP",
+  "resend_otp": "Resend OTP",
   "logout": "Logout",
   "add_to_cart": "Add to Cart",
   "description": "Description:",
@@ -47,5 +42,11 @@
   "message_placeholder": "Message",
   "contact_us": "Contact Us",
   "edit_profile": "Edit Profile",
-  "refer_earn": "Refer & Earn"
+  "refer_earn": "Refer & Earn",
+  "verify": "Verify OTP",
+  "Welcome": "Welcome On EcomExpress",
+  "About": "A self-driven, hardworking, and astute learner having team collaboration, marketing, management, and leadership qualities.",
+  "Title": "SET @Damco Solutions 😀",
+  "Description": "Say goodbye to long lines and crowded stores with our e-commerce app. Shop anytime, anywhere, and get your purchases delivered straight to your doorstep. Get the ultimate shopping experience with our e-commerce app. With personalized recommendations, fast and secure checkout, and 24/7 customer support, we make shopping online easy and enjoyable.",
+  "Connect": "Connect Me Through:"
 }

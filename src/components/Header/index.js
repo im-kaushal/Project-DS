@@ -10,7 +10,7 @@ const Header = ({title, showHeartIcon, showBellIcon}) => {
   return (
     <View style={styles.top}>
       <TouchableOpacity
-        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+        onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
         <Icon name="bars" size={25} color="black" />
       </TouchableOpacity>
       <Text style={styles.header}>{title}</Text>
@@ -21,7 +21,7 @@ const Header = ({title, showHeartIcon, showBellIcon}) => {
       )}
       {showBellIcon && (
         <TouchableOpacity>
-          <Icon name="bell" size={25} color="black" />
+          <Icon name="bell-o" size={25} color="red" />
         </TouchableOpacity>
       )}
     </View>

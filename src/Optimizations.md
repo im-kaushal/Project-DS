@@ -4,7 +4,8 @@
 
 Pop up (Media)
 Firebase Notification(Implementation)
-
+DeepLinking
+Custom Hooks
 
 
 ## QnA 2
@@ -42,7 +43,7 @@ Firebase Notification(Implementation)
 [X] Quantity management product detal
 [X] Delete button on empty screen
 [X] Screen name in caps
-[ ] Empty list flatlist
+[x] Empty list flatlist
 [X] Hide home
 [X] empty not handling home
 [X] Screen name in header

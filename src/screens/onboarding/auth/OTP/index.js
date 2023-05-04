@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
-import {View} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, Text} from 'react-native';
 
 import OTPInput from 'react-native-otp-forminput';
-//import ResendOTPButton from '../../../../components/ResendOtp';
+import ResendOTPButton from '../../../../components/ResendOtp';
 import OtpImg from '../../../../assets/svg/OtpImg';
 import styles from '../../../../constants/styles';
 import Colors from '../../../../constants/Colors';
 
 import {useTranslation} from 'react-i18next';
+import CustomButton from '../../../../components/Button';
 const OTPScreen = ({navigation, route}) => {
   const [code, setCode] = useState('');
   const [seconds, setSeconds] = useState(60);
@@ -70,14 +71,10 @@ const OTPScreen = ({navigation, route}) => {
         inputStyle={styles.otpInput}
         onChange={setCode}
       />
-
-      {/* <ResendOTPButton
-        handleVerify={handleVerify}
-        handleResend={handleResend}
-      /> */}
-
-      <Text>Timer: {seconds}</Text>
-      {!timerActive && <Button title="Resend OTP" onPress={handleResendOTP} />}
+      <View>
+        <ResendOTPButton />
+        <CustomButton text={t('verify')} onPress={handleVerify} />
+      </View>
     </View>
   );
 };

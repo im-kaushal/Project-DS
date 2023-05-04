@@ -47,7 +47,7 @@ const ForgotPasswordScreen = ({navigation, route}) => {
         placeholder={t('contact_number_placeholder')}
         keyboardType="phone-pad"
       />
-      <Button text="Reset Password" onPress={handleResetPassword} />
+      <Button text={t('send_otp')} onPress={handleResetPassword} />
       {message && (
         <Text style={[styles.message, styles.success]}>{message}</Text>
       )}

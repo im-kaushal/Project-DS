@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {Button, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import styles from './index.styles';
 import {useTranslation} from 'react-i18next';
-
-const ResendOTPButton = ({handleVerify}) => {
+import Button from '../Button';
+const ResendOTPButton = () => {
   const [showButton, setShowButton] = useState(true);
   const [showTimer, setShowTimer] = useState(false);
   const [disabled, setDisabled] = useState(false);
@@ -31,11 +31,11 @@ const ResendOTPButton = ({handleVerify}) => {
   return (
     <View style={styles.container}>
       {showButton ? (
-        <Button title={t('send_otp')} onPress={handleVerify} />
+        <Button text={t('send_otp')} onPress={handleResend} />
       ) : (
         <Button
-          title={t('resend_otp')}
-          disabled={disabled}
+          text={t('resend_otp')}
+          newStyle={disabled}
           onPress={handleResend}
         />
       )}

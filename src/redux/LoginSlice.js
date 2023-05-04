@@ -42,7 +42,7 @@ const loginSlice = createSlice({
         City: city,
         img: image.path,
       };
-      console.log(updatedUser, 'myLog');
+      console.log(updatedUser, 'Data Updated!');
       console.log(state);
       let data = [...state.data];
       let userDetail = {...data[0]};
