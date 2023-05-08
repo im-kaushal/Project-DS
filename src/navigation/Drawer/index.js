@@ -7,8 +7,8 @@ import CartScreen from '../../screens/Cart';
 import {useTranslation} from 'react-i18next';
 import ContactUs from '../../screens/Contact';
 import CustomIcon from '../../components/Icon';
-import ProductPage from '../../screens/Product/ShowProducts';
-
+//import ProductPage from '../../screens/Product/ShowProducts';
+import Tabs from '../Tabs';
 const DrawerNavigator = () => {
   const Drawer = createDrawerNavigator();
   const {t} = useTranslation();
@@ -23,7 +23,7 @@ const DrawerNavigator = () => {
           ),
         }}
         name={t('shop')}
-        component={ProductPage}
+        component={Tabs}
       />
       <Drawer.Screen
         options={{

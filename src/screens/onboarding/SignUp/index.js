@@ -26,7 +26,7 @@ const SignUpScreen = ({navigation}) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   const handleSignUp = async () => {
     const userObj = {
       Name: name,

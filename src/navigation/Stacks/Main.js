@@ -40,17 +40,14 @@ const Main = () => {
           component={LandingPage}
           options={screenOptions}
         />
-        {/* --------------Importing Screens --------------- */}
+
         <Stack.Screen
           name="DrawerNavigator"
           component={DrawerNavigator}
           options={screenOptions}
         />
-        <Stack.Screen
-          name="TabNavigator"
-          component={Tabs}
-          options={screenOptions}
-        />
+        <Stack.Screen name="Tabs" component={Tabs} options={screenOptions} />
+        {/* --------------Importing Screens --------------- */}
 
         <Stack.Screen
           name="SignUpScreen"

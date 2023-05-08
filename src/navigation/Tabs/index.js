@@ -8,7 +8,8 @@ import CartScreen from '../../screens/Cart';
 import Colors from '../../constants/Colors';
 import styles from '../../constants/styles';
 import Settings from '../../screens/Settings';
-import DrawerNavigator from '../Drawer';
+// import DrawerNavigator from '../Drawer';
+import Product from '../../screens/Product/ShowProducts';
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
@@ -41,7 +42,7 @@ const TabNavigator = () => {
           );
         },
       })}>
-      <Tab.Screen name="Product" component={DrawerNavigator} />
+      <Tab.Screen name="Product" component={Product} />
 
       <Tab.Screen
         name="Cart"

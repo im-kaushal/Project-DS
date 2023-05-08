@@ -6,15 +6,16 @@ export default styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: moderateScale(20),
+    padding: moderateScale(10),
   },
   title: {
+    color: Colors.primary,
     fontWeight: 'bold',
-    fontSize: moderateScale(20),
+    fontSize: moderateScale(30),
     marginBottom: moderateScale(20),
   },
   img: {
-    height: '20%',
+    height: '30%',
     width: '100%',
   },
   error: {
