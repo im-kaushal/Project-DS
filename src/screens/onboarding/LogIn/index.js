@@ -19,25 +19,25 @@ const LoginScreen = () => {
 
   const person = useSelector(state => state.user);
   ////
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   ////
   const login = async () => {
     console.log('data coming here', person);
     for (let i = 0; i < person.data.length; i++) {
-      console.log(person.data[i].Email == email, 'email ');
+      console.log(person.data[i].Email == email, 'email');
       if (person.data[i].Email == email) {
         found = true;
         console.log(person.data[i].Email == email, 'Email Matched');
         if (person.data[i].Password == password) {
           console.log('password match', person.data[i].Password == password);
           await AsyncStorage.setItem('isLoggedIn', '1');
-          await AsyncStorage.setItem('EMAIL', email);
-          await AsyncStorage.setItem('PASSWORD', password);
-          console.log('EMAIL:', email);
-          console.log('PASSWORD:', password);
+          // await AsyncStorage.setItem('EMAIL', email);
+          // await AsyncStorage.setItem('PASSWORD', password);
+          // console.log('EMAIL:', email);
+          // console.log('PASSWORD:', password);
           Alert.alert('Success!', `${person.data[0].Name} Welcome :)`);
         }
-        navigation.navigate('TabNavigator');
+        navigation.navigate('Drawer');
       } else {
         Alert('{t("error_email_password")}');
         return false;

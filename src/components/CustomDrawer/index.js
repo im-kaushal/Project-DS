@@ -29,7 +29,7 @@ const CustomDrawer = props => {
     getUserData();
   }, []);
 
-  const myName = useSelector(state => state.user);
+  // const myName = useSelector(state => state.user);
 
   const getUserData = async () => {
     const name = await AsyncStorage.getItem('userName');

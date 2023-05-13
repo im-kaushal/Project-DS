@@ -18,7 +18,7 @@ import {cartTotalPriceSelector} from '../../redux/Selector';
 import CouponCodeForm from '../../components/CouponCode';
 import styles from './index.styles';
 import Header from '../../components/Header';
-
+import {sendCheckoutNotification} from '../../utils/Notifications';
 import CustomIcon from '../../components/Icon';
 import {useNavigation} from '@react-navigation/native';
 import Quantity from '../../components/Quantity';
@@ -130,7 +130,7 @@ const CartContainer = () => {
                       <Button
                         text={t('checkout')}
                         onPress={() => {
-                          dispatch(checkout());
+                          sendCheckoutNotification();
                         }}
                       />
                     </View>

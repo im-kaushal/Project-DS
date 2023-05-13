@@ -48,6 +48,10 @@
   "profile": "Profile",
   "location": "Location",
 
+  "first_name": "First Name",
+  "last_name": "Last Name",
+  "address": "Address",
+
   "verify": "Verify OTP",
   "Welcome": "Welcome On EcomExpress",
   "About": "A self-driven, hardworking, and astute learner having team collaboration, marketing, management, and leadership qualities.",

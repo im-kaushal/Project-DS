@@ -7,19 +7,20 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
   },
-  scrollViewContentContainer: {
-    flexGrow: 1,
+  content: {
+    justifyContent: 'center',
     alignItems: 'center',
   },
+
   imageContainer: {
     alignSelf: 'center',
-    marginTop: moderateScale(15),
+    marginTop: moderateScale(25),
   },
 
   cameraIcon: {
     position: 'absolute',
     bottom: moderateScale(0),
-    right: moderateScale(12),
+    right: moderateScale(10),
   },
   image: {
     width: moderateScale(150),
@@ -29,17 +30,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  socialHeading: {
+  title: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: moderateScale(24),
     fontWeight: 'bold',
-    margin: 10,
+    margin: moderateScale(10),
+    color: Colors.primary,
   },
+  btn: {
+    width: moderateScale(100),
+    alignSelf: 'center',
+  },
+
   imagePlaceholder: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
-    backgroundColor: '#F0F0F0',
+    width: moderateScale(150),
+    height: moderateScale(150),
+    borderRadius: moderateScale(50),
+    backgroundColor: Colors.bg,
     justifyContent: 'center',
     alignItems: 'center',
   },

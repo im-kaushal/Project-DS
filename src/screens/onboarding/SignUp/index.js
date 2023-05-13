@@ -74,7 +74,6 @@ const SignUpScreen = ({navigation}) => {
       <Input
         placeholder={t('email')}
         keyboardType="email-address"
-        autoCapitalize="none"
         onChangeText={setEmail}
         value={email}
       />

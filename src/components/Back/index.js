@@ -7,7 +7,9 @@ import {useNavigation} from '@react-navigation/native';
 const Back = () => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={navigation.goBack}>
+    <TouchableOpacity
+      style={{padding: 20, position: 'absolute'}}
+      onPress={navigation.goBack}>
       <CustomIcon name="chevron-left" size={25} color={Colors.primary} />
     </TouchableOpacity>
   );

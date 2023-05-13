@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Tabs from '../Tabs';
-import DrawerNavigator from '../Drawer';
+import Drawer from '../Drawer';
 
 import LandingPage from '../../screens/onboarding/display/LandingPage';
 import Splash from '../../screens/onboarding/display/SplashScreen';
@@ -29,6 +29,11 @@ const Main = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Splash">
         {/* Drawer should be prioritised */}
+        <Stack.Screen
+          name="Drawer"
+          component={Drawer}
+          options={screenOptions}
+        />
 
         <Stack.Screen
           name="Splash"
@@ -41,11 +46,6 @@ const Main = () => {
           options={screenOptions}
         />
 
-        <Stack.Screen
-          name="DrawerNavigator"
-          component={DrawerNavigator}
-          options={screenOptions}
-        />
         <Stack.Screen name="Tabs" component={Tabs} options={screenOptions} />
         {/* --------------Importing Screens --------------- */}
 

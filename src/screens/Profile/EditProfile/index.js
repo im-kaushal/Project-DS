@@ -16,6 +16,8 @@ import {webImgs} from '../../../constants/Images';
 import ImagePicker from 'react-native-image-crop-picker';
 import Colors from '../../../constants/Colors';
 import Input from '../../../components/Input';
+import Back from '../../../components/Back';
+import {useTranslation} from 'react-i18next';
 
 const EditProfileScreen = ({navigation}) => {
   const [FirstName, setFirstName] = useState('');
@@ -24,7 +26,7 @@ const EditProfileScreen = ({navigation}) => {
   const [Contact, setContact] = useState('');
   const [City, setCity] = useState('');
   const [image, setImage] = useState(webImgs.avatar);
-
+  const {t} = useTranslation();
   const userData = useSelector(state => state.user);
 
   const dispatch = useDispatch();
@@ -62,68 +64,56 @@ const EditProfileScreen = ({navigation}) => {
       }),
     );
     Alert.alert('Profile Updated Successfully!!');
+
     console.log(FirstName, LastName, Email, Contact, City);
   };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={navigation.goBack}
-        style={{marginLeft: 15, marginTop: 10}}>
-        <CustomIcon name="chevron-left" size={25} color={Colors.primary} />
-      </TouchableOpacity>
-      <ScrollView contentContainerStyle={styles.scrollViewContentContainer}>
-        <View style={styles.imageContainer}>
-          <TouchableOpacity
-            onPress={choosePhotoFromLibrary}
-            style={styles.imageContainer}>
-            {/* {userData.image ? ( */}
-            <Image style={styles.image} source={{uri: image}} />
-            {/* ) : (
-              <Image
-                style={styles.imagePlaceholder}
-                source={localImgs.avatar}
-              />
-            )} */}
-          </TouchableOpacity>
-          <TouchableOpacity onPress={takePhotoFromCamera}>
-            <CustomIcon name="camera" size={15} color={Colors.primary} />
-          </TouchableOpacity>
-        </View>
+      <Back />
+      {/* <ScrollView contentContainerStyle={styles.scrollViewContentContainer}> */}
+      <View style={styles.imageContainer}>
+        <TouchableOpacity
+          onPress={choosePhotoFromLibrary}
+          style={styles.imageContainer}>
+          <Image style={styles.image} source={{uri: image}} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={takePhotoFromCamera}>
+          <CustomIcon name="camera" size={15} color={Colors.primary} />
+        </TouchableOpacity>
+      </View>
 
-        <View style={styles.container}>
-          <View style={styles.socialContainer}>
-            <Text style={styles.socialHeading}>Edit Your Profile</Text>
-          </View>
-          <Input
-            value={FirstName}
-            onChangeText={setFirstName}
-            placeholder="First Name"
-          />
+      <View style={styles.content}>
+        <Text style={styles.title}>{t('edit_profile')}</Text>
 
-          <Input
-            value={LastName}
-            onChangeText={setLastName}
-            placeholder="Last Name"
-          />
-
-          <Input
-            value={Contact}
-            onChangeText={setContact}
-            placeholder="Contact Number"
-          />
-          <Input value={Email} onChangeText={setEmail} placeholder="Email" />
-
-          <Input value={City} onChangeText={setCity} placeholder="Address" />
-        </View>
-
-        <CustomButton
-          newStyle={{width: 100, alignSelf: 'center'}}
-          onPress={handleSubmit}
-          text="Save"
-          icon="edit"
+        <Input
+          value={FirstName}
+          onChangeText={setFirstName}
+          placeholder={t('first_name')}
         />
-      </ScrollView>
+
+        <Input
+          value={LastName}
+          onChangeText={setLastName}
+          placeholder={t('last_name')}
+        />
+
+        <Input
+          value={Contact}
+          onChangeText={setContact}
+          placeholder={t('contact_number_placeholder')}
+        />
+        <Input value={Email} onChangeText={setEmail} placeholder={t('email')} />
+
+        <Input value={City} onChangeText={setCity} placeholder={t('address')} />
+      </View>
+      <CustomButton
+        newStyle={styles.btn}
+        onPress={handleSubmit}
+        text="Save"
+        icon="edit"
+      />
+      {/* </ScrollView> */}
     </View>
   );
 };
