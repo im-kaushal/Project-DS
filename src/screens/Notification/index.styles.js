@@ -1,7 +1,9 @@
 import {StyleSheet} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
+import Colors from '../../constants/Colors';
 export default styles = StyleSheet.create({
   container: {
-    flex: 1,
+    marginTop: moderateScale(80),
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -10,13 +12,13 @@ export default styles = StyleSheet.create({
     justifyContent: 'center',
   },
   noNotificationsImage: {
-    width: 400,
-    height: 400,
-    marginBottom: 20,
+    width: moderateScale(400),
+    height: moderateScale(400),
+    marginBottom: moderateScale(10),
   },
   noNotificationsText: {
-    fontSize: 20,
+    fontSize: moderateScale(20),
     fontWeight: 'bold',
-    color: '#555',
+    color: Colors.primary,
   },
 });

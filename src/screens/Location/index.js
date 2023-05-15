@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import Styles from './styles.index';
-import CustomIcon from '../Icon';
-import Colors from '../../constants/Colors';
-const LocationComponent = ({navigation}) => {
+
+import Back from '../../components/Back';
+
+const LocationComponent = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
 
@@ -20,12 +21,9 @@ const LocationComponent = ({navigation}) => {
   }, []);
 
   return (
-    <View>
-      <TouchableOpacity style={Styles.icon} onPress={navigation.goBack}>
-        <CustomIcon name="chevron-left" size={25} color={Colors.primary} />
-      </TouchableOpacity>
-
-      <View style={Styles.container}>
+    <View style={Styles.container}>
+      <Back />
+      <View style={Styles.items}>
         <Text style={Styles.title}>Current Location:</Text>
         {latitude && longitude ? (
           <Text style={Styles.location}>

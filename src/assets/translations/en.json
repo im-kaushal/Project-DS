@@ -6,7 +6,7 @@
   "total": "Total",
   "setting_screen": "Settings",
 
-  "language": "Choose Language",
+  "language": "Language",
   "no_password": "Passwords do not match",
   "account_created": "your account created successfully!",
   "data_error": "Error occurred while storing data",
@@ -43,6 +43,7 @@
   "contact_us": "Contact Us",
   "edit_profile": "Edit Profile",
   "refer_earn": "Refer & Earn",
+  "permissions": "Permissions",
 
   "shop": "Shop",
   "profile": "Profile",

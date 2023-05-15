@@ -48,5 +48,6 @@
   "contact_us": "हमसे संपर्क करें",
   "first_name": "पहला नाम",
   "last_name": "अंतिम नाम",
-  "address": "पता"
+  "address": "पता",
+  "permissions": "अनुमति"
 }

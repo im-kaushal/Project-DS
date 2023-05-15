@@ -3,8 +3,8 @@ import {moderateScale} from 'react-native-size-matters';
 import Colors from '../../constants/Colors';
 export default styles = StyleSheet.create({
   container: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flex: 1,
+    backgroundColor: Colors.background,
   },
   title: {
     color: Colors.primary,
@@ -25,4 +25,5 @@ export default styles = StyleSheet.create({
     alignSelf: 'flex-start',
     margin: 20,
   },
+  items: {alignItems: 'center', marginVertical: 80},
 });

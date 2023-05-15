@@ -1,10 +1,8 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-
 import Tabs from '../Tabs';
 import Drawer from '../Drawer';
-
 import LandingPage from '../../screens/onboarding/display/LandingPage';
 import Splash from '../../screens/onboarding/display/SplashScreen';
 import LoginScreen from '../../screens/onboarding/LogIn';
@@ -19,6 +17,8 @@ import CartScreen from '../../screens/Cart';
 import EditProfile from '../../screens/Profile/EditProfile';
 import ResetPassword from '../../screens/onboarding/auth/ResetPassword';
 import Notification from '../../screens/Notification';
+import Toggle from '../../screens/TogglePermissions';
+
 const Stack = createStackNavigator();
 const screenOptions = {
   headerTitle: '',
@@ -107,6 +107,11 @@ const Main = () => {
         <Stack.Screen
           name="Notification"
           component={Notification}
+          options={screenOptions}
+        />
+        <Stack.Screen
+          name="Toggle"
+          component={Toggle}
           options={screenOptions}
         />
       </Stack.Navigator>

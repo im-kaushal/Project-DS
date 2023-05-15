@@ -5,18 +5,17 @@ export default styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: Colors.background,
-    padding: 20,
+    marginTop: moderateScale(50),
   },
   scrollContainer: {
     justifyContent: 'center',
     flexGrow: 1,
-    paddingHorizontal: 24,
+    paddingHorizontal: moderateScale(10),
     alignItems: 'center',
   },
   title: {
     alignSelf: 'center',
-    fontSize: 24,
+    fontSize: moderateScale(24),
     fontWeight: 'bold',
     marginBottom: 24,
     color: Colors.primary,
@@ -54,13 +53,12 @@ export default styles = StyleSheet.create({
   popupContainer: {
     flexDirection: 'row',
     alignContent: 'space-between',
-
     justifyContent: 'space-between',
     alignSelf: 'baseline',
     position: 'absolute',
-    bottom: 10,
-    left: 20,
-    right: 20,
+    bottom: moderateScale(10),
+    left: moderateScale(20),
+    right: moderateScale(20),
     alignItems: 'center',
     // zIndex: 100,
   },

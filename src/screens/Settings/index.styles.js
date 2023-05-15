@@ -6,18 +6,15 @@ export default styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
     padding: moderateScale(10),
+    alignItems: 'stretch',
   },
-  menuContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
+  menuContainer: {marginHorizontal: 20, marginTop: 20},
 
   label: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
+    marginLeft: 20,
+    fontSize: 16,
     color: Colors.primary,
+    fontWeight: 'bold',
   },
   dropdownContainer: {
     width: '40%',
@@ -35,5 +32,10 @@ export default styles = StyleSheet.create({
   dropdownLabel: {
     fontSize: 16,
     color: Colors.success,
+  },
+  items: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
   },
 });
