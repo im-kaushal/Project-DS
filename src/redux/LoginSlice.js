@@ -16,19 +16,20 @@ const loginSlice = createSlice({
     },
 
     ResetPassword(state, action) {
-      console.log(
-        'password ... reset',
-        state.data.map(item => {
-          if (item.Email === action.payload.Email) {
-            return action.payload;
-          }
-          return item;
-        }),
-      );
+      const {email, newPassword} = action.payload;
+      const updatedData = state.data.map(user => {
+        if (user.Email === email) {
+          return {...user, Password: newPassword};
+        } else {
+          return user;
+        }
+      });
       return {
         ...state,
+        data: updatedData,
       };
     },
+
     updateUserDetails(state, action) {
       const {firstName, lastName, email, contactNumber, city} = action.payload;
       const user = state.data[0];
@@ -40,7 +41,6 @@ const loginSlice = createSlice({
         Email: email,
         ContactNumber: contactNumber,
         City: city,
-        img: image.path,
       };
       console.log(updatedUser, 'Data Updated!');
       console.log(state);

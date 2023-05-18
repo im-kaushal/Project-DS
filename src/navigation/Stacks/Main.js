@@ -14,10 +14,11 @@ import ProductDetails from '../../screens/Product/ProductDetails';
 import RenderProducts from '../../screens/Product/RenderProducts';
 import Wishlist from '../../screens/Wishlist';
 import CartScreen from '../../screens/Cart';
-import EditProfile from '../../screens/Profile/EditProfile';
+import EditProfile from '../../screens/EditProfile';
 import ResetPassword from '../../screens/onboarding/auth/ResetPassword';
 import Notification from '../../screens/Notification';
 import Toggle from '../../screens/TogglePermissions';
+import Location from '../../screens/Location';
 
 const Stack = createStackNavigator();
 const screenOptions = {
@@ -112,6 +113,11 @@ const Main = () => {
         <Stack.Screen
           name="Toggle"
           component={Toggle}
+          options={screenOptions}
+        />
+        <Stack.Screen
+          name="Location"
+          component={Location}
           options={screenOptions}
         />
       </Stack.Navigator>

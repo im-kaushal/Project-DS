@@ -76,5 +76,6 @@ export default styles = StyleSheet.create({
     marginHorizontal: moderateScale(20),
     fontSize: moderateScale(20),
     fontWeight: 'bold',
+    color: Colors.primary,
   },
 });

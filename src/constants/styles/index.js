@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: moderateScale(50),
-    height: moderateScale(60),
+    height: moderateScale(50),
     resizeMode: 'contain',
   },
   landingImage: {
@@ -168,6 +168,7 @@ const styles = StyleSheet.create({
     marginHorizontal: moderateScale(80),
     fontSize: moderateScale(20),
     fontWeight: 'bold',
+    color: Colors.primary,
   },
 
   splashImage: {
@@ -204,9 +205,9 @@ const styles = StyleSheet.create({
   //badge
   badge: {
     backgroundColor: Colors.primary,
-    height: 20,
-    minWidth: 5,
-    borderRadius: 100,
+    height: moderateScale(20),
+    minWidth: moderateScale(5),
+    borderRadius: moderateScale(100),
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -215,9 +216,14 @@ const styles = StyleSheet.create({
   },
   otp: {
     width: '100%',
-    height: 190,
-    marginLeft: 10,
-    marginBottom: 30,
+    height: moderateScale(190),
+    marginLeft: moderateScale(20),
+    marginBottom: moderateScale(30),
+  },
+  btn: {
+    width: moderateScale(150),
+    alignSelf: 'center',
+    justifyContent: 'center',
   },
 });
 

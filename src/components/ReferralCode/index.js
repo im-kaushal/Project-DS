@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, Linking, Text} from 'react-native';
+import {TouchableOpacity, Linking} from 'react-native';
 
 import {useTranslation} from 'react-i18next';
 

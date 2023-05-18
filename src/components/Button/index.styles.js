@@ -6,22 +6,24 @@ export default styles = StyleSheet.create({
   button: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-evenly',
     backgroundColor: Colors.primary,
     paddingVertical: moderateScale(10),
     paddingHorizontal: moderateScale(15),
     borderRadius: moderateScale(5),
     margin: moderateScale(10),
     minWidth: 60,
-    maxWidth: 300,
+    maxWidth: moderateScale(300),
   },
   buttonText: {
     color: Colors.text,
     fontSize: moderateScale(16),
-    fontWeight: 600,
+    fontWeight: 'bold',
     textAlign: 'center',
   },
   icon: {
-    color: Colors.text,
+    color: Colors.accent,
+    marginRight: moderateScale(5),
     fontSize: moderateScale(20),
   },
 });

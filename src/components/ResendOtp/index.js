@@ -1,47 +1,47 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Text, View} from 'react-native';
 import styles from './index.styles';
 import {useTranslation} from 'react-i18next';
+import {showMessage} from 'react-native-flash-message';
 import Button from '../Button';
-const ResendOTPButton = () => {
-  const [showButton, setShowButton] = useState(true);
-  const [showTimer, setShowTimer] = useState(false);
-  const [disabled, setDisabled] = useState(false);
-  const [remainingTime, setRemainingTime] = useState(60);
+import auth from '@react-native-firebase/auth';
+
+const ResendOTPButton = ({navigation}) => {
+  const [timer, setTimer] = useState(60);
+
   const {t} = useTranslation();
 
-  const handleResend = () => {
-    setShowButton(false);
-    setShowTimer(true);
-    setDisabled(true);
-    setRemainingTime(60);
-
-    const intervalId = setInterval(() => {
-      setRemainingTime(prevTime => prevTime - 1);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer(timer => timer - 1);
     }, 1000);
+    if (timer === 0) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [timer]);
 
-    setTimeout(() => {
-      clearInterval(intervalId);
-      setDisabled(false);
-      setShowButton(true);
-      setShowTimer(false);
-    }, 60000);
+  const handleResend = async () => {
+    try {
+      const withCountryCode = `+91${phone}`;
+      console.log('with country code ', withCountryCode);
+      const confirmation = await auth().signInWithPhoneNumber(withCountryCode);
+      console.log('confirmation... here...', confirmation);
+    } catch (error) {
+      showMessage({
+        message: error.message,
+        type: 'danger',
+      });
+    }
   };
 
   return (
     <View style={styles.container}>
-      {showButton ? (
-        <Button text={t('send_otp')} onPress={handleResend} />
+      {timer === 0 ? (
+        <Button text={t('resend_otp')} onPress={handleResend} />
       ) : (
-        <Button
-          text={t('resend_otp')}
-          newStyle={disabled}
-          onPress={handleResend}
-        />
-      )}
-      {showTimer && (
         <Text style={styles.timer}>
-          {t('resend_otp')} in {remainingTime} seconds
+          {t('resend_otp')} in {timer} seconds
         </Text>
       )}
     </View>

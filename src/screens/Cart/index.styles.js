@@ -97,11 +97,18 @@ const styles = StyleSheet.create({
     color: Colors.success,
     fontWeight: 'bold',
     fontSize: moderateScale(18),
-
     marginHorizontal: 12,
   },
-
+  price: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   item: {justifyContent: 'space-between'},
   emptyCart: {height: moderateScale(650), backgroundColor: Colors.background},
+  btn: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignSelf: 'stretch',
+  },
 });
 export default styles;

@@ -4,8 +4,6 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {webImgs} from '../../../constants/Images';
 import SvgComponent from '../../../assets/svg/Buy';
 import styles from '../../../constants/styles';
-import Strings from '../../../constants/Strings';
-
 import BackHandling from '../../../utils/BackHandling';
 import {useTranslation} from 'react-i18next';
 

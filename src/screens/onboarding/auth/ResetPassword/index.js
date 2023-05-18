@@ -2,36 +2,35 @@ import React, {useState} from 'react';
 import Input from '../../../../components/Input';
 import Button from '../../../../components/Button';
 
-import {View} from 'react-native';
+import {View, Alert} from 'react-native';
 import styles from '../../../../constants/styles';
 import ResetImage from '../../../../assets/svg/ResetImage';
 import {useDispatch, useSelector} from 'react-redux';
-import {ResetPassword, adduser} from '../../../../redux/LoginSlice';
+import {ResetPassword} from '../../../../redux/LoginSlice';
 import {useTranslation} from 'react-i18next';
 
 const ResetPasswordScreen = ({navigation, route}) => {
-  const [newPass, SetNewPass] = useState();
-  const [CreatenewPass, SetCreateNewPass] = useState();
+  const [newPass, setNewPass] = useState('');
+  const [createNewPass, setCreateNewPass] = useState('');
   const userData = useSelector(state => state.user);
   const {t} = useTranslation();
   const {phone} = route.params;
-  console.log(phone, ' here is Phone Number');
-
-  let currentUser = userData.data.filter(item => item.Number === phone)[0];
 
   const dispatch = useDispatch();
 
-  const OnSave = () => {
-    const newObj = {
-      // Email: currentUser.Email,
-      Number: currentUser.Number,
-      Password: newPass,
-    };
-    if (newPass === CreatenewPass) {
+  const currentUser = userData.data.find(item => item.Number === phone);
+
+  const onSave = () => {
+    if (newPass === createNewPass) {
+      const updatedUser = {
+        ...currentUser,
+        Password: newPass,
+      };
+      dispatch(ResetPassword(updatedUser));
       Alert.alert('New Password Created');
-      dispatch(ResetPassword(newObj)), 'reset';
-      console.log('reset', ResetPassword(newObj));
       navigation.navigate('LoginScreen');
+    } else {
+      Alert.alert('Passwords do not match');
     }
   };
 
@@ -41,14 +40,14 @@ const ResetPasswordScreen = ({navigation, route}) => {
         <ResetImage style={styles.img} />
         <Input
           placeholder={t('password_placeholder')}
-          onChangeText={SetCreateNewPass}
+          onChangeText={setCreateNewPass}
         />
         <Input
           placeholder={t('confirm_password_placeholder')}
           secureTextEntry
-          onChangeText={SetNewPass}
+          onChangeText={setNewPass}
         />
-        <Button text="Set Password" onPress={OnSave} />
+        <Button text="Set Password" onPress={onSave} />
       </View>
     </View>
   );

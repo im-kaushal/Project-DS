@@ -1,38 +1,18 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text} from 'react-native';
-
+import React, {useState} from 'react';
+import {View} from 'react-native';
 import OTPInput from 'react-native-otp-forminput';
 import ResendOTPButton from '../../../../components/ResendOtp';
 import OtpImg from '../../../../assets/svg/OtpImg';
 import styles from '../../../../constants/styles';
 import Colors from '../../../../constants/Colors';
-
 import {useTranslation} from 'react-i18next';
 import CustomButton from '../../../../components/Button';
+
 const OTPScreen = ({navigation, route}) => {
   const [code, setCode] = useState('');
-  const [seconds, setSeconds] = useState(60);
-  const [timerActive, setTimerActive] = useState(true);
+
   const {t} = useTranslation();
   const {confirm, phone} = route.params;
-  // console.log('🚀 ~ file: index.js:14 ~ OTPScreen ~ phone:', phone);
-
-  useEffect(() => {
-    if (seconds > 0 && timerActive) {
-      const intervalId = setInterval(() => {
-        setSeconds(prevSeconds => prevSeconds - 1);
-      }, 1000);
-
-      return () => clearInterval(intervalId);
-    } else {
-      setTimerActive(false);
-    }
-  }, [seconds, timerActive]);
-
-  const handleResendOTP = () => {
-    setSeconds(60);
-    setTimerActive(true);
-  };
 
   const CODE_LENGTH = 6;
 
@@ -51,10 +31,6 @@ const OTPScreen = ({navigation, route}) => {
     }
   }
 
-  // const handleResend = () => {
-  //   console.log('resend OTP');
-  // };
-
   return (
     <View style={styles.container}>
       <OtpImg style={styles.img} />
@@ -72,8 +48,12 @@ const OTPScreen = ({navigation, route}) => {
         onChange={setCode}
       />
       <View>
-        <ResendOTPButton />
-        <CustomButton text={t('verify')} onPress={handleVerify} />
+        <ResendOTPButton phone={phone} confirm={confirm} />
+        <CustomButton
+          text={t('verify')}
+          newStyle={styles.btn}
+          onPress={handleVerify}
+        />
       </View>
     </View>
   );

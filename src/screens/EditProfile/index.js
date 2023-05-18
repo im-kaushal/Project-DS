@@ -1,23 +1,17 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {
-  Alert,
-  View,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import {Alert, View, Text, TouchableOpacity, Image} from 'react-native';
 import styles from './index.styles';
-import {updateUserDetails} from '../../../redux/LoginSlice';
-import CustomButton from '../../../components/Button';
-import CustomIcon from '../../../components/Icon';
-import {webImgs} from '../../../constants/Images';
+import {updateUserDetails} from '../../redux/LoginSlice';
+import CustomButton from '../../components/Button';
+import CustomIcon from '../../components/Icon';
+import {webImgs} from '../../constants/Images';
 import ImagePicker from 'react-native-image-crop-picker';
-import Colors from '../../../constants/Colors';
-import Input from '../../../components/Input';
-import Back from '../../../components/Back';
+import Colors from '../../constants/Colors';
+import Input from '../../components/Input';
+import Back from '../../components/Back';
 import {useTranslation} from 'react-i18next';
+import RNFetchBlob from 'rn-fetch-blob';
 
 const EditProfileScreen = ({navigation}) => {
   const [FirstName, setFirstName] = useState('');
@@ -27,7 +21,6 @@ const EditProfileScreen = ({navigation}) => {
   const [City, setCity] = useState('');
   const [image, setImage] = useState(webImgs.avatar);
   const {t} = useTranslation();
-  const userData = useSelector(state => state.user);
 
   const dispatch = useDispatch();
 
@@ -38,7 +31,16 @@ const EditProfileScreen = ({navigation}) => {
       cropping: true,
     }).then(image => {
       console.log(image);
-      setImage(image.path);
+      const dirs = RNFetchBlob.fs.dirs;
+      const imagePath = `${dirs.DocumentDir}/${image.filename}`;
+      RNFetchBlob.fs
+        .writeFile(imagePath, image.data, 'base64')
+        .then(() => {
+          setImage(imagePath);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     });
   };
 
@@ -49,7 +51,15 @@ const EditProfileScreen = ({navigation}) => {
       cropping: true,
     }).then(image => {
       console.log(image);
-      setImage(image.path);
+      RNFetchBlob.fs
+        .writeFile(
+          `${RNFetchBlob.fs.dirs.CacheDir}/${image.filename}`,
+          image.data,
+          'base64',
+        )
+        .then(() => {
+          setImage(`${RNFetchBlob.fs.dirs.CacheDir}/${image.filename}`);
+        });
     });
   };
 

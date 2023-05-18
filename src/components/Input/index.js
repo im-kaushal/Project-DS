@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TextInput} from 'react-native';
+import {TextInput} from 'react-native';
 import styles from './index.styles';
 import Colors from '../../constants/Colors';
 
@@ -15,7 +15,7 @@ const Input = ({
     <TextInput
       style={[styles.input, newStyles]}
       placeholder={placeholder}
-      placeholderTextColor={Colors.warning}
+      placeholderTextColor={Colors.accent}
       value={value}
       onChangeText={onChangeText}
       secureTextEntry={secureTextEntry}
