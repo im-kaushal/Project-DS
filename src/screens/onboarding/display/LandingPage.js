@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-import {webImgs} from '../../../constants/Images';
+import {webImgs} from '../../../constants/Paths';
 import SvgComponent from '../../../assets/svg/Buy';
 import styles from '../../../constants/styles';
 import BackHandling from '../../../utils/BackHandling';

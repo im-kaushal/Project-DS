@@ -184,17 +184,20 @@ const styles = StyleSheet.create({
   },
 
   avatar: {
-    height: moderateScale(110),
-    width: moderateScale(110),
+    height: moderateScale(120),
+    width: moderateScale(120),
     borderRadius: moderateScale(100),
-    margin: moderateScale(15),
+    marginHorizontal: 50,
+    marginTop: moderateScale(20),
   },
   user: {
     color: Colors.error,
     fontSize: moderateScale(20),
     marginBottom: moderateScale(15),
     marginLeft: moderateScale(10),
-    textTransform: 'uppercase',
+  },
+  imgDrawer: {
+    height: moderateScale(180),
   },
 
   list: {

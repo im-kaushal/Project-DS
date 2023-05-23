@@ -3,6 +3,7 @@ export const localImgs = {
   camera: require('../assets/images/camera.png'),
   avatar: require('../assets/images/avatar.jpg'),
   texture: require('../assets/images/texture.jpg'),
+  notImg: require('../assets/images/noNoti.png'),
 };
 
 export const webImgs = {

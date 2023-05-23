@@ -5,7 +5,7 @@ import styles from '../../../constants/styles';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LandingPage from './LandingPage';
-import {webImgs} from '../../../constants/Images';
+import {webImgs} from '../../../constants/Paths';
 
 const Splash = ({navigation}) => {
   const retrieveData = async () => {

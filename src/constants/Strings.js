@@ -1,4 +1,5 @@
 const Strings = {
+  Welcome: 'Welcome :)',
   ///Linkes:
   user_linkedIn: 'https://www.linkedin.com/in/im-kaushal/',
   user_github: 'https://github.com/im-kaushal',

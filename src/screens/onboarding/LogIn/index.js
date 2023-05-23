@@ -7,7 +7,7 @@ import {useSelector} from 'react-redux';
 import Input from '../../../components/Input';
 import LoginImg from '../../../assets/svg/LoginImg';
 import Button from '../../../components/Button';
-
+import Strings from '../../../constants/Strings';
 import {useTranslation} from 'react-i18next';
 
 const LoginScreen = () => {
@@ -29,7 +29,7 @@ const LoginScreen = () => {
       ) {
         found = true;
         await AsyncStorage.setItem('isLoggedIn', '1');
-        Alert.alert('Success!', `${person.data[i].Name} Welcome :)`);
+        Alert.alert('Success!', `${person.data[i].Name} ${Strings.Welcome}`);
         navigation.navigate('Drawer');
         break; // Exit the loop once a match is found
       }

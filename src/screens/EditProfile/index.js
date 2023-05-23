@@ -5,13 +5,12 @@ import styles from './index.styles';
 import {updateUserDetails} from '../../redux/LoginSlice';
 import CustomButton from '../../components/Button';
 import CustomIcon from '../../components/Icon';
-import {webImgs} from '../../constants/Images';
+import {localImgs} from '../../constants/Paths';
 import ImagePicker from 'react-native-image-crop-picker';
 import Colors from '../../constants/Colors';
 import Input from '../../components/Input';
 import Back from '../../components/Back';
 import {useTranslation} from 'react-i18next';
-import RNFetchBlob from 'rn-fetch-blob';
 
 const EditProfileScreen = ({navigation}) => {
   const [FirstName, setFirstName] = useState('');
@@ -19,47 +18,30 @@ const EditProfileScreen = ({navigation}) => {
   const [Email, setEmail] = useState('');
   const [Contact, setContact] = useState('');
   const [City, setCity] = useState('');
-  const [image, setImage] = useState(webImgs.avatar);
+  const [image, setImage] = useState(localImgs.avatar);
   const {t} = useTranslation();
 
   const dispatch = useDispatch();
 
-  const takePhotoFromCamera = async () => {
+  const takePhotoFromCamera = () => {
     ImagePicker.openCamera({
       compressImageMaxWidth: 300,
       compressImageMaxHeight: 400,
       cropping: true,
     }).then(image => {
       console.log(image);
-      const dirs = RNFetchBlob.fs.dirs;
-      const imagePath = `${dirs.DocumentDir}/${image.filename}`;
-      RNFetchBlob.fs
-        .writeFile(imagePath, image.data, 'base64')
-        .then(() => {
-          setImage(imagePath);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      setImage({uri: image.path});
     });
   };
 
-  const choosePhotoFromLibrary = async () => {
+  const choosePhotoFromLibrary = () => {
     ImagePicker.openPicker({
       width: 300,
       height: 400,
       cropping: true,
     }).then(image => {
       console.log(image);
-      RNFetchBlob.fs
-        .writeFile(
-          `${RNFetchBlob.fs.dirs.CacheDir}/${image.filename}`,
-          image.data,
-          'base64',
-        )
-        .then(() => {
-          setImage(`${RNFetchBlob.fs.dirs.CacheDir}/${image.filename}`);
-        });
+      setImage({uri: image.path});
     });
   };
 
@@ -86,7 +68,7 @@ const EditProfileScreen = ({navigation}) => {
         <TouchableOpacity
           onPress={choosePhotoFromLibrary}
           style={styles.imageContainer}>
-          <Image style={styles.image} source={{uri: image}} />
+          <Image style={styles.image} source={image} />
         </TouchableOpacity>
         <TouchableOpacity onPress={takePhotoFromCamera}>
           <CustomIcon name="camera" size={15} color={Colors.primary} />
