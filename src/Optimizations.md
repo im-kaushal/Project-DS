@@ -6,7 +6,7 @@ Pop up (Media)
 Firebase Notification(Implementation)
 DeepLinking
 Custom Hooks
-
+[x]Animation
 
 ## QnA 2
 

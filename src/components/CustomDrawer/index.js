@@ -15,7 +15,6 @@ import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 import {localImgs} from '../../constants/Paths';
 import {useTranslation} from 'react-i18next';
-
 import styles from '../../constants/styles';
 
 const CustomDrawer = props => {
