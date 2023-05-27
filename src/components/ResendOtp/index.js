@@ -5,6 +5,7 @@ import {useTranslation} from 'react-i18next';
 import {showMessage} from 'react-native-flash-message';
 import Button from '../Button';
 import auth from '@react-native-firebase/auth';
+import BackgroundTimer from 'react-native-background-timer';
 
 const ResendOTPButton = ({navigation}) => {
   const [timer, setTimer] = useState(60);
@@ -12,13 +13,17 @@ const ResendOTPButton = ({navigation}) => {
   const {t} = useTranslation();
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const interval = BackgroundTimer.setInterval(() => {
       setTimer(timer => timer - 1);
     }, 1000);
+
     if (timer === 0) {
-      clearInterval(interval);
+      BackgroundTimer.clearInterval(interval);
     }
-    return () => clearInterval(interval);
+
+    return () => {
+      BackgroundTimer.clearInterval(interval);
+    };
   }, [timer]);
 
   const handleResend = async () => {
@@ -41,7 +46,7 @@ const ResendOTPButton = ({navigation}) => {
         <Button text={t('resend_otp')} onPress={handleResend} />
       ) : (
         <Text style={styles.timer}>
-          {t('resend_otp')} in {timer} seconds
+          {t('resend_otp')} in {timer} secs.
         </Text>
       )}
     </View>

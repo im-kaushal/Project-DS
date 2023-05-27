@@ -49,5 +49,19 @@
   "first_name": "पहला नाम",
   "last_name": "अंतिम नाम",
   "address": "पता",
-  "permissions": "अनुमति"
+  "permissions": "अनुमति",
+  "cart_clear_alert": "क्या आप सुनिश्चित हैं कि आप कार्ट को साफ़ करना चाहते हैं?",
+  "phone_value": "+91 7970513448",
+  "email_value": "mail@gmail.com",
+  "updated_profile_alert": "प्रोफ़ाइल सफलतापूर्वक अपडेट की गई है!",
+  "current_location": "वर्तमान स्थान:",
+  "loading": "लोड हो रहा है...",
+  "latitude": "अक्षांश:",
+  "longitude": "देशांतर:",
+  "no_notification": "कोई सूचना नहीं मिली :(",
+  "success": "बढ़िया,",
+  "empty_wishlist": "आपकी इच्छा-सूची खाली है!",
+  "password_updated": "पासवर्ड सफलतापूर्वक बदला गया",
+  "password_set": "पासवर्ड सेट करें",
+  "reset_password_text": "कृपया अपना पासवर्ड रीसेट करें"
 }
