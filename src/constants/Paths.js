@@ -4,6 +4,7 @@ export const localImgs = {
   avatar: require('../assets/images/avatar.jpg'),
   texture: require('../assets/images/texture.jpg'),
   notImg: require('../assets/images/noNoti.png'),
+  wishlist: require('../assets/images/wishlist.png'),
 };
 
 export const webImgs = {

@@ -3,12 +3,13 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import Profile from '../../screens/EditProfile';
 import Location from '../../screens/Location';
 import CustomDrawer from '../../components/CustomDrawer';
-import CartScreen from '../../screens/Cart';
+import Cart from '../../screens/Cart';
 import {useTranslation} from 'react-i18next';
 import ContactUs from '../../screens/Contact';
 import CustomIcon from '../../components/Icon';
 //import ProductPage from '../../screens/Product/ShowProducts';
 import Tabs from '../Tabs';
+import Settings from '../../screens/Settings';
 const DrawerNavigator = () => {
   const Drawer = createDrawerNavigator();
   const {t} = useTranslation();
@@ -25,6 +26,7 @@ const DrawerNavigator = () => {
         name={t('shop')}
         component={Tabs}
       />
+
       <Drawer.Screen
         options={{
           drawerIcon: () => (
@@ -32,8 +34,9 @@ const DrawerNavigator = () => {
           ),
         }}
         name={t('cart')}
-        component={CartScreen}
+        component={Cart}
       />
+
       <Drawer.Screen
         options={{
           drawerIcon: () => <CustomIcon name="user" size={20} color="black" />,
@@ -50,6 +53,13 @@ const DrawerNavigator = () => {
         }}
         name={t('location')}
         component={Location}
+      />
+      <Drawer.Screen
+        options={{
+          drawerIcon: () => <CustomIcon name="gear" size={20} color="black" />,
+        }}
+        name={t('setting_screen')}
+        component={Settings}
       />
 
       <Drawer.Screen

@@ -27,6 +27,7 @@ const loginSlice = createSlice({
       return {
         ...state,
         data: updatedData,
+        updatedPassword: newPassword,
       };
     },
 

@@ -1,11 +1,8 @@
 import {Text, View, TouchableOpacity, Image} from 'react-native';
 import {useSelector} from 'react-redux';
 import Icon from '../../../components/Icon';
-
 import styles from '../../../constants/styles';
-
 import {addToCart, decrement, clear} from '../../../redux/CartSlice';
-
 import i18n from '../../../i18n';
 import {useTranslation} from 'react-i18next';
 

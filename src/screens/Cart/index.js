@@ -32,7 +32,7 @@ const CartContainer = () => {
   const {t} = useTranslation();
   const AlertItem = () => {
     Alert.alert(
-      'Are you sure you want to clear the cart?',
+      t('cart_clear_alert'),
       '',
       [
         {
@@ -46,6 +46,19 @@ const CartContainer = () => {
     );
   };
 
+  const handleCheckout = () => {
+    // Call the sendCheckoutNotification function when the checkout button is pressed
+    sendCheckoutNotification()
+      .then(() => {
+        console.log('Notification sent successfully');
+        // Perform any additional actions after the notification is sent
+      })
+      .catch(error => {
+        console.log('Error sending notification:', error);
+        // Handle any errors that occur during notification sending
+      });
+  };
+
   const renderStoreItems = ({item}) => {
     return (
       <View style={styles.storeItem}>
@@ -54,7 +67,7 @@ const CartContainer = () => {
         </View>
         <View style={styles.storeItemInfo}>
           <Text style={styles.storeItemTitle}>{item.title}</Text>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={styles.last}>
             <Text style={styles.storeItemPrice}>
               ${item.quantity * item.price}
             </Text>
@@ -92,12 +105,8 @@ const CartContainer = () => {
                 {cart.length === 0 ? (
                   <EmptyCart style={styles.emptyCart} />
                 ) : (
-                  <View style={styles.checkoutFull}>
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                      }}>
+                  <View>
+                    <View style={styles.bottom}>
                       <Text style={styles.checkoutText}>
                         {t('total')}: ${totalPrice.toFixed(2)}
                       </Text>
@@ -116,23 +125,13 @@ const CartContainer = () => {
                       totalPrice={totalPrice}
                     />
 
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        alignSelf: 'stretch',
-                      }}>
+                    <View style={styles.btn}>
                       <Button
                         onPress={() => navigation.navigate('Product')}
                         text={t('shopping')}
                       />
 
-                      <Button
-                        text={t('checkout')}
-                        onPress={() => {
-                          sendCheckoutNotification();
-                        }}
-                      />
+                      <Button text={t('checkout')} onPress={handleCheckout()} />
                     </View>
                   </View>
                 )}

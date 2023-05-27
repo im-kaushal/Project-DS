@@ -110,5 +110,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignSelf: 'stretch',
   },
+  bottom: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  last: {flexDirection: 'row', justifyContent: 'space-between'},
 });
 export default styles;

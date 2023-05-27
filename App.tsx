@@ -8,7 +8,7 @@ import {
   requestLocationPermission,
   requestCameraPermission,
   requestStoragePermission,
-  // requestNotificationPermission,
+  requestNotificationPermission,
 } from './src/utils/Permissions';
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
     await requestLocationPermission();
     await requestCameraPermission();
     await requestStoragePermission();
-    // await requestNotificationPermission();
+    await requestNotificationPermission();
   };
 
   return (

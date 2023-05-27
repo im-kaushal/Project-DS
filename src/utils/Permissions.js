@@ -50,5 +50,13 @@ export const requestLocationPermission = async () => {
 };
 
 export const requestNotificationPermission = async () => {
-  await checkPermission('NOTIFICATIONS');
+  let permission;
+
+  if (Platform.OS === 'android') {
+    permission = PERMISSIONS.ANDROID.NOTIFICATIONS;
+  } else if (Platform.OS === 'ios') {
+    permission = PERMISSIONS.IOS.NOTIFICATIONS;
+  }
+
+  await checkPermission(permission);
 };

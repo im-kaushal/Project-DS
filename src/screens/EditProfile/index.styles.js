@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 
   imageContainer: {
     alignSelf: 'center',
-    marginTop: moderateScale(25),
+    marginTop: moderateScale(5),
   },
 
   cameraIcon: {

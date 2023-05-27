@@ -21,8 +21,7 @@ const CustomDrawer = props => {
   const [userName, setUserName] = useState('Kaushal');
   const navigation = useNavigation();
 
-  const myName = useSelector(state => state.user.data[0]?.Name);
-  console.log('🚀 ~ CustomDrawer ~ myName:', myName);
+  const myName = useSelector(state => state.user.data[0]?.FirstName);
 
   useEffect(() => {
     if (myName) {

@@ -1,6 +1,7 @@
 import messaging from '@react-native-firebase/messaging';
 
 import Strings from '../constants/Strings';
+
 export const sendCheckoutNotification = async () => {
   try {
     // Get the FCM token for the device

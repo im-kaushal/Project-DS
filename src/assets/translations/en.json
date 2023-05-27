@@ -1,7 +1,6 @@
 {
   "Shop": " Shop the latest products and deals",
   "product_list": "Product List",
-
   "cart": "Cart",
   "total": "Total",
   "setting_screen": "Settings",
@@ -44,19 +43,27 @@
   "edit_profile": "Edit Profile",
   "refer_earn": "Refer & Earn",
   "permissions": "Permissions",
-
   "shop": "Shop",
   "profile": "Profile",
   "location": "Location",
-
   "first_name": "First Name",
   "last_name": "Last Name",
   "address": "Address",
-
   "verify": "Verify OTP",
   "Welcome": "Welcome On EcomExpress",
   "About": "A self-driven, hardworking, and astute learner having team collaboration, marketing, management, and leadership qualities.",
   "Title": "SET @Damco Solutions 😀",
   "Description": "Say goodbye to long lines and crowded stores with our e-commerce app. Shop anytime, anywhere, and get your purchases delivered straight to your doorstep. Get the ultimate shopping experience with our e-commerce app. With personalized recommendations, fast and secure checkout, and 24/7 customer support, we make shopping online easy and enjoyable.",
-  "Connect": "Connect Me Through:"
+  "Connect": "Connect Me Through:",
+  "cart_clear_alert": "Are you sure you want to clear the cart?",
+  "phone_value": "+91 7970513448",
+  "email_value": "mail@gmail.com",
+  "updated_profile_alert": "Profile Updated Successfully!!",
+  "current_location": "Current Location:",
+  "loading": "Loading...",
+  "latitude": " Latitude:",
+  "longitude": "Longitude:",
+  "no_notification": "No Notification Found :(",
+  "success": "Great,",
+  "empty_wishlist": "Your Wishlist is Empty!"
 }

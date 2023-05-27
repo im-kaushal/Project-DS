@@ -10,10 +10,8 @@ import CustomButton from '../../../../components/Button';
 
 const OTPScreen = ({navigation, route}) => {
   const [code, setCode] = useState('');
-
   const {t} = useTranslation();
   const {confirm, phone} = route.params;
-
   const CODE_LENGTH = 6;
 
   async function handleVerify({phone}) {
@@ -27,7 +25,7 @@ const OTPScreen = ({navigation, route}) => {
         console.log('error', error);
       }
     } else {
-      alert('Please enter OTP');
+      alert(t('enter_otp'));
     }
   }
 

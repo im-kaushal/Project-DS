@@ -73,8 +73,8 @@ const ContactUs = ({navigation}) => {
           </TouchableOpacity>
         </ScrollView>
         <View style={styles.popupContainer}>
-          <ContactButton name="phone" value="1234567890" />
-          <ContactButton name="email" value="example@example.com" />
+          <ContactButton name="phone" value={t('phone_value')} />
+          <ContactButton name="email" value={t('email_value')} />
         </View>
       </KeyboardAvoidingView>
     </>

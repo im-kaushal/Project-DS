@@ -50,7 +50,7 @@ const SignUpScreen = ({navigation}) => {
     }
 
     try {
-      Alert.alert('Success!', userObj.Name);
+      Alert.alert(t('success'), userObj.Name);
       dispatch(adduser(userObj));
       navigation.navigate('LoginScreen');
     } catch (error) {

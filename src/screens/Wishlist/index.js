@@ -2,18 +2,18 @@ import React from 'react';
 import {View, Image, Text} from 'react-native';
 import Back from '../../components/Back';
 import styles from './index.styles';
+import {localImgs} from '../../constants/Paths';
+import {useTranslation} from 'react-i18next';
 const WishlistScreen = ({wishlistItems}) => {
+  const {t} = useTranslation();
   return (
     <View>
       <Back />
       <View style={styles.container}>
         {/* {wishlistItems.length === 0 ? ( */}
         <View style={styles.emptyContainer}>
-          <Image
-            source={require('../../assets/images/wishlist.png')}
-            style={styles.emptyImage}
-          />
-          <Text style={styles.emptyText}>Your Wishlist is empty!</Text>
+          <Image source={localImgs.wishlist} style={styles.emptyImage} />
+          <Text style={styles.emptyText}>{t('empty_wishlist')}</Text>
         </View>
         {/* ) : ( */}
         {/* <View style={styles.itemsContainer}>

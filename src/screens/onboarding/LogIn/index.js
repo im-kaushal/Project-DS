@@ -16,24 +16,27 @@ const LoginScreen = () => {
   const [error] = useState('');
   const navigation = useNavigation();
 
-  const person = useSelector(state => state.user);
-
+  const user = useSelector(state => state.user);
+  const updatedUser = useSelector(state => state.updatedUser);
   const {t} = useTranslation();
 
   const login = async () => {
     let found = false;
-    for (let i = 0; i < person.data.length; i++) {
+    const loginData = updatedUser ? updatedUser : user;
+
+    for (let i = 0; i < loginData.data.length; i++) {
       if (
-        person.data[i].Email === email &&
-        person.data[i].Password === password
+        loginData.data[i].Email === email &&
+        loginData.data[i].Password === password
       ) {
         found = true;
         await AsyncStorage.setItem('isLoggedIn', '1');
-        Alert.alert('Success!', `${person.data[i].Name} ${Strings.Welcome}`);
+        Alert.alert('Success!', `${loginData.data[i].Name} ${Strings.Welcome}`);
         navigation.navigate('Drawer');
         break; // Exit the loop once a match is found
       }
     }
+
     if (!found) {
       Alert.alert(t('error_email_password'));
     }
@@ -54,7 +57,7 @@ const LoginScreen = () => {
         value={email}
       />
       <Input
-        abc={styles.input}
+        style={styles.input}
         placeholder={t('password_placeholder')}
         secureTextEntry
         onChangeText={setPassword}
