@@ -20,7 +20,8 @@ import styles from '../../constants/styles';
 const CustomDrawer = props => {
   const [userName, setUserName] = useState('Kaushal');
   const navigation = useNavigation();
-
+  const profileImage = useSelector(state => state.profile.ProfileImage);
+  console.log(profileImage, 'xyz');
   const myName = useSelector(state => state.user.data[0]?.FirstName);
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const CustomDrawer = props => {
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
         <ImageBackground source={localImgs.texture} style={styles.imgDrawer}>
-          <Image source={localImgs.avatar} style={styles.avatar} />
+          <Image source={{uri: profileImage}} style={styles.avatar} />
           <Text style={styles.user}>Hey, {userName}!</Text>
         </ImageBackground>
         <View style={styles.list}>

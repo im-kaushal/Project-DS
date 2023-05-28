@@ -2,17 +2,16 @@ import React, {useState} from 'react';
 import {
   View,
   Text,
-  TouchableOpacity,
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
 import Back from '../../components/Back';
 import CustomTextInput from '../../components/Input';
 import styles from './index.styles';
 import ContactImage from '../../assets/svg/ContactImage';
 import ContactButton from '../../components/ContactButton';
-
 import {useTranslation} from 'react-i18next';
 
 const ContactUs = ({navigation}) => {
@@ -74,6 +73,12 @@ const ContactUs = ({navigation}) => {
         </ScrollView>
         <View style={styles.popupContainer}>
           <ContactButton name="phone" value={t('phone_value')} />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('MyWebView');
+            }}>
+            <Text style={styles.sendButtonText}>{t('website')}</Text>
+          </TouchableOpacity>
           <ContactButton name="email" value={t('email_value')} />
         </View>
       </KeyboardAvoidingView>

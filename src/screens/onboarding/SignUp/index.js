@@ -5,16 +5,13 @@ import Button from '../../../components/Button';
 import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
 import {adduser} from '../../../redux/LoginSlice';
-
 import styles from './index.styles';
 import {
   isValidEmail,
   isValidMobileNumber,
   isValidPassword,
 } from '../../../utils/Validation';
-
 import BackHandling from '../../../utils/BackHandling';
-
 import SignupImage from '../../../assets/svg/SignupImage';
 
 const SignUpScreen = ({navigation}) => {
@@ -65,14 +62,14 @@ const SignUpScreen = ({navigation}) => {
       <BackHandling />
       <Text style={styles.title}>{t('sign_up')}</Text>
       <Input
-        placeholder={t('name')}
+        placeholder={t('name_placeholder')}
         autoCapitalize="words"
         onChangeText={setName}
         value={name}
       />
 
       <Input
-        placeholder={t('email')}
+        placeholder={t('email_placeholder')}
         keyboardType="email-address"
         onChangeText={setEmail}
         value={email}
@@ -86,7 +83,7 @@ const SignUpScreen = ({navigation}) => {
       />
 
       <Input
-        placeholder={t('password')}
+        placeholder={t('password_placeholder')}
         secureTextEntry
         onChangeText={setPassword}
         value={password}

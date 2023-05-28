@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {
   Alert,
@@ -12,10 +12,12 @@ import styles from './index.styles';
 import {updateUserDetails} from '../../redux/LoginSlice';
 import CustomButton from '../../components/Button';
 import CustomIcon from '../../components/Icon';
-import {localImgs} from '../../constants/Paths';
+import {ProfileImage} from '../../redux/profileSlice';
 import ImagePicker from 'react-native-image-crop-picker';
 import Colors from '../../constants/Colors';
 import Input from '../../components/Input';
+import {localImgs} from '../../constants/Paths';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {useTranslation} from 'react-i18next';
 import Header from '../../components/Header';
@@ -30,6 +32,34 @@ const EditProfileScreen = ({navigation}) => {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    retrieveProfileData();
+  }, []);
+
+  const storeProfileData = async () => {
+    try {
+      const profileData = JSON.stringify({
+        image,
+      });
+      await AsyncStorage.setItem('profileData', profileData);
+      Alert.alert(t('updated_profile_alert'));
+    } catch (error) {
+      console.log('Error storing profile data:', error);
+    }
+  };
+
+  const retrieveProfileData = async () => {
+    try {
+      const storedProfileData = await AsyncStorage.getItem('profileData');
+      if (storedProfileData) {
+        const {image: storedImage} = JSON.parse(storedProfileData);
+        setImage(storedImage);
+      }
+    } catch (error) {
+      console.log('Error retrieving profile data:', error);
+    }
+  };
+
   const takePhotoFromCamera = () => {
     ImagePicker.openCamera({
       compressImageMaxWidth: 300,
@@ -38,6 +68,7 @@ const EditProfileScreen = ({navigation}) => {
     }).then(image => {
       console.log(image);
       setImage({uri: image.path});
+      dispatch(ProfileImage(image.path));
     });
   };
 
@@ -49,6 +80,7 @@ const EditProfileScreen = ({navigation}) => {
     }).then(image => {
       console.log(image);
       setImage({uri: image.path});
+      dispatch(ProfileImage(image.path));
     });
   };
 
@@ -62,7 +94,8 @@ const EditProfileScreen = ({navigation}) => {
         city: City,
       }),
     );
-    Alert.alert(t('updated_profile_alert'));
+    storeProfileData();
+    console.log(FirstName, LastName, Email, Contact, City);
   };
 
   return (

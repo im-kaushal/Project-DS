@@ -19,7 +19,7 @@ import ResetPassword from '../../screens/onboarding/auth/ResetPassword';
 import Notification from '../../screens/Notification';
 import Toggle from '../../screens/TogglePermissions';
 import Location from '../../screens/Location';
-
+import MyWebView from '../../utils/WebView';
 const Stack = createStackNavigator();
 const screenOptions = {
   headerTitle: '',
@@ -118,6 +118,11 @@ const Main = () => {
         <Stack.Screen
           name="Location"
           component={Location}
+          options={screenOptions}
+        />
+        <Stack.Screen
+          name="MyWebView"
+          component={MyWebView}
           options={screenOptions}
         />
       </Stack.Navigator>

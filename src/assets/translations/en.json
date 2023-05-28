@@ -33,10 +33,10 @@
   "clear_cart": "Clear Cart",
   "shopping": "Continue Shopping",
   "checkout": "Checkout",
-  "name_placeholder": "Enter your name",
-  "email_placeholder": "Enter your email",
+  "name_placeholder": "Enter Your Name",
+  "email_placeholder": "Enter your Email",
   "password_placeholder": "Enter Your Password",
-  "confirm_password_placeholder": "Confirm Password",
+  "confirm_password_placeholder": "Confirm Your Password",
   "contact_number_placeholder": "Enter Your Phone No.",
   "message_placeholder": "Message",
   "contact_us": "Contact Us",
@@ -68,5 +68,6 @@
   "empty_wishlist": "Your Wishlist is Empty!",
   "reset_password_text": "Kindly Reset Your Password",
   "password_updated": "Password changed successfully",
-  "password_set": "Set Password"
+  "password_set": "Set Password",
+  "website": "Check Our Website"
 }
