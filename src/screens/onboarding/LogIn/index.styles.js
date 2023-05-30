@@ -15,6 +15,7 @@ export default styles = StyleSheet.create({
     color: Colors.primary,
     fontSize: moderateScale(30),
     fontWeight: '600',
+    fontFamily: 'PlayfairDisplay-Bold',
   },
 
   error: {

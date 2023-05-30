@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     color: Colors.secondary,
     marginBottom: moderateScale(2),
     textAlign: 'justify',
+    fontFamily: 'Inter-Regular',
   },
   title: {
     fontSize: moderateScale(22),
@@ -30,12 +31,14 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     textAlign: 'center',
     marginBottom: moderateScale(12),
+    fontFamily: 'PlayfairDisplay-Bold',
   },
   subtitle: {
     fontSize: moderateScale(20),
     fontWeight: 'bold',
     color: Colors.text,
     textAlign: 'center',
+    fontFamily: 'PlayfairDisplay-SemiBold',
     // marginBottom: moderateScale(10),
   },
   button: {
@@ -52,6 +55,7 @@ const styles = StyleSheet.create({
     color: Colors.text,
     textAlign: 'center',
     fontWeight: 'bold',
+    fontFamily: 'PlayfairDisplay-SemiBold',
   },
   logo: {
     width: moderateScale(50),
@@ -127,6 +131,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(14),
     fontWeight: 'bold',
     marginBottom: moderateScale(5),
+    fontFamily: 'Inter-Regular',
   },
   productBtn: {
     backgroundColor: Colors.primary,
@@ -140,9 +145,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.success,
     borderRadius: moderateScale(10),
     padding: moderateScale(2),
-
     fontSize: moderateScale(16),
-
     textAlign: 'center',
   },
   productBtn2: {
