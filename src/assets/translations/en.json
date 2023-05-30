@@ -69,5 +69,6 @@
   "reset_password_text": "Kindly Reset Your Password",
   "password_updated": "Password changed successfully",
   "password_set": "Set Password",
-  "website": "Check Our Website"
+  "website": "Check Our Website",
+  "product_description": "Product Description:"
 }

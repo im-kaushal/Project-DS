@@ -46,7 +46,7 @@ const RenderProducts = ({item, navigation, dispatch}) => {
       </View>
       <View style={styles.productDetails}>
         <View>
-          <Text style={styles.title}>{item.title.slice(0, 25) + '...'}</Text>
+          <Text style={styles.title}>{item.title.slice(0, 20) + '...'}</Text>
         </View>
         <View style={styles.productRar}>
           <Text style={styles.textInfo}>Price: ${item.price.toFixed(2)}</Text>

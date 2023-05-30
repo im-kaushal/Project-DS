@@ -12,6 +12,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignContent: 'space-between',
   },
+  header: {
+    fontWeight: '600',
+    color: Colors.primary,
+    fontSize: 20,
+    fontFamily: 'PlayfairDisplay-SemiBold',
+  },
+  headerTop: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+  },
   img: {height: '55%', width: '100%'},
   resetImage: {justifyContent: 'center', alignItems: 'center'},
   imgBg: {
@@ -21,21 +33,20 @@ const styles = StyleSheet.create({
   text: {
     fontSize: moderateScale(16),
     color: Colors.secondary,
+    fontFamily: 'Inter-Regular',
     marginBottom: moderateScale(2),
     textAlign: 'justify',
-    fontFamily: 'Inter-Regular',
   },
   title: {
-    fontSize: moderateScale(22),
-    fontWeight: 'bold',
+    fontFamily: 'PlayfairDisplay-Bold',
+    fontSize: moderateScale(25),
+    // fontWeight: '900',
     color: Colors.primary,
     textAlign: 'center',
     marginBottom: moderateScale(12),
-    fontFamily: 'PlayfairDisplay-Bold',
   },
   subtitle: {
     fontSize: moderateScale(20),
-    fontWeight: 'bold',
     color: Colors.text,
     textAlign: 'center',
     fontFamily: 'PlayfairDisplay-SemiBold',
@@ -54,8 +65,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16),
     color: Colors.text,
     textAlign: 'center',
-    fontWeight: 'bold',
-    fontFamily: 'PlayfairDisplay-SemiBold',
+    fontFamily: 'Inter-Regular',
   },
   logo: {
     width: moderateScale(50),
@@ -105,12 +115,13 @@ const styles = StyleSheet.create({
     elevation: moderateScale(5),
   },
   productDetails: {
-    padding: 20,
+    padding: moderateScale(20),
+    textAlign: 'justify',
   },
 
   productImage: {
     width: '100%',
-    height: 250,
+    height: moderateScale(250),
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {webImgs} from '../../../constants/Paths';
 import SvgComponent from '../../../assets/svg/Buy';

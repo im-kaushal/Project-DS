@@ -12,13 +12,13 @@ export default styles = StyleSheet.create({
     paddingHorizontal: moderateScale(15),
     borderRadius: moderateScale(5),
     margin: moderateScale(10),
-    minWidth: 60,
+    minWidth: moderateScale(60),
     maxWidth: moderateScale(300),
   },
   buttonText: {
     color: Colors.text,
     fontSize: moderateScale(16),
-    fontWeight: 'bold',
+    fontFamily: 'Inter-Regular',
     textAlign: 'center',
   },
   icon: {

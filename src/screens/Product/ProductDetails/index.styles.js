@@ -8,7 +8,7 @@ export default styles = StyleSheet.create({
   },
   view: {
     flex: 1,
-    padding: moderateScale(20),
+    padding: moderateScale(25),
     justifyContent: 'center',
   },
   icon: {
@@ -25,8 +25,8 @@ export default styles = StyleSheet.create({
   title: {
     color: Colors.primary,
     fontSize: moderateScale(22),
-    fontWeight: 'bold',
     marginBottom: moderateScale(10),
+    fontFamily: 'PlayfairDisplay-Bold',
   },
   productRar: {
     justifyContent: 'space-between',
@@ -38,14 +38,15 @@ export default styles = StyleSheet.create({
     color: Colors.text,
     fontSize: moderateScale(16),
     marginRight: moderateScale(10),
-    fontWeight: 'bold',
+    fontFamily: 'PlayfairDisplay-Bold',
   },
   text: {
     color: Colors.text,
-
+    fontFamily: 'Inter-Regular',
     fontSize: moderateScale(16),
     lineHeight: moderateScale(24),
     marginBottom: moderateScale(10),
+    textAlign: 'justify',
   },
   productBtn: {
     backgroundColor: Colors.primary,
@@ -57,7 +58,7 @@ export default styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: moderateScale(18),
-    fontWeight: 'bold',
+    fontFamily: 'PlayfairDisplay - SemiBold',
     color: Colors.text,
   },
   quantityContainer: {
@@ -77,5 +78,6 @@ export default styles = StyleSheet.create({
     fontSize: moderateScale(20),
     fontWeight: 'bold',
     color: Colors.primary,
+    fontFamily: 'PlayfairDisplay-Bold',
   },
 });

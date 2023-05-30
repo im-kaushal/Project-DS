@@ -13,7 +13,7 @@ import {
 } from '../../../utils/Validation';
 import BackHandling from '../../../utils/BackHandling';
 import SignupImage from '../../../assets/svg/SignupImage';
-
+import GlobalStyles from '../../../constants/styles';
 const SignUpScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
@@ -60,7 +60,7 @@ const SignUpScreen = ({navigation}) => {
     <View style={styles.container}>
       <SignupImage style={styles.img} />
       <BackHandling />
-      <Text style={styles.title}>{t('sign_up')}</Text>
+      <Text style={GlobalStyles.title}>{t('sign_up')}</Text>
       <Input
         placeholder={t('name_placeholder')}
         autoCapitalize="words"

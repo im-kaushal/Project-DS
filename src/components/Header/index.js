@@ -1,15 +1,14 @@
 import {useNavigation, DrawerActions} from '@react-navigation/native';
-
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from '../Icon';
-import styles from './index.styles';
+import styles from '../../constants/styles';
 
 const Header = ({title, showHeartIcon, showBellIcon}) => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.top}>
+    <View style={styles.headerTop}>
       <TouchableOpacity
         onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
         <Icon name="bars" size={25} color="black" />

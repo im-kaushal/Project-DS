@@ -4,7 +4,7 @@ import {addToCart, decrement, clear} from '../../../redux/CartSlice';
 import {useTranslation} from 'react-i18next';
 import styles from './index.styles';
 import CustomIcon from '../../../components/Icon';
-import Strings from '../../../constants/Strings';
+
 import Colors from '../../../constants/Colors';
 
 const ProductDetails = ({route, navigation}) => {
@@ -53,10 +53,8 @@ const ProductDetails = ({route, navigation}) => {
             <Text style={styles.textInfo}>({item.rating.count} reviews)</Text>
           </View>
 
-          <View>
-            <Text style={styles.textInfo}>{Strings.description}</Text>
-            <Text style={styles.text}>{item.description}</Text>
-          </View>
+          <Text style={styles.textInfo}>{t('product_description')}</Text>
+          <Text style={styles.text}>{item.description}</Text>
 
           {quantity != 0 ? (
             <View style={styles.quantityContainer}>
