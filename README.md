@@ -15,7 +15,8 @@ Whether you're an experienced React Native developer or just starting, there's a
 1. **Clone this Repository**: To get started, clone this repository to your local machine using the following command:
 
 
-2. **Connect with Me**:Feel free to reach out to me through (email)[mail4kaushal.kr@gmail.com] at [LinkedIn][https://www.linkedin.com/in/im-kaushal/] If you have any questions, need guidance, or want to discuss your contributions. We're here to help!
+2. **Connect with Me**:Feel free to reach out to me through [Email](mailto:mail4kaushal.kr@gmail.com) and on [LinkedIn](https://www.linkedin.com/in/im-kaushal/)
+ If you have any questions, need guidance, or want to discuss your contributions. We're here to help!
 
 3. **Contribute**: Take a look at the code to understand how you can contribute to this project. You can work on bug fixes, new features, or documentation improvements - there's something for everyone.
 
