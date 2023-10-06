@@ -1,21 +1,23 @@
 # Welcome to the Hacktoberfest 2023 Open Source Project
 
-Hey there, future open source contributors! 👋
+Hey there, future open-source contributors! 👋
 
-We're excited to have you here and be a part of the Hacktoberfest 2023 celebration. This is your chance to learn about open source and dive into the fascinating world of React Native development.
+I'm excited to have you here and be a part of the Hacktoberfest 2023 celebration. This is your chance to learn about open source and dive into the fascinating world of React Native development.
 
 ## About the Project
 
-Our project is all about [briefly describe your project and its purpose]. Whether you're an experienced React Native developer or just starting, there's a place for you here. We believe in the power of collaboration and community, and we're eager to have you on board.
+Our project is all about a basic e-commerce application. This is the first project that I created while learning react-native. So there is a huge scope for improvements in this project. You don't need to put much effort into it, simply find anything of your choice and fix it.
+
+Whether you're an experienced React Native developer or just starting, there's a place for you here. We believe in the power of collaboration and community, and we're eager to have you on board.
 
 ## How to Get Started
 
 1. **Clone this Repository**: To get started, clone this repository to your local machine using the following command:
 
 
-2. **Connect with Us**: Reach out to [your name] at [your email] or [your preferred contact method] if you have any questions, need guidance, or want to discuss your contributions. We're here to help!
+2. **Connect with Us**: Reach out to mail4kaushal.kr@gmail.com at [your email] or [your preferred contact method] if you have any questions, need guidance, or want to discuss your contributions. We're here to help!
 
-3. **Contribute**: Take a look at the [contribution guidelines](CONTRIBUTING.md) to understand how you can contribute to this project. You can work on bug fixes, new features, or documentation improvements - there's something for everyone.
+3. **Contribute**: Take a look at the code to understand how you can contribute to this project. You can work on bug fixes, new features, or documentation improvements - there's something for everyone.
 
 4. **Submit Your Pull Request**: Once you've made your changes, submit a pull request, and we'll review it together. We'll provide feedback and work together to ensure your contribution is top-notch.
 
@@ -23,7 +25,7 @@ Our project is all about [briefly describe your project and its purpose]. Whethe
 
 ## Community Guidelines
 
-We strive to maintain a welcoming and inclusive community. Please review our [code of conduct](CODE_OF_CONDUCT.md) to understand the values we uphold and how we expect everyone to interact.
+We strive to maintain a welcoming and inclusive community. Please review our code to understand the values we uphold and how we expect everyone to interact.
 
 ## Happy Hacking!
 
